@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dúvidas · Ygor Soares</title>
+<meta name="description" content="Envie sua dúvida geral sobre os temas de Direito do Trabalho abordados no conteúdo de Ygor Soares.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container header__inner">
+    <a class="logo" href="index.html">Ygor Soares</a>
+    <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="index.html">Início</a>
+      <a href="calculadora.html">Calculadora</a>
+      <a href="blog.html">Blog</a>
+      <a href="duvidas.html" aria-current="page">Dúvidas</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="secao">
+    <div class="container--narrow">
+      <p class="eyebrow">Dúvidas</p>
+      <h1 class="section-title">Ficou com alguma dúvida?</h1>
+      <p class="section-lead">Escreva abaixo e envie — a mensagem abre direto no WhatsApp, já pronta.</p>
+
+      <div class="duvidas-nota">
+        <span class="marca">§</span>
+        <span>Este é um canal para <strong>dúvidas gerais</strong> sobre os temas abordados no conteúdo. As mensagens são lidas conforme a disponibilidade, sem prazo ou garantia de resposta.</span>
+      </div>
+
+      <form class="calc-form" id="form-duvidas">
+        <div class="campo">
+          <label for="nome">Seu nome</label>
+          <input type="text" id="nome" name="nome" autocomplete="name" required>
+        </div>
+        <div class="campo">
+          <label for="email">Seu e-mail <span style="font-weight:400;color:var(--texto-suave)">(opcional)</span></label>
+          <input type="email" id="email" name="email" autocomplete="email" placeholder="Para retorno por e-mail, se preferir">
+        </div>
+        <div class="campo">
+          <label for="duvida">Sua dúvida</label>
+          <textarea id="duvida" name="duvida" required placeholder="Ex.: Fui demitido e não recebi o aviso prévio. Isso está certo?"></textarea>
+        </div>
+        <div class="campo">
+          <label class="consentimento" for="consentimento">
+            <input type="checkbox" id="consentimento" required>
+            <span>Concordo com o uso dos dados informados apenas para responder à minha dúvida, conforme a <a href="privacidade.html">Política de Privacidade</a>.</span>
+          </label>
+        </div>
+        <div class="campo">
+          <button class="btn btn--primario" type="submit">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.5 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.1-4.7-4-4.9-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.6.3.2.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.4 0 .1 0 .7-.1 1.3z"/></svg>
+            Enviar pelo WhatsApp
+          </button>
+          <p class="dica" style="margin-top:0.75rem">Ao enviar, o WhatsApp abre com a sua mensagem pronta — basta confirmar o envio por lá.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grade">
+      <div>
+        <a class="logo" href="index.html">Ygor Soares</a>
+        <p class="footer__desc">Conteúdo sobre Direito do Trabalho, direto ao ponto — no site, no Instagram e no LinkedIn.</p>
+      </div>
+      <div>
+        <h4>Navegue</h4>
+        <ul>
+          <li><a href="calculadora.html">Calculadora de rescisão</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="duvidas.html">Dúvidas</a></li>
+          <li><a href="privacidade.html">Política de Privacidade</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Canais</h4>
+        <ul>
+          <li><a data-link="instagram" href="#" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a data-link="linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__base">
+      <span>© <span data-texto="ano"></span> Ygor Soares. Todos os direitos reservados.</span>
+      <span>Conteúdo informativo e educacional.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/duvidas.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+backend:
+  name: github
+  repo: ygorsoaresadv-blip/site-ygor
+  branch: main
+
+media_folder: "assets/img/uploads"
+public_folder: "/assets/img/uploads"
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    label_singular: "Artigo"
+    folder: "posts"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Título", name: "titulo", widget: "string" }
+      - { label: "Data", name: "data", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, picker_utc: true }
+      - { label: "Resumo", name: "resumo", widget: "text", hint: "Aparece nos cards da listagem e na home." }
+      - { label: "Tags", name: "tags", widget: "string", hint: "Separe por vírgula se tiver mais de uma, ex.: Rescisão, FGTS" }
+      - { label: "Conteúdo", name: "body", widget: "markdown" }
