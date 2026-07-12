@@ -1,23 +1,41 @@
 [
   {
+    "slug": "map-titulo-fui-demitido-sem-justa-causa-quais-são-os-meus-direitos-data-2026-07-12-resumo-entenda-quais-verbas-rescisórias-você-tem-direito-a-receber-os-prazos-legais-para-pagamento-e-o-que-fazer-se-a-empresa-não-cumprir-com-suas",
+    "titulo": "Fui demitido sem justa causa. Quais são os meus direitos?",
+    "data": "2026-07-12",
+    "resumo": "Entenda quais verbas rescisórias você tem direito a receber, os prazos",
+    "tags": [
+      "demissão sem justa causa",
+      "verbas rescisórias",
+      "direitos trabalhistas",
+      "aviso"
+    ]
+  },
+  {
     "slug": "aviso-previo-como-funciona",
     "titulo": "Aviso prévio: como funciona e quantos dias você tem direito",
     "data": "2026-07-10",
     "resumo": "Indenizado ou trabalhado? 30 ou 90 dias? Entenda de uma vez como o aviso prévio funciona e como ele muda o valor da sua rescisão.",
-    "tags": ["Rescisão"]
+    "tags": [
+      "Rescisão"
+    ]
   },
   {
     "slug": "ferias-o-que-voce-precisa-saber",
     "titulo": "Férias: o que você precisa saber antes de sair de uma empresa",
     "data": "2026-07-03",
     "resumo": "Férias vencidas, proporcionais e o famoso 1/3 constitucional: o que entra na conta quando o contrato termina.",
-    "tags": ["Férias"]
+    "tags": [
+      "Férias"
+    ]
   },
   {
     "slug": "fgts-e-multa-de-40",
     "titulo": "FGTS e a multa de 40%: quando você recebe (e quando não)",
     "data": "2026-06-25",
     "resumo": "A multa de 40% do FGTS não vale para todo desligamento. Veja em quais situações ela é devida e como conferir o seu saldo.",
-    "tags": ["FGTS"]
+    "tags": [
+      "FGTS"
+    ]
   }
 ]
