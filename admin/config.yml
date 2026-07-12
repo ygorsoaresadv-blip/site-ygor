@@ -15,6 +15,7 @@ collections:
     folder: "posts"
     create: true
     delete: true
+    identifier_field: titulo
     slug: "{{slug}}"
     extension: "md"
     format: "frontmatter"
