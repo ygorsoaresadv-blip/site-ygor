@@ -3,7 +3,7 @@
 
 document.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(location.search);
-  const slug = (params.get("post") || "").replace(/[^a-z0-9-]/gi, "");
+  const slug = (params.get("post") || "").replace(/[\/\\]/g, "").replace(/\.\./g, "");
   const corpo = document.getElementById("post-conteudo");
   const cabecalho = document.getElementById("post-cabecalho");
 
