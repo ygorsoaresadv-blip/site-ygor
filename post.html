@@ -1,94 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Artigo · Ygor Soares</title>
-<meta name="description" content="Artigo do blog de Ygor Soares — Direito do Trabalho em linguagem acessível.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
+<meta name="robots" content="noindex">
+<!-- Página antiga de artigo: redireciona para artigo.html preservando o slug,
+     para que links já compartilhados (post.html?post=...) continuem funcionando. -->
+<script>
+  (function () {
+    var params = new URLSearchParams(location.search);
+    var slug = params.get('post') || '';
+    location.replace('artigo.html' + (slug ? '?post=' + encodeURIComponent(slug) : ''));
+  })();
+</script>
 </head>
 <body>
-
-<header class="header">
-  <div class="container header__inner">
-    <a class="logo" href="index.html">Ygor Soares</a>
-    <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
-    </button>
-    <nav class="nav" aria-label="Navegação principal">
-      <a href="index.html">Início</a>
-      <a href="calculadora.html">Calculadora</a>
-      <a href="blog.html" aria-current="page">Blog</a>
-      <a href="duvidas.html">Dúvidas</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <header class="post-header" id="post-cabecalho">
-    <div class="container--narrow">
-      <div class="card-post__meta">
-        <span class="card-post__tag">Direito do Trabalho</span>
-        <time datetime=""></time>
-      </div>
-      <h1>Carregando…</h1>
-      <hr class="fio">
-    </div>
-  </header>
-
-  <article class="post-corpo">
-    <div class="container--narrow" id="post-conteudo"></div>
-  </article>
-
-  <section class="post-compartilhar">
-    <div class="container--narrow">
-      <p>Compartilhe este artigo</p>
-      <div class="acoes">
-        <a class="btn btn--contorno" id="share-whatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="btn btn--contorno" id="share-linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a>
-        <button class="btn btn--contorno" id="share-copiar" type="button" title="Copie e cole nos stories do Instagram">Copiar link</button>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer class="footer">
-  <div class="container">
-    <div class="footer__grade">
-      <div>
-        <a class="logo" href="index.html">Ygor Soares</a>
-        <p class="footer__desc">Conteúdo sobre Direito do Trabalho, direto ao ponto — no site, no Instagram e no LinkedIn.</p>
-      </div>
-      <div>
-        <h4>Navegue</h4>
-        <ul>
-          <li><a href="calculadora.html">Calculadora de rescisão</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="duvidas.html">Dúvidas</a></li>
-          <li><a href="privacidade.html">Política de Privacidade</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Canais</h4>
-        <ul>
-          <li><a data-link="instagram" href="#" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a data-link="linkedin" href="#" target="_blank" rel="noopener">LinkedIn</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer__base">
-      <span>© <span data-texto="ano"></span> Ygor Soares. Todos os direitos reservados.</span>
-      <span>Conteúdo informativo e educacional.</span>
-    </div>
-  </div>
-</footer>
-
-<script src="assets/js/config.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/md.js"></script>
-<script src="assets/js/post.js"></script>
+<p>Redirecionando… <a id="destino" href="artigo.html">Abrir o artigo</a></p>
+<script>
+  document.getElementById('destino').href =
+    'artigo.html' + (location.search || '');
+</script>
 </body>
 </html>

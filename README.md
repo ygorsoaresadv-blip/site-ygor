@@ -5,18 +5,22 @@ Site estático (HTML + CSS + JavaScript puro, sem build) com conteúdo sobre Dir
 ## Estrutura
 
 ```
-index.html            Home (hero, sobre, Instagram, destaque da calculadora, últimos posts)
+index.html            Home (hero, sobre, destaque da calculadora, últimos posts)
 calculadora.html      Calculadora de rescisão trabalhista (tempo real)
-blog.html             Listagem de artigos
-post.html             Página de artigo (carrega posts/<slug>.md)
+blog.html             Listagem de artigos (lê posts/posts.json)
+artigo.html           Página de artigo (carrega posts/<slug>.md via ?post=)
+post.html             Redireciona links antigos para artigo.html
 duvidas.html          Formulário de dúvidas → abre o WhatsApp com a mensagem pronta
 privacidade.html      Política de Privacidade (LGPD)
 posts/                Artigos em markdown + posts.json (índice)
-assets/css/style.css  Estilos do site inteiro
+admin/                Painel Decap CMS (publicação de artigos)
+assets/css/fonts.css  Fontes locais (Archivo + Fraunces)
+assets/fonts/         Arquivos .woff2 das fontes
 assets/js/config.js   ⚙️ Configuração: WhatsApp, redes, widget do Instagram
-assets/img/           Imagens (coloque aqui a foto ygor.jpg)
+assets/js/md.js       Conversor de markdown usado pela página de artigo
+assets/img/           Imagens (foto ygor.jpg)
+scripts/              Sync do índice do blog + worker OAuth do Decap
 serve.ps1             Servidor local para visualizar (opcional)
-_antigo/              Backup da versão anterior do site
 ```
 
 ## Como visualizar localmente
@@ -34,7 +38,9 @@ O site é 100% estático — basta arrastar a pasta inteira em https://app.netli
 
 ## Como adicionar um post no blog
 
-1. Crie um arquivo `posts/meu-novo-post.md` com o cabeçalho (frontmatter):
+**Pelo painel (recomendado):** acesse `/admin/` no site publicado, faça login com o GitHub e crie o artigo. Ao publicar, o Decap CMS grava o `.md` em `posts/` e o GitHub Actions atualiza `posts/posts.json` sozinho (workflow "Atualizar índice do blog"). A home, a listagem e a página do artigo se atualizam automaticamente.
+
+**Manual:** crie um arquivo `posts/meu-novo-post.md` com o cabeçalho (frontmatter):
 
    ```markdown
    ---
@@ -47,7 +53,7 @@ O site é 100% estático — basta arrastar a pasta inteira em https://app.netli
    Texto do artigo em markdown...
    ```
 
-2. Adicione uma entrada correspondente em `posts/posts.json` (slug = nome do arquivo sem `.md`). A listagem, a home e a página do post se atualizam sozinhas.
+   Ao dar push na branch `main`, o índice `posts/posts.json` é regenerado automaticamente pelo GitHub Actions.
 
 ## Como colocar a foto do "Sobre"
 
