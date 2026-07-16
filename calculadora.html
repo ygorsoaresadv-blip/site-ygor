@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Calculadora de Rescisão Trabalhista · Ygor Soares</title>
-<meta name="description" content="Calcule uma estimativa da sua rescisão trabalhista: saldo de salário, aviso prévio, 13º proporcional, férias e FGTS — em tempo real, direto no navegador.">
+<meta name="description" content="Calcule uma estimativa da sua rescisão trabalhista: saldo de salário, aviso prévio, 13º proporcional, férias e FGTS, em tempo real, direto no navegador.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230f3527'/%3E%3Ctext x='50' y='70' font-family='Georgia,serif' font-size='60' fill='%23a9852f' text-anchor='middle'%3E%C2%A7%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/css/fonts.css">
 <style>
@@ -57,7 +57,7 @@
     <div style="position:absolute;top:-70px;right:2vw;font-family:'Fraunces',serif;font-size:clamp(200px,28vw,400px);color:rgba(169,133,47,.06);line-height:1;pointer-events:none;animation:floaty 9s ease-in-out infinite">§</div>
     <span style="font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#a9852f">Ferramenta gratuita</span>
     <h1 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(38px,5.5vw,72px);line-height:1;letter-spacing:-1.5px;margin:14px 0 14px;color:#0f3527">Calculadora de rescisão</h1>
-    <p style="font-size:clamp(16px,1.5vw,20px);line-height:1.6;max-width:60ch;color:#3a463f;margin:0">Preencha os dados do contrato e veja na hora uma estimativa de cada verba. É apenas uma <strong style="color:#1c5a41">simulação educativa</strong> — o valor final depende de detalhes do seu caso.</p>
+    <p style="font-size:clamp(16px,1.5vw,20px);line-height:1.6;max-width:60ch;color:#3a463f;margin:0">Preencha os dados do contrato e veja na hora uma estimativa de cada verba. É apenas uma <strong style="color:#1c5a41">simulação educativa</strong>. O valor final depende de detalhes do seu caso.</p>
   </header>
 
   <!-- CALCULATOR -->
@@ -121,7 +121,7 @@
           <span style="font-family:'Fraunces',serif;font-size:26px;color:#a9852f">§</span>
           <span style="font-family:'Fraunces',serif;font-weight:600;font-size:20px;color:#fff">Ygor Soares</span>
         </div>
-        <p style="font-size:15px;line-height:1.6;max-width:34ch;margin:0;color:#a9b6ad">Conteúdo sobre Direito do Trabalho, direto ao ponto — no site, no Instagram e no LinkedIn.</p>
+        <p style="font-size:15px;line-height:1.6;max-width:34ch;margin:0;color:#a9b6ad">Conteúdo sobre Direito do Trabalho, direto ao ponto: no site, no Instagram e no LinkedIn.</p>
       </div>
       <div>
         <div style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#c8a84e;margin-bottom:16px">Navegue</div>
@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var totalDias = Math.floor((des - adm) / msDay);
       anos = Math.floor(totalDias / 365);
       mesesTotais = Math.max(1, Math.round(totalDias / 30));
-      // meses trabalhados no ano do desligamento (13º e férias prop.) — regra dos 15 dias
+      // meses trabalhados no ano do desligamento (13º e férias prop.): regra dos 15 dias
       mesesAno = des.getMonth() + (des.getDate() >= 15 ? 1 : 0);
       if (adm.getFullYear() === des.getFullYear()) {
         mesesAno -= adm.getMonth() + (adm.getDate() > 15 ? 1 : 0);

@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Compartilhamento
     const url = location.href;
-    const texto = `${titulo} — ${url}`;
+    const texto = `${titulo}\n${url}`;
     const btnWhats = document.getElementById("share-whatsapp");
     const btnLinkedin = document.getElementById("share-linkedin");
     const btnCopiar = document.getElementById("share-copiar");

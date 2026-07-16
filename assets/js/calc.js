@@ -191,7 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const diasMetade = Math.floor(diasAviso / 2);
       linhas.push({
         rotulo: "Aviso prévio indenizado (metade)",
-        sub: `${diasMetade} dias — art. 484-A da CLT`,
+        sub: `${diasMetade} dias (art. 484-A da CLT)`,
         valor: salarioDia * diasMetade
       });
       fimProjetado = somarDias(fim, diasMetade);
@@ -269,7 +269,7 @@ document.addEventListener("DOMContentLoaded", () => {
       linhasFgts.push({ rotulo: "Multa de 40% do FGTS", sub: "sobre a referência acima", valor: fgtsRef * 0.4 });
       notas.push("No desligamento sem justa causa, o saldo do FGTS fica liberado para saque.");
     } else if (tipo === "acordo") {
-      linhasFgts.push({ rotulo: "Multa de 20% do FGTS", sub: "acordo — art. 484-A da CLT", valor: fgtsRef * 0.2 });
+      linhasFgts.push({ rotulo: "Multa de 20% do FGTS", sub: "acordo (art. 484-A da CLT)", valor: fgtsRef * 0.2 });
       notas.push("No acordo, é possível sacar até 80% do saldo do FGTS.");
     } else if (tipo === "pedido") {
       notas.push("No pedido de demissão não há multa do FGTS e o saldo não fica liberado para saque imediato.");
@@ -301,7 +301,7 @@ document.addEventListener("DOMContentLoaded", () => {
     campos.recibo.innerHTML = `
       <div class="recibo__contexto">
         <span>${NOMES_TIPO[tipo]}</span>
-        <span>Contrato: ${fmtData(inicio)} — ${fmtData(fim)} (${tempoVinculoTexto(inicio, fim)})</span>
+        <span>Contrato: ${fmtData(inicio)} a ${fmtData(fim)} (${tempoVinculoTexto(inicio, fim)})</span>
         <span>Último salário: ${fmtBRL.format(salario)}</span>
       </div>
       ${linhas.map(linhaHtml).join("")}

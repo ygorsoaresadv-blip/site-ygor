@@ -26,7 +26,7 @@ Ao ser demitido sem justa causa, você tem direito a:
 
 ## Prazos para pagamento
 
-O empregador tem **até 10 dias** após o término do contrato para pagar todas as verbas rescisórias — contados a partir da data do aviso prévio indenizado ou do último dia trabalhado.
+O empregador tem **até 10 dias** após o término do contrato para pagar todas as verbas rescisórias, contados a partir da data do aviso prévio indenizado ou do último dia trabalhado.
 
 O descumprimento desse prazo gera multa automática equivalente ao salário do trabalhador (art. 477, § 8.º da CLT).
 

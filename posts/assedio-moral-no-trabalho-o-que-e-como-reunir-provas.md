@@ -12,7 +12,7 @@ tags: assédio moral no trabalho, assédio moral, danos morais, rescisão indire
 ---
 ## O que caracteriza o assédio moral
 
-Assédio moral é a exposição do trabalhador a situações **humilhantes e constrangedoras, de forma repetitiva e prolongada**, durante a jornada de trabalho. Não se trata de uma cobrança pontual ou de um dia de tensão — é um padrão de conduta que se repete ao longo do tempo.
+Assédio moral é a exposição do trabalhador a situações **humilhantes e constrangedoras, de forma repetitiva e prolongada**, durante a jornada de trabalho. Não se trata de uma cobrança pontual ou de um dia de tensão. É um padrão de conduta que se repete ao longo do tempo.
 
 ## Exemplos comuns na prática
 
@@ -31,10 +31,10 @@ O assédio moral pode gerar:
 
 * **Indenização por danos morais**
 
-   — valor fixado pela Justiça conforme a gravidade
+   Valor fixado pela Justiça conforme a gravidade
 * **Rescisão indireta**
 
-   — você pode encerrar o contrato e receber como numa demissão sem justa causa
+   Você pode encerrar o contrato e receber como numa demissão sem justa causa
 * Em alguns casos, 
 
   **estabilidade ou reintegração**
@@ -47,7 +47,7 @@ A prova é essencial. Algumas formas de documentar o assédio:
 
 * Salve mensagens, e-mails e prints que mostrem o tratamento recebido
 * Anote datas, horários e o que aconteceu em cada episódio
-* Identifique testemunhas — colegas que presenciaram as situações
+* Identifique testemunhas: colegas que presenciaram as situações
 * Guarde atestados e laudos médicos, se o assédio afetou sua saúde
 * Registros de RH ou reclamações formais feitas dentro da empresa
 
@@ -55,7 +55,7 @@ Um diário detalhado dos episódios, com datas, costuma ser muito valioso.
 
 ## Cuide também da sua saúde
 
-O assédio moral tem impacto real na saúde mental. Buscar apoio psicológico não é só importante para o seu bem-estar — os registros desse acompanhamento também ajudam a demonstrar o dano sofrido.
+O assédio moral tem impacto real na saúde mental. Buscar apoio psicológico não é só importante para o seu bem-estar. Os registros desse acompanhamento também ajudam a demonstrar o dano sofrido.
 
 ## Está passando por isso?
 

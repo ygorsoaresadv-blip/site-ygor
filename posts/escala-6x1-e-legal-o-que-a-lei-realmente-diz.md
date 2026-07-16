@@ -1,7 +1,7 @@
 ---
 titulo: Escala 6x1 é Legal? O Que a Lei Realmente Diz
 data: 2026-07-12
-resumo: A escala 6x1 — seis dias de trabalho para um de folga — é uma das mais
+resumo: A escala 6x1, seis dias de trabalho para um de folga, é uma das mais
   usadas no comércio, em supermercados, restaurantes e no setor de serviços. Nos
   últimos tempos, ela virou tema de intenso debate público e jurídico. Mas
   afinal, ela é legal? E quais são os direitos de quem trabalha nesse regime?
@@ -21,16 +21,16 @@ Mesmo sendo permitida, a escala 6x1 frequentemente esconde irregularidades que g
 
 * **Jornada acima do limite legal**
 
-   — quando a soma semanal ultrapassa as 44 horas sem pagamento de horas extras
+   Quando a soma semanal ultrapassa as 44 horas sem pagamento de horas extras
 * **Supressão do intervalo**
 
-   — não conceder ou reduzir o intervalo para refeição e descanso
+   Não conceder ou reduzir o intervalo para refeição e descanso
 * **Domingos sem folga ou sem adicional**
 
-   — trabalhar todos os domingos sem a devida compensação
+   Trabalhar todos os domingos sem a devida compensação
 * **Falta de registro correto da jornada**
 
-   — o que dificulta a comprovação das horas
+   O que dificulta a comprovação das horas
 
 ## O debate sobre o fim da escala 6x1
 

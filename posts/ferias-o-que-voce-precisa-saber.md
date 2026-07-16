@@ -16,7 +16,7 @@ O direito a férias funciona em ciclos de 12 meses:
 
 ## Férias vencidas
 
-Se você completou o período aquisitivo e a empresa **não concedeu as férias no prazo**, elas estão *vencidas*. Na rescisão, férias vencidas são pagas integralmente — **um salário + 1/3** por período — em qualquer tipo de desligamento, inclusive na justa causa.
+Se você completou o período aquisitivo e a empresa **não concedeu as férias no prazo**, elas estão *vencidas*. Na rescisão, férias vencidas são pagas integralmente, **um salário + 1/3** por período, em qualquer tipo de desligamento, inclusive na justa causa.
 
 > Se a empresa deixou passar o período concessivo, as férias vencidas são devidas **em dobro** (art. 137 da CLT). Vale conferir as datas com atenção.
 
@@ -35,7 +35,7 @@ A Constituição garante que as férias sejam pagas com **um terço a mais** que
 
 ## Quem perde as férias proporcionais?
 
-Apenas na **dispensa por justa causa** as férias proporcionais deixam de ser devidas. No pedido de demissão, elas continuam garantidas — esse é um mito comum que merece ser desfeito.
+Apenas na **dispensa por justa causa** as férias proporcionais deixam de ser devidas. No pedido de demissão, elas continuam garantidas. Esse é um mito comum que merece ser desfeito.
 
 ---
 
