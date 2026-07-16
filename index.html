@@ -42,54 +42,191 @@
     .r4{gap:20px!important}
     h1{font-size:clamp(38px,11vw,52px)!important}
   }
+
+  /* ===================================================================
+     REDESIGN MOBILE (isolado — nada aqui afeta o desktop >768px)
+     =================================================================== */
+  @media (max-width:768px){
+    @keyframes m-fadeup{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+    @keyframes m-drawline{to{background-size:100% 3px}}
+
+    /* --- Barra de progresso de leitura --- */
+    .m-progress{display:block!important}
+
+    /* --- Header --- */
+    .rnav{flex-direction:row!important;align-items:center!important;gap:0!important;height:60px!important;padding:0 16px!important;background:rgba(252,251,248,.96)!important;-webkit-backdrop-filter:blur(8px)!important;backdrop-filter:blur(8px)!important;border-bottom:1px solid rgba(15,53,39,.1)!important}
+    .m-logo span:first-child{font-size:18px!important}
+    .m-logo span:last-child{font-size:17px!important;letter-spacing:0!important}
+    .m-navact{gap:10px!important}
+    .rlinks{display:none!important}
+    .rcta{display:flex!important;align-items:center!important;height:40px!important;padding:0 18px!important;background:#0f3527!important;font-size:14px!important;font-weight:600!important;letter-spacing:0!important;text-transform:none!important}
+    .m-burger{display:flex!important}
+
+    /* --- Menu overlay --- */
+    body.m-menu-open{overflow:hidden}
+    body.m-menu-open .m-menu{display:flex!important;animation:m-fadeup .35s ease both}
+    body.m-menu-open .rnav{background:transparent!important;border-bottom-color:transparent!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;z-index:65!important}
+    body.m-menu-open .m-logo span:last-child{color:#eef3ef!important}
+    body.m-menu-open .rcta{display:none!important}
+    .m-burger.open .m-burger-bar{background:#eef3ef!important}
+    .m-burger.open .m-burger-bar:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .m-burger.open .m-burger-bar:nth-child(2){opacity:0}
+    .m-burger.open .m-burger-bar:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .m-menu-link{animation:m-fadeup .5s both}
+    .m-menu-link:nth-child(1){animation-delay:.10s}
+    .m-menu-link:nth-child(2){animation-delay:.18s}
+    .m-menu-link:nth-child(3){animation-delay:.26s}
+    .m-menu-link:nth-child(4){animation-delay:.34s}
+
+    /* --- Hero --- */
+    #top{padding:44px 24px 40px!important}
+    .m-hero-wm{font-size:230px!important;top:-30px!important;right:-26px!important;color:rgba(15,53,39,.05)!important;animation:none!important}
+    #top .r2{gap:28px!important}
+    .m-h1{font-size:40px!important;line-height:1.1!important;letter-spacing:-.5px!important;font-weight:600!important;margin:0 0 4px!important}
+    .m-em{background:linear-gradient(#a9852f,#a9852f) no-repeat left 96%/0% 3px;padding-bottom:4px;animation:m-drawline .9s 1s both}
+    .m-hero-ctas{flex-direction:column!important;flex-wrap:nowrap!important;gap:12px!important}
+    .m-btn-primary,.m-btn-outline{width:100%!important;min-height:54px!important;padding:0 16px!important;display:flex!important;align-items:center!important;justify-content:center!important;font-size:16px!important;font-weight:700!important;letter-spacing:0!important;text-transform:none!important}
+    .m-btn-primary{background:#1c5a41!important;box-shadow:0 10px 24px rgba(28,90,65,.25)!important}
+    .m-btn-outline{background:#fcfbf8!important;border:1.5px solid #1c5a41!important;color:#1c5a41!important}
+    .m-btn-primary:active,.m-btn-outline:active{transform:scale(.97)!important}
+    .m-hero-photo .m-frame{inset:14px -10px -10px 14px!important;background:transparent!important;border:1.5px solid #a9852f!important;border-radius:22px!important}
+    .m-hero-photo .m-photo-box{aspect-ratio:4/4.6!important;border-radius:20px!important;box-shadow:0 16px 40px rgba(15,53,39,.18)!important}
+    .m-hero-photo .m-photo-box img{object-position:50% 0%!important}
+    .m-photo-badge{display:flex!important}
+    .m-badge-desktop{display:none!important}
+
+    /* --- Marquee --- */
+    [data-marquee-wrap]{background:#0f3527!important;border-top:none!important;border-bottom:none!important;padding:13px 0!important;transform:rotate(-1.2deg) scale(1.04)!important}
+    [data-marquee]{animation-duration:22s!important}
+    [data-marquee-grupo] > span{font-family:'Archivo',sans-serif!important;font-size:13.5px!important;font-weight:700!important;letter-spacing:.14em!important;text-transform:uppercase!important;color:#eef3ef!important}
+    [data-marquee-grupo] > span > span{font-size:13.5px!important}
+
+    /* --- Stats 2x2 --- */
+    .m-stats{padding:52px 24px!important}
+    .m-stats .r4{grid-template-columns:1fr 1fr!important;gap:36px 24px!important}
+    .m-stats .r4 > div{border-left-width:3px!important;padding-left:16px!important}
+    .m-stats .r4 > div > div:first-child{font-size:40px!important;letter-spacing:-.5px!important}
+    .m-stats .r4 > div > div:last-child{font-size:14.5px!important;margin-top:12px!important}
+
+    /* --- Sobre --- */
+    .m-sobre{padding:60px 24px 64px!important}
+    .m-sobre .r2{gap:36px!important}
+    .m-sobre-frame{display:block!important}
+    .m-sobre-photo .m-photo-box{aspect-ratio:4/4.4!important}
+    .m-sobre-photo .m-photo-box img{object-position:50% 15%!important}
+
+    /* --- FAQ acordeão (mobile only) --- */
+    .m-faq{display:flex!important}
+    .m-faq-item.open .m-faq-body{grid-template-rows:1fr!important}
+    .m-faq-item.open .m-faq-icon{transform:rotate(45deg)}
+
+    /* --- Fale comigo (fundo escuro no mobile) --- */
+    .m-duvidas{background:#0f3527!important;padding:60px 24px 64px!important}
+    .m-duvidas .r2{gap:28px!important}
+    .m-dk-h2{color:#fff!important}
+    .m-dk-p{color:rgba(238,243,239,.85)!important}
+    .m-dk-link{color:#eef3ef!important}
+    #home-duvida-nome,#home-duvida-email,#home-duvida-texto{font-size:16px!important;border-color:#dbd8d0!important}
+
+    /* --- Blog --- */
+    #blog{padding:60px 24px 64px!important}
+
+    /* --- Calculadora --- */
+    #calc{padding:60px 24px 64px!important}
+    #calc .r2{gap:24px!important}
+
+    /* --- Footer --- */
+    .m-footer{padding:48px 24px 110px!important}
+    .m-footer-canais{flex-direction:row!important;gap:10px!important}
+    .m-footer-canais a{flex:1!important;display:flex!important;align-items:center!important;justify-content:center!important;min-height:46px!important;border:1px solid rgba(250,247,240,.35)!important;border-radius:999px!important;color:#eef3ef!important;font-size:14px!important;font-weight:600!important}
+
+    /* --- Barra CTA fixa --- */
+    .m-ctabar{display:flex!important}
+    .m-ctabar.show{transform:translateY(0)!important}
+    .m-ctabar a:active{transform:scale(.97)}
+  }
+
+  @media (max-width:768px) and (prefers-reduced-motion:reduce){
+    .m-hero-wm,[data-marquee],.m-photo-badge{animation:none!important}
+    .m-em{animation:none!important;background:none!important}
+    .m-menu-link{animation:none!important}
+    [data-reveal]{opacity:1!important;transform:none!important}
+    .m-ctabar{transition:none!important}
+  }
 </style>
 </head>
 <body>
 
 <div style="max-width:100%;overflow:hidden">
 
+  <!-- BARRA DE PROGRESSO DE LEITURA (mobile only) -->
+  <div class="m-progress" style="display:none;position:fixed;top:0;left:0;width:100%;height:3px;z-index:70;pointer-events:none">
+    <div class="m-progress-fill" style="width:0%;height:100%;background:#a9852f"></div>
+  </div>
+
   <!-- NAV -->
   <nav class="rnav" style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px 6vw;background:rgba(252,251,248,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(15,53,39,.08)">
-    <a href="#top" style="display:flex;align-items:center;gap:10px">
+    <a href="#top" class="m-logo" style="display:flex;align-items:center;gap:10px">
       <span style="font-family:'Fraunces',serif;font-size:26px;color:#a9852f;line-height:1">§</span>
       <span style="font-family:'Fraunces',serif;font-weight:600;font-size:19px;letter-spacing:-.3px;color:#0f3527">Ygor Soares</span>
     </a>
-    <div style="display:flex;align-items:center;gap:34px">
+    <div class="m-navact" style="display:flex;align-items:center;gap:34px">
       <div class="rlinks" style="display:flex;gap:30px" data-nav="">
         <a href="#sobre" style="font-size:13px;font-weight:600;letter-spacing:1.3px;text-transform:uppercase;color:#2c3531">Sobre</a>
         <a href="calculadora.html" style="font-size:13px;font-weight:600;letter-spacing:1.3px;text-transform:uppercase;color:#2c3531">Calculadora</a>
         <a href="blog.html" style="font-size:13px;font-weight:600;letter-spacing:1.3px;text-transform:uppercase;color:#2c3531">Blog</a>
       </div>
       <a class="rcta" href="https://www.instagram.com/ygorsoares_bjj/" target="_blank" rel="noopener" style="padding:10px 22px;background:#1c5a41;color:#fff;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase">Seguir</a>
+      <button type="button" class="m-burger" aria-label="Abrir menu" aria-expanded="false" style="display:none;width:44px;height:44px;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:0;position:relative;z-index:80">
+        <span class="m-burger-bar" style="display:block;width:22px;height:2px;background:#0f3527;border-radius:2px;transition:transform .25s,opacity .2s,background .2s"></span>
+        <span class="m-burger-bar" style="display:block;width:22px;height:2px;background:#0f3527;border-radius:2px;transition:transform .25s,opacity .2s,background .2s"></span>
+        <span class="m-burger-bar" style="display:block;width:22px;height:2px;background:#0f3527;border-radius:2px;transition:transform .25s,opacity .2s,background .2s"></span>
+      </button>
     </div>
   </nav>
 
+  <!-- MENU OVERLAY (mobile only) -->
+  <div class="m-menu" style="display:none;position:fixed;inset:0;z-index:60;background:#0f3527;flex-direction:column;justify-content:center;padding:0 32px">
+    <span aria-hidden="true" style="color:#a9852f;font-family:'Fraunces',serif;font-size:44px;line-height:1;margin-bottom:28px">§</span>
+    <nav style="display:flex;flex-direction:column">
+      <a href="#sobre" class="m-menu-link" style="display:flex;align-items:baseline;gap:14px;min-height:64px;color:#eef3ef;font-family:'Fraunces',serif;font-size:32px;border-bottom:1px solid rgba(250,247,240,.14)"><span style="font-size:13px;color:#a9852f;font-family:'Archivo',sans-serif;font-weight:700">01</span>Sobre</a>
+      <a href="calculadora.html" class="m-menu-link" style="display:flex;align-items:baseline;gap:14px;min-height:64px;color:#eef3ef;font-family:'Fraunces',serif;font-size:32px;border-bottom:1px solid rgba(250,247,240,.14)"><span style="font-size:13px;color:#a9852f;font-family:'Archivo',sans-serif;font-weight:700">02</span>Calculadora</a>
+      <a href="blog.html" class="m-menu-link" style="display:flex;align-items:baseline;gap:14px;min-height:64px;color:#eef3ef;font-family:'Fraunces',serif;font-size:32px;border-bottom:1px solid rgba(250,247,240,.14)"><span style="font-size:13px;color:#a9852f;font-family:'Archivo',sans-serif;font-weight:700">03</span>Blog</a>
+      <a href="duvidas.html" class="m-menu-link" style="display:flex;align-items:baseline;gap:14px;min-height:64px;color:#eef3ef;font-family:'Fraunces',serif;font-size:32px"><span style="font-size:13px;color:#a9852f;font-family:'Archivo',sans-serif;font-weight:700">04</span>Dúvidas</a>
+    </nav>
+    <a href="https://www.instagram.com/ygorsoares_bjj/" target="_blank" rel="noopener" class="m-menu-cta" style="margin-top:36px;display:flex;align-items:center;justify-content:center;min-height:52px;background:#a9852f;color:#0f3527;border-radius:999px;font-size:16px;font-weight:700">Seguir no Instagram</a>
+  </div>
+
   <!-- HERO -->
   <header id="top" style="position:relative;padding:clamp(48px,7vw,96px) 6vw clamp(40px,5vw,72px)">
-    <div style="position:absolute;top:-60px;right:4vw;font-family:'Fraunces',serif;font-size:clamp(220px,32vw,460px);color:rgba(169,133,47,.06);line-height:1;pointer-events:none;user-select:none;animation:floaty 9s ease-in-out infinite">§</div>
+    <div class="m-hero-wm" style="position:absolute;top:-60px;right:4vw;font-family:'Fraunces',serif;font-size:clamp(220px,32vw,460px);color:rgba(169,133,47,.06);line-height:1;pointer-events:none;user-select:none;animation:floaty 9s ease-in-out infinite">§</div>
     <div class="r2" style="display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(32px,5vw,72px);align-items:center;position:relative">
       <div>
         <div data-reveal="" style="display:inline-flex;align-items:center;gap:9px;padding:7px 15px;border:1px solid rgba(169,133,47,.4);border-radius:999px;margin-bottom:26px">
           <span style="width:7px;height:7px;border-radius:50%;background:#a9852f;box-shadow:0 0 0 4px rgba(169,133,47,.18)"></span>
           <span style="font-size:12px;font-weight:600;letter-spacing:1.6px;text-transform:uppercase;color:#a9852f">Direito do Trabalho</span>
         </div>
-        <h1 data-reveal="" style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(44px,6.2vw,88px);line-height:.98;letter-spacing:-1.8px;margin:0 0 24px;color:#0f3527">
-          Seus direitos,<br>sem <span style="font-style:italic;color:#a9852f;position:relative">juridiquês</span>.
+        <h1 data-reveal="" class="m-h1" style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(44px,6.2vw,88px);line-height:.98;letter-spacing:-1.8px;margin:0 0 24px;color:#0f3527">
+          Seus direitos,<br>sem <span class="m-em" style="font-style:italic;color:#a9852f;position:relative">juridiquês</span>.
         </h1>
         <p data-reveal="" data-delay="120" style="font-size:clamp(17px,1.5vw,20px);line-height:1.6;max-width:30ch;color:#3a463f;margin:0 0 36px">
           Conteúdo sobre Direito do Trabalho <strong style="color:#1c5a41">direto ao ponto</strong> — para você entender o que a lei garante e agir com segurança.
         </p>
-        <div data-reveal="" data-delay="220" style="display:flex;flex-wrap:wrap;gap:14px">
-          <a href="calculadora.html" class="btn-verde" style="padding:15px 30px;background:#1c5a41;color:#fff;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;transition:transform .25s,box-shadow .25s">Calcular minha rescisão</a>
-          <a href="https://www.instagram.com/ygorsoares_bjj/" target="_blank" rel="noopener" class="btn-contorno" style="padding:15px 30px;background:transparent;border:1.5px solid #1c5a41;color:#1c5a41;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;transition:background .25s,color .25s">Acompanhar no Instagram</a>
+        <div data-reveal="" data-delay="220" class="m-hero-ctas" style="display:flex;flex-wrap:wrap;gap:14px">
+          <a href="calculadora.html" class="btn-verde m-btn-primary" style="padding:15px 30px;background:#1c5a41;color:#fff;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;transition:transform .25s,box-shadow .25s">Calcular minha rescisão</a>
+          <a href="https://www.instagram.com/ygorsoares_bjj/" target="_blank" rel="noopener" class="btn-contorno m-btn-outline" style="padding:15px 30px;background:transparent;border:1.5px solid #1c5a41;color:#1c5a41;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;transition:background .25s,color .25s">Acompanhar no Instagram</a>
         </div>
       </div>
-      <div data-reveal="" data-delay="180" style="position:relative">
-        <div style="position:absolute;inset:14px -14px -14px 14px;background:linear-gradient(135deg,#1c5a41,#0f3527);border-radius:22px"></div>
-        <div style="position:relative;border-radius:22px;overflow:hidden;box-shadow:0 30px 60px rgba(15,53,39,.22);aspect-ratio:4/5">
+      <div data-reveal="" data-delay="180" class="m-hero-photo" style="position:relative">
+        <div class="m-frame" style="position:absolute;inset:14px -14px -14px 14px;background:linear-gradient(135deg,#1c5a41,#0f3527);border-radius:22px"></div>
+        <div class="m-photo-box" style="position:relative;border-radius:22px;overflow:hidden;box-shadow:0 30px 60px rgba(15,53,39,.22);aspect-ratio:4/5">
           <img src="assets/img/ygor.jpg" alt="Foto de Ygor Soares" style="width:100%;height:100%;object-fit:cover;display:block">
+          <div class="m-photo-badge" style="display:none;position:absolute;left:14px;bottom:14px;background:rgba(250,247,240,.95);border:1px solid rgba(169,133,47,.5);border-radius:999px;padding:9px 16px;align-items:center;gap:8px;animation:floaty 4s ease-in-out infinite">
+            <span style="width:8px;height:8px;border-radius:50%;background:#a9852f;flex:none"></span>
+            <span style="font-size:12.5px;font-weight:700;color:#0f3527;letter-spacing:.04em">OAB · Aprovado no Exame</span>
+          </div>
         </div>
-        <div style="position:absolute;bottom:-18px;left:-18px;background:#fcfbf8;border:1px solid rgba(15,53,39,.1);border-radius:14px;padding:14px 18px;box-shadow:0 12px 28px rgba(15,53,39,.12);animation:floaty 6s ease-in-out infinite">
+        <div class="m-badge-desktop" style="position:absolute;bottom:-18px;left:-18px;background:#fcfbf8;border:1px solid rgba(15,53,39,.1);border-radius:14px;padding:14px 18px;box-shadow:0 12px 28px rgba(15,53,39,.12);animation:floaty 6s ease-in-out infinite">
           <div style="font-family:'Fraunces',serif;font-size:26px;font-weight:600;color:#a9852f;line-height:1">OAB</div>
           <div style="font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#3a463f;margin-top:3px">Aprovado no Exame</div>
         </div>
@@ -106,7 +243,7 @@
   </div>
 
   <!-- STATS -->
-  <section style="padding:clamp(56px,6vw,88px) 6vw">
+  <section id="stats" class="m-stats" style="padding:clamp(56px,6vw,88px) 6vw">
     <div class="r4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,48px)">
       <div data-reveal="" data-delay="0" style="text-align:left;border-left:2px solid #a9852f;padding-left:20px">
         <div data-count="4" data-suffix="+" data-prefix="" style="font-family:'Fraunces',serif;font-weight:600;font-size:clamp(40px,5vw,68px);color:#1c5a41;line-height:1;letter-spacing:-1px">0</div>
@@ -128,11 +265,12 @@
   </section>
 
   <!-- SOBRE -->
-  <section id="sobre" style="background:#0f3527;color:#eef3ef;padding:clamp(64px,7vw,110px) 6vw;position:relative;overflow:hidden">
+  <section id="sobre" class="m-sobre" style="background:#0f3527;color:#eef3ef;padding:clamp(64px,7vw,110px) 6vw;position:relative;overflow:hidden">
     <div style="position:absolute;top:-40px;left:-20px;font-family:'Fraunces',serif;font-size:clamp(180px,26vw,380px);color:rgba(169,133,47,.07);line-height:1;pointer-events:none">§</div>
     <div class="r2" style="display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(36px,6vw,80px);align-items:center;position:relative">
-      <div data-reveal="" style="position:relative">
-        <div style="border-radius:20px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 24px 50px rgba(0,0,0,.35)">
+      <div data-reveal="" class="m-sobre-photo" style="position:relative">
+        <div class="m-frame m-sobre-frame" style="display:none;position:absolute;inset:14px -10px -10px 14px;border:1.5px solid #a9852f;border-radius:22px;pointer-events:none"></div>
+        <div class="m-photo-box" style="border-radius:20px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 24px 50px rgba(0,0,0,.35)">
           <img src="assets/img/ygor-3.jpg" alt="Foto de Ygor" style="width:100%;height:100%;object-fit:cover;display:block">
         </div>
       </div>
@@ -154,26 +292,70 @@
     </div>
   </section>
 
+  <!-- FAQ ACORDEÃO (mobile only) -->
+  <section class="m-faq" style="display:none;padding:60px 24px;flex-direction:column;gap:24px">
+    <div data-reveal="" style="display:flex;flex-direction:column;gap:14px">
+      <span style="align-self:flex-start;color:#a9852f;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase">Perguntas frequentes</span>
+      <h2 style="margin:0;font-family:'Fraunces',serif;font-weight:500;font-size:31px;line-height:1.18;color:#0f3527">O que mais me perguntam</h2>
+    </div>
+    <div data-reveal="" style="display:flex;flex-direction:column;gap:12px">
+      <div class="m-faq-item" style="background:#fff;border:1px solid rgba(169,133,47,.35);border-radius:16px;overflow:hidden">
+        <button type="button" class="m-faq-btn" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:60px;padding:14px 18px;background:none;border:none;cursor:pointer;text-align:left">
+          <span style="font-family:'Fraunces',serif;font-size:17.5px;font-weight:600;color:#0f3527;line-height:1.35">Fui demitido. Em quanto tempo recebo a rescisão?</span>
+          <span class="m-faq-icon" aria-hidden="true" style="flex:none;width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid #a9852f;color:#a9852f;font-size:16px;transition:transform .3s">＋</span>
+        </button>
+        <div class="m-faq-body" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease">
+          <div style="min-height:0;overflow:hidden">
+            <p style="margin:0;padding:0 18px 18px;font-size:15px;line-height:1.7;color:#55554f;text-align:justify;hyphens:auto">A empresa tem até 10 dias corridos, contados do fim do contrato, para pagar as verbas rescisórias (art. 477 da CLT). Se atrasar, você tem direito a uma multa no valor de um salário.</p>
+          </div>
+        </div>
+      </div>
+      <div class="m-faq-item" style="background:#fff;border:1px solid rgba(169,133,47,.35);border-radius:16px;overflow:hidden">
+        <button type="button" class="m-faq-btn" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:60px;padding:14px 18px;background:none;border:none;cursor:pointer;text-align:left">
+          <span style="font-family:'Fraunces',serif;font-size:17.5px;font-weight:600;color:#0f3527;line-height:1.35">Trabalhei sem carteira assinada. Tenho direitos?</span>
+          <span class="m-faq-icon" aria-hidden="true" style="flex:none;width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid #a9852f;color:#a9852f;font-size:16px;transition:transform .3s">＋</span>
+        </button>
+        <div class="m-faq-body" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease">
+          <div style="min-height:0;overflow:hidden">
+            <p style="margin:0;padding:0 18px 18px;font-size:15px;line-height:1.7;color:#55554f;text-align:justify;hyphens:auto">Sim. Se ficar comprovado o vínculo de emprego, você pode buscar o reconhecimento na Justiça do Trabalho e receber todas as verbas do período, como FGTS, férias e 13º salário.</p>
+          </div>
+        </div>
+      </div>
+      <div class="m-faq-item" style="background:#fff;border:1px solid rgba(169,133,47,.35);border-radius:16px;overflow:hidden">
+        <button type="button" class="m-faq-btn" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:60px;padding:14px 18px;background:none;border:none;cursor:pointer;text-align:left">
+          <span style="font-family:'Fraunces',serif;font-size:17.5px;font-weight:600;color:#0f3527;line-height:1.35">Horas extras não pagas: o que posso fazer?</span>
+          <span class="m-faq-icon" aria-hidden="true" style="flex:none;width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid #a9852f;color:#a9852f;font-size:16px;transition:transform .3s">＋</span>
+        </button>
+        <div class="m-faq-body" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease">
+          <div style="min-height:0;overflow:hidden">
+            <p style="margin:0;padding:0 18px 18px;font-size:15px;line-height:1.7;color:#55554f;text-align:justify;hyphens:auto">Guarde provas da jornada, como registros de ponto, mensagens e testemunhas. Com esses elementos, é possível cobrar as horas extras com o adicional mínimo de 50% na Justiça do Trabalho.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="duvidas.html" style="align-self:center;font-size:15.5px;font-weight:700;color:#1c5a41;border-bottom:1.5px solid #a9852f;padding-bottom:2px">Ver todas as dúvidas →</a>
+  </section>
+
   <!-- DÚVIDAS -->
-  <section id="duvidas" style="padding:clamp(64px,7vw,110px) 6vw">
+  <section id="duvidas" class="m-duvidas" style="padding:clamp(64px,7vw,110px) 6vw">
     <div class="r2" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,72px);align-items:center">
       <div>
         <span data-reveal="" style="font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#a9852f">Fale comigo</span>
-        <h2 data-reveal="" style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(32px,4vw,54px);line-height:1.04;letter-spacing:-1px;margin:14px 0 8px;color:#0f3527">Ficou com alguma dúvida?</h2>
+        <h2 data-reveal="" class="m-dk-h2" style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(32px,4vw,54px);line-height:1.04;letter-spacing:-1px;margin:14px 0 8px;color:#0f3527">Ficou com alguma dúvida?</h2>
         <div data-reveal="" class="goldline" style="width:64px;height:2px;background:#a9852f;transform-origin:left;margin:0 0 26px"></div>
-        <p data-reveal="" data-delay="80" style="font-size:clamp(16px,1.4vw,19px);line-height:1.7;color:#3a463f;margin:0 0 32px;max-width:46ch">
+        <p data-reveal="" data-delay="80" class="m-dk-p" style="font-size:clamp(16px,1.4vw,19px);line-height:1.7;color:#3a463f;margin:0 0 32px;max-width:46ch">
           Escreva sua pergunta sobre Direito do Trabalho e envie — a mensagem abre direto no WhatsApp, já pronta para você só confirmar.
         </p>
-        <a data-reveal="" data-delay="140" href="duvidas.html" style="display:inline-block;font-size:13px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:#1c5a41;border-bottom:1.5px solid #a9852f;padding-bottom:3px">Ver perguntas frequentes →</a>
+        <a data-reveal="" data-delay="140" href="duvidas.html" class="m-dk-link" style="display:inline-block;font-size:13px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:#1c5a41;border-bottom:1.5px solid #a9852f;padding-bottom:3px">Ver perguntas frequentes →</a>
       </div>
       <div data-reveal="" data-delay="120" style="background:#fff;border:1px solid rgba(15,53,39,.1);border-radius:20px;padding:clamp(24px,3vw,38px);box-shadow:0 24px 50px rgba(15,53,39,.08)">
         <div style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#a9852f;margin-bottom:20px">Enviar dúvida</div>
 
         <label for="home-duvida-nome" style="display:block;font-size:13px;font-weight:600;color:#0f3527;margin-bottom:8px">Seu nome</label>
-        <input id="home-duvida-nome" type="text" placeholder="Como você se chama" style="width:100%;padding:13px 15px;border:1.5px solid rgba(15,53,39,.15);border-radius:12px;font-size:15px;color:#0f3527;margin-bottom:18px;transition:border-color .2s,box-shadow .2s">
+        <input id="home-duvida-nome" type="text" autocomplete="name" autocapitalize="words" placeholder="Como você se chama" style="width:100%;padding:13px 15px;border:1.5px solid rgba(15,53,39,.15);border-radius:12px;font-size:15px;color:#0f3527;margin-bottom:18px;transition:border-color .2s,box-shadow .2s">
 
         <label for="home-duvida-email" style="display:block;font-size:13px;font-weight:600;color:#0f3527;margin-bottom:8px">Seu e-mail <span style="color:#7f9188;font-weight:400">(opcional)</span></label>
-        <input id="home-duvida-email" type="email" placeholder="voce@email.com" style="width:100%;padding:13px 15px;border:1.5px solid rgba(15,53,39,.15);border-radius:12px;font-size:15px;color:#0f3527;margin-bottom:18px;transition:border-color .2s,box-shadow .2s">
+        <input id="home-duvida-email" type="email" inputmode="email" autocomplete="email" autocapitalize="none" placeholder="voce@email.com" style="width:100%;padding:13px 15px;border:1.5px solid rgba(15,53,39,.15);border-radius:12px;font-size:15px;color:#0f3527;margin-bottom:18px;transition:border-color .2s,box-shadow .2s">
 
         <label for="home-duvida-texto" style="display:block;font-size:13px;font-weight:600;color:#0f3527;margin-bottom:8px">Sua dúvida</label>
         <textarea id="home-duvida-texto" rows="3" placeholder="Escreva sua dúvida sobre Direito do Trabalho" style="width:100%;padding:13px 15px;border:1.5px solid rgba(15,53,39,.15);border-radius:12px;font-size:15px;color:#0f3527;margin-bottom:18px;resize:vertical;line-height:1.5;transition:border-color .2s,box-shadow .2s"></textarea>
@@ -232,7 +414,7 @@
   </section>
 
   <!-- FOOTER -->
-  <footer style="background:#0f3527;color:#d3ddd6;padding:clamp(56px,6vw,88px) 6vw 40px">
+  <footer class="m-footer" style="background:#0f3527;color:#d3ddd6;padding:clamp(56px,6vw,88px) 6vw 40px">
     <div class="rfoot" style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.12)">
       <div>
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
@@ -252,7 +434,7 @@
       </div>
       <div>
         <div style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#c8a84e;margin-bottom:16px">Canais</div>
-        <div style="display:flex;flex-direction:column;gap:11px">
+        <div class="m-footer-canais" style="display:flex;flex-direction:column;gap:11px">
           <a href="https://www.instagram.com/ygorsoares_bjj/" target="_blank" rel="noopener" style="color:#d3ddd6;font-size:15px">Instagram</a>
           <a href="https://www.linkedin.com/in/ygor-pinheiro-soares-b109342ba/" target="_blank" rel="noopener" style="color:#d3ddd6;font-size:15px">LinkedIn</a>
           <a href="https://wa.me/5511991680688" target="_blank" rel="noopener" style="color:#d3ddd6;font-size:15px">WhatsApp</a>
@@ -261,6 +443,12 @@
     </div>
     <div style="padding-top:24px;font-size:13px;color:#7f9188">© 2026 Ygor Soares. Todos os direitos reservados. Conteúdo informativo e educacional.</div>
   </footer>
+
+  <!-- BARRA CTA FIXA (mobile only) -->
+  <div class="m-ctabar" style="display:none;position:fixed;left:0;bottom:0;width:100%;z-index:55;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(252,251,248,.96);backdrop-filter:blur(8px);border-top:1px solid rgba(169,133,47,.4);transform:translateY(110%);transition:transform .4s cubic-bezier(.22,1,.36,1)">
+    <a href="calculadora.html" style="flex:1;display:flex;align-items:center;justify-content:center;min-height:50px;background:#1c5a41;color:#fff;border-radius:999px;font-size:15px;font-weight:700">Calcular rescisão</a>
+    <a href="https://wa.me/5511991680688" target="_blank" rel="noopener" style="flex:1;display:flex;align-items:center;justify-content:center;min-height:50px;background:#fff;color:#1c5a41;border:1.5px solid #1c5a41;border-radius:999px;font-size:15px;font-weight:700">WhatsApp</a>
+  </div>
 
 </div>
 
@@ -315,6 +503,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // ---- Contadores ----
   function animateCount(el, to, dur, render) {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.textContent = render(to);
+      return;
+    }
     var start = performance.now();
     function tick(now) {
       var p = Math.min(1, (now - start) / dur);
@@ -424,11 +616,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function atualizarBotao() {
     var ok = podeEnviar();
+    var mob = window.matchMedia && window.matchMedia('(max-width:768px)').matches;
     campos.enviar.style.cssText =
       'width:100%;padding:15px;border-radius:999px;border:none;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;' +
       "font-family:'Archivo',system-ui,sans-serif;transition:all .2s;" +
-      'background:' + (ok ? '#1c5a41' : 'rgba(15,53,39,.15)') + ';' +
-      'color:' + (ok ? '#fff' : '#7f9188') + ';' +
+      'background:' + (ok ? '#1c5a41' : (mob ? '#e3e0d7' : 'rgba(15,53,39,.15)')) + ';' +
+      'color:' + (ok ? '#fff' : (mob ? '#9b988d' : '#7f9188')) + ';' +
       'cursor:' + (ok ? 'pointer' : 'not-allowed');
     campos.hint.textContent = ok
       ? 'O WhatsApp abre com a sua mensagem pronta — é só confirmar por lá.'
@@ -455,6 +648,73 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   atualizarBotao();
+});
+</script>
+
+<script>
+// ---- Comportamentos exclusivos do mobile (≤768px) ----
+document.addEventListener('DOMContentLoaded', function () {
+  var mqMobile = window.matchMedia('(max-width:768px)');
+
+  // ---- Menu hambúrguer ----
+  var burger = document.querySelector('.m-burger');
+  var menuLinks = document.querySelectorAll('.m-menu a');
+  function setMenu(open) {
+    document.body.classList.toggle('m-menu-open', open);
+    if (burger) {
+      burger.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+    }
+  }
+  if (burger) {
+    burger.addEventListener('click', function () {
+      setMenu(!document.body.classList.contains('m-menu-open'));
+    });
+  }
+  menuLinks.forEach(function (a) {
+    a.addEventListener('click', function () { setMenu(false); });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') setMenu(false);
+  });
+  // Fecha o menu se sair do viewport mobile
+  mqMobile.addEventListener('change', function (e) { if (!e.matches) setMenu(false); });
+
+  // ---- Barra de progresso de leitura + Barra CTA fixa ----
+  var fill = document.querySelector('.m-progress-fill');
+  var ctabar = document.querySelector('.m-ctabar');
+  function scrollY() {
+    return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+  }
+  function onScroll() {
+    var doc = document.documentElement;
+    var y = scrollY();
+    var max = Math.max(1, doc.scrollHeight - window.innerHeight);
+    if (fill) fill.style.width = (Math.min(1, y / max) * 100) + '%';
+    if (ctabar) ctabar.classList.toggle('show', y > 620);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // ---- FAQ acordeão (um aberto por vez) ----
+  var faqItems = document.querySelectorAll('.m-faq-item');
+  faqItems.forEach(function (item) {
+    var btn = item.querySelector('.m-faq-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var isOpen = item.classList.contains('open');
+      faqItems.forEach(function (other) {
+        other.classList.remove('open');
+        var b = other.querySelector('.m-faq-btn');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
 });
 </script>
 
