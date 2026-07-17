@@ -1,9 +1,8 @@
 ---
 titulo: Influenciador Digital Tem Vínculo de Emprego? Entenda a Subordinação
 data: 2026-07-17
-resumo: "Subordinação algorítmica, criativa e estrutural: entenda quando o
-  influenciador digital tem direito a vínculo empregatício e verbas
-  trabalhistas."
+resumo: "Subordinação algorítmica, criativa e estrutural: entenda como o
+  influenciador digital pode ter direito a vínculo empregatício."
 tags: direito do trabalho, influenciador digital, vínculo empregatício,
   subordinação algorítmica, subordinação criativa, subordinação estrutural, Lei
   15.325/2026, profissional multimídia, pejotização, princípio da alteridade,
