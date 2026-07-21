@@ -100,5 +100,3 @@ O ônus da prova é do empregado, que precisa demonstrar, por documentos e teste
 Comece reunindo provas concretas do que você efetivamente faz no dia a dia, e-mails, prints de sistemas, mensagens de instrução das suas chefias, e compare com a descrição formal do seu cargo. Anote desde quando essas atividades adicionais ou substitutas começaram e com que frequência elas ocorrem. Quanto mais organizada e datada for essa documentação, mais forte fica seu caso.
 
 Antes de tomar qualquer decisão, como pedir desligamento por conta própria, procure um advogado trabalhista para avaliar se sua situação configura acúmulo, desvio, e se há base para pedido de diferenças salariais ou até rescisão indireta.
-
-Se você quer continuar de olho nos seus direitos trabalhistas, segue o Ygor.blog no Instagram.
