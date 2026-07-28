@@ -22,7 +22,7 @@ Uma perícia técnica constatou que ela estava exposta a agentes biológicos dur
 
 A empregadora recorreu, argumentando que as irregularidades não tinham gravidade suficiente para justificar o fim da relação de trabalho por sua culpa, e alegando ainda falta de imediatidade na reação da trabalhadora. O Tribunal Regional do Trabalho da 18ª Região, com sede em Goiânia, deu parcial razão à empresa: mesmo reconhecendo que o adicional não havia sido pago e que o banco de horas era nulo, entendeu que essas irregularidades, isoladamente, não bastariam para autorizar a rescisão indireta.
 
-### O que o TST decidiu, e por quê
+### O que o TST decidiu, e por quê?
 
 O caso chegou ao TST por recurso da trabalhadora, e a 2ª Turma reformou a decisão do Regional, por unanimidade. A relatora, ministra Delaíde Miranda Arantes, destacou que o artigo 483, alínea "d", da CLT permite ao empregado considerar rescindido o contrato quando o empregador deixa de cumprir as obrigações decorrentes da relação de trabalho.
 
@@ -66,7 +66,6 @@ Se sua empresa deixou de pagar o adicional de insalubridade a que você tem dire
 Antes de tomar qualquer decisão sobre romper o contrato, procure um advogado trabalhista para avaliar se a irregularidade no seu caso concreto tem a gravidade e a continuidade necessárias para caracterizar rescisão indireta.
 
 **Fontes:**
-
 
 MIGALHAS. Não pagar adicional de insalubridade autoriza rescisão indireta, decide TST. Migalhas Quentes, 27 jul. 2026. Disponível em: <https://www.migalhas.com.br/quentes/461109/tst-nao-pagar-adicional-de-insalubridade-autoriza-rescisao-indireta>
 
