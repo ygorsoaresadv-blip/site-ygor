@@ -115,19 +115,6 @@
     .m-sobre-photo .m-photo-box{aspect-ratio:4/4.4!important}
     .m-sobre-photo .m-photo-box img{object-position:50% 15%!important}
 
-    /* --- FAQ acordeão (mobile only) --- */
-    .m-faq{display:flex!important}
-    .m-faq-item.open .m-faq-body{grid-template-rows:1fr!important}
-    .m-faq-item.open .m-faq-icon{transform:rotate(45deg)}
-
-    /* --- Fale comigo (fundo escuro no mobile) --- */
-    .m-duvidas{background:#0f3527!important;padding:60px 24px 64px!important}
-    .m-duvidas .r2{gap:28px!important}
-    .m-dk-h2{color:#fff!important}
-    .m-dk-p{color:rgba(238,243,239,.85)!important}
-    .m-dk-link{color:#eef3ef!important}
-    #home-duvida-nome,#home-duvida-email,#home-duvida-texto{font-size:16px!important;border-color:#dbd8d0!important}
-
     /* --- Blog --- */
     #blog{padding:60px 24px 64px!important}
 
@@ -153,9 +140,40 @@
     [data-reveal]{opacity:1!important;transform:none!important}
     .m-ctabar{transition:none!important}
   }
+
+  /* --- Acessibilidade: pular para o conteúdo --- */
+  .skip-link{position:absolute;left:8px;top:-48px;z-index:100;background:#0f3527;color:#fff;padding:11px 18px;border-radius:0 0 10px 10px;font-size:14px;font-weight:600;transition:top .2s}
+  .skip-link:focus{top:0;outline:2px solid #a9852f;outline-offset:2px}
+
+  /* --- prefers-reduced-motion (global, todos os tamanhos) --- */
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    [data-marquee],.m-hero-wm,.m-photo-badge,.m-badge-desktop{animation:none!important}
+    [data-reveal],.goldline{opacity:1!important;transform:none!important;transition:none!important}
+  }
+
+  /* --- Linha do tempo (scrollytelling) --- */
+  .tl-section{background:#fcfbf8;padding:clamp(56px,8vw,96px) 6vw;overflow-x:clip}
+  .tl-head{width:min(1120px,100%);margin:0 auto;text-align:center}
+  .tl-eyebrow{display:inline-flex;align-items:baseline;gap:.5rem;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#a9852f}
+  .tl-eyebrow .tl-para{font-family:'Fraunces',serif;font-size:16px;letter-spacing:0}
+  .tl-title{font-family:'Fraunces',serif;font-weight:500;color:#0f3527;line-height:1.12;letter-spacing:-.5px;font-size:clamp(30px,4.4vw,48px);margin:16px 0 0}
+  .tl-fio{border:0;width:64px;height:2px;background:linear-gradient(to right,#a9852f,#dcc98e);margin:22px auto 24px}
+  .tl-lead{color:#67716b;max-width:40rem;margin:0 auto;font-size:16px;line-height:1.7;text-align:center}
+  .tl-timeline{width:min(1080px,100%);margin:clamp(40px,6vw,72px) auto 0;position:relative}
+  .tl-timeline svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:0}
+  .tl-step{position:relative;z-index:1;transition:opacity .5s ease}
+  .tl-node{width:56px;height:56px;border-radius:999px;display:flex;align-items:center;justify-content:center;background:#fcfbf8;border:2px solid #dce6df;color:#9aa8a0;transition:background .45s ease,border-color .45s ease,color .45s ease,box-shadow .45s ease,transform .45s ease;will-change:transform}
+  .tl-card{transition:opacity .6s ease,transform .6s ease}
+  .tl-etapa{font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#a9852f;margin-bottom:.35rem}
+  .tl-card-title{font-family:'Archivo',system-ui,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.02em;color:#0f3527;line-height:1.2;font-size:clamp(1rem,1.5vw,1.18rem)}
+  .tl-card-sub{color:#67716b;font-size:.92rem;line-height:1.6;margin-top:.5rem;text-align:left}
+  @keyframes tlpulse{0%{box-shadow:0 0 0 0 rgba(169,133,47,.45)}70%{box-shadow:0 0 0 16px rgba(169,133,47,0)}100%{box-shadow:0 0 0 0 rgba(169,133,47,0)}}
 </style>
 </head>
 <body>
+
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
 <div style="max-width:100%;overflow:hidden">
 
@@ -196,6 +214,8 @@
     </nav>
     <a href="https://www.instagram.com/ygorsoares_bjj/" target="_blank" rel="noopener" class="m-menu-cta" style="margin-top:36px;display:flex;align-items:center;justify-content:center;min-height:52px;background:#a9852f;color:#0f3527;border-radius:999px;font-size:16px;font-weight:700">Seguir no Instagram</a>
   </div>
+
+  <main id="conteudo">
 
   <!-- HERO -->
   <header id="top" style="position:relative;padding:clamp(48px,7vw,96px) 6vw clamp(40px,5vw,72px)">
@@ -292,85 +312,6 @@
     </div>
   </section>
 
-  <!-- FAQ ACORDEÃO (mobile only) -->
-  <section class="m-faq" style="display:none;padding:60px 24px;flex-direction:column;gap:24px">
-    <div data-reveal="" style="display:flex;flex-direction:column;gap:14px">
-      <span style="align-self:flex-start;color:#a9852f;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase">Perguntas frequentes</span>
-      <h2 style="margin:0;font-family:'Fraunces',serif;font-weight:500;font-size:31px;line-height:1.18;color:#0f3527">O que mais me perguntam</h2>
-    </div>
-    <div data-reveal="" style="display:flex;flex-direction:column;gap:12px">
-      <div class="m-faq-item" style="background:#fff;border:1px solid rgba(169,133,47,.35);border-radius:16px;overflow:hidden">
-        <button type="button" class="m-faq-btn" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:60px;padding:14px 18px;background:none;border:none;cursor:pointer;text-align:left">
-          <span style="font-family:'Fraunces',serif;font-size:17.5px;font-weight:600;color:#0f3527;line-height:1.35">Fui demitido. Em quanto tempo recebo a rescisão?</span>
-          <span class="m-faq-icon" aria-hidden="true" style="flex:none;width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid #a9852f;color:#a9852f;font-size:16px;transition:transform .3s">＋</span>
-        </button>
-        <div class="m-faq-body" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease">
-          <div style="min-height:0;overflow:hidden">
-            <p style="margin:0;padding:0 18px 18px;font-size:15px;line-height:1.7;color:#55554f;text-align:justify;hyphens:auto">A empresa tem até 10 dias corridos, contados do fim do contrato, para pagar as verbas rescisórias (art. 477 da CLT). Se atrasar, você tem direito a uma multa no valor de um salário.</p>
-          </div>
-        </div>
-      </div>
-      <div class="m-faq-item" style="background:#fff;border:1px solid rgba(169,133,47,.35);border-radius:16px;overflow:hidden">
-        <button type="button" class="m-faq-btn" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:60px;padding:14px 18px;background:none;border:none;cursor:pointer;text-align:left">
-          <span style="font-family:'Fraunces',serif;font-size:17.5px;font-weight:600;color:#0f3527;line-height:1.35">Trabalhei sem carteira assinada. Tenho direitos?</span>
-          <span class="m-faq-icon" aria-hidden="true" style="flex:none;width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid #a9852f;color:#a9852f;font-size:16px;transition:transform .3s">＋</span>
-        </button>
-        <div class="m-faq-body" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease">
-          <div style="min-height:0;overflow:hidden">
-            <p style="margin:0;padding:0 18px 18px;font-size:15px;line-height:1.7;color:#55554f;text-align:justify;hyphens:auto">Sim. Se ficar comprovado o vínculo de emprego, você pode buscar o reconhecimento na Justiça do Trabalho e receber todas as verbas do período, como FGTS, férias e 13º salário.</p>
-          </div>
-        </div>
-      </div>
-      <div class="m-faq-item" style="background:#fff;border:1px solid rgba(169,133,47,.35);border-radius:16px;overflow:hidden">
-        <button type="button" class="m-faq-btn" aria-expanded="false" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:60px;padding:14px 18px;background:none;border:none;cursor:pointer;text-align:left">
-          <span style="font-family:'Fraunces',serif;font-size:17.5px;font-weight:600;color:#0f3527;line-height:1.35">Horas extras não pagas: o que posso fazer?</span>
-          <span class="m-faq-icon" aria-hidden="true" style="flex:none;width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid #a9852f;color:#a9852f;font-size:16px;transition:transform .3s">＋</span>
-        </button>
-        <div class="m-faq-body" style="display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease">
-          <div style="min-height:0;overflow:hidden">
-            <p style="margin:0;padding:0 18px 18px;font-size:15px;line-height:1.7;color:#55554f;text-align:justify;hyphens:auto">Guarde provas da jornada, como registros de ponto, mensagens e testemunhas. Com esses elementos, é possível cobrar as horas extras com o adicional mínimo de 50% na Justiça do Trabalho.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <a href="duvidas.html" style="align-self:center;font-size:15.5px;font-weight:700;color:#1c5a41;border-bottom:1.5px solid #a9852f;padding-bottom:2px">Ver todas as dúvidas →</a>
-  </section>
-
-  <!-- DÚVIDAS -->
-  <section id="duvidas" class="m-duvidas" style="padding:clamp(64px,7vw,110px) 6vw">
-    <div class="r2" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,72px);align-items:center">
-      <div>
-        <span data-reveal="" style="font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#a9852f">Fale comigo</span>
-        <h2 data-reveal="" class="m-dk-h2" style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(32px,4vw,54px);line-height:1.04;letter-spacing:-1px;margin:14px 0 8px;color:#0f3527">Ficou com alguma dúvida?</h2>
-        <div data-reveal="" class="goldline" style="width:64px;height:2px;background:#a9852f;transform-origin:left;margin:0 0 26px"></div>
-        <p data-reveal="" data-delay="80" class="m-dk-p" style="font-size:clamp(16px,1.4vw,19px);line-height:1.7;color:#3a463f;margin:0 0 32px;max-width:46ch">
-          Escreva sua pergunta sobre Direito do Trabalho e envie. A mensagem abre direto no WhatsApp, já pronta para você só confirmar.
-        </p>
-        <a data-reveal="" data-delay="140" href="duvidas.html" class="m-dk-link" style="display:inline-block;font-size:13px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:#1c5a41;border-bottom:1.5px solid #a9852f;padding-bottom:3px">Ver perguntas frequentes →</a>
-      </div>
-      <div data-reveal="" data-delay="120" style="background:#fff;border:1px solid rgba(15,53,39,.1);border-radius:20px;padding:clamp(24px,3vw,38px);box-shadow:0 24px 50px rgba(15,53,39,.08)">
-        <div style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#a9852f;margin-bottom:20px">Enviar dúvida</div>
-
-        <label for="home-duvida-nome" style="display:block;font-size:13px;font-weight:600;color:#0f3527;margin-bottom:8px">Seu nome</label>
-        <input id="home-duvida-nome" type="text" autocomplete="name" autocapitalize="words" placeholder="Como você se chama" style="width:100%;padding:13px 15px;border:1.5px solid rgba(15,53,39,.15);border-radius:12px;font-size:15px;color:#0f3527;margin-bottom:18px;transition:border-color .2s,box-shadow .2s">
-
-        <label for="home-duvida-email" style="display:block;font-size:13px;font-weight:600;color:#0f3527;margin-bottom:8px">Seu e-mail <span style="color:#7f9188;font-weight:400">(opcional)</span></label>
-        <input id="home-duvida-email" type="email" inputmode="email" autocomplete="email" autocapitalize="none" placeholder="voce@email.com" style="width:100%;padding:13px 15px;border:1.5px solid rgba(15,53,39,.15);border-radius:12px;font-size:15px;color:#0f3527;margin-bottom:18px;transition:border-color .2s,box-shadow .2s">
-
-        <label for="home-duvida-texto" style="display:block;font-size:13px;font-weight:600;color:#0f3527;margin-bottom:8px">Sua dúvida</label>
-        <textarea id="home-duvida-texto" rows="3" placeholder="Escreva sua dúvida sobre Direito do Trabalho" style="width:100%;padding:13px 15px;border:1.5px solid rgba(15,53,39,.15);border-radius:12px;font-size:15px;color:#0f3527;margin-bottom:18px;resize:vertical;line-height:1.5;transition:border-color .2s,box-shadow .2s"></textarea>
-
-        <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;margin-bottom:22px">
-          <input id="home-duvida-consent" type="checkbox" style="margin-top:3px;width:16px;height:16px;accent-color:#1c5a41;flex:none">
-          <span style="font-size:12.5px;line-height:1.5;color:#5a6862">Concordo com o uso dos dados apenas para responder à minha dúvida, conforme a <a href="privacidade.html">Política de Privacidade</a>.</span>
-        </label>
-
-        <button id="home-duvida-enviar" type="button">Enviar pelo WhatsApp</button>
-        <p id="home-duvida-hint" style="font-size:12px;color:#7f9188;line-height:1.5;margin:14px 0 0;text-align:center"></p>
-      </div>
-    </div>
-  </section>
-
   <!-- BLOG -->
   <section id="blog" style="background:#edf3ef;padding:clamp(64px,7vw,110px) 6vw">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:44px">
@@ -413,6 +354,31 @@
     </div>
   </section>
 
+  <!-- LINHA DO TEMPO -->
+  <section class="tl-section">
+    <div class="tl-head">
+      <span class="tl-eyebrow"><span class="tl-para">§</span>Linha do tempo</span>
+      <h2 class="tl-title">A jornada de uma ação trabalhista</h2>
+      <hr class="tl-fio">
+      <p class="tl-lead">Do primeiro protocolo ao pagamento final, cada etapa acende conforme você acompanha o caminho percorrido pelo processo. Role a página e siga a trilha.</p>
+    </div>
+    <div class="tl-timeline" id="tl-timeline">
+      <svg id="tl-svg" width="100%" height="100%" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="tlGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#2e7256"></stop>
+            <stop offset="0.55" stop-color="#1c5a41"></stop>
+            <stop offset="1" stop-color="#a9852f"></stop>
+          </linearGradient>
+        </defs>
+        <path id="tl-bg" fill="none" stroke="#dce6df" stroke-width="3" stroke-linecap="round"></path>
+        <path id="tl-fg" fill="none" stroke="url(#tlGrad)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+  </section>
+
+  </main>
+
   <!-- FOOTER -->
   <footer class="m-footer" style="background:#0f3527;color:#d3ddd6;padding:clamp(56px,6vw,88px) 6vw 40px">
     <div class="rfoot" style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.12)">
@@ -441,7 +407,7 @@
         </div>
       </div>
     </div>
-    <div style="padding-top:24px;font-size:13px;color:#7f9188">© 2026 Ygor Soares. Todos os direitos reservados. Conteúdo informativo e educacional.</div>
+    <div style="padding-top:24px;font-size:13px;color:#95a49b">© 2026 Ygor Soares. Todos os direitos reservados. Conteúdo informativo e educacional.</div>
   </footer>
 
   <!-- BARRA CTA FIXA (mobile only) -->
@@ -480,7 +446,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }, { threshold: 0.12 });
 
+  var semMovimento = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function prepararReveal(el) {
+    if (semMovimento) { el.style.opacity = '1'; el.style.transform = 'none'; return; }
     var d = parseInt(el.getAttribute('data-delay') || '0', 10);
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
@@ -490,16 +458,18 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('[data-reveal]').forEach(prepararReveal);
 
   // ---- Linha dourada ----
-  document.querySelectorAll('.goldline').forEach(function (el) {
-    el.style.transform = 'scaleX(0)';
-    el.style.transition = 'transform .8s cubic-bezier(.2,.7,.2,1) .2s';
-  });
-  var io2 = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) { e.target.style.transform = 'scaleX(1)'; io2.unobserve(e.target); }
+  if (!semMovimento) {
+    document.querySelectorAll('.goldline').forEach(function (el) {
+      el.style.transform = 'scaleX(0)';
+      el.style.transition = 'transform .8s cubic-bezier(.2,.7,.2,1) .2s';
     });
-  }, { threshold: 0.5 });
-  document.querySelectorAll('.goldline').forEach(function (el) { io2.observe(el); });
+    var io2 = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.style.transform = 'scaleX(1)'; io2.unobserve(e.target); }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.goldline').forEach(function (el) { io2.observe(el); });
+  }
 
   // ---- Contadores ----
   function animateCount(el, to, dur, render) {
@@ -574,7 +544,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var rodape = document.createElement('div');
         rodape.style.cssText = 'margin-top:auto;padding-top:22px;display:flex;justify-content:space-between;align-items:center';
         var data = document.createElement('span');
-        data.style.cssText = 'font-size:13px;color:#7f9188';
+        data.style.cssText = 'font-size:13px;color:#616c66';
         data.textContent = formatarDataBR(p.data);
         var ler = document.createElement('span');
         ler.style.cssText = 'font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#a9852f';
@@ -592,62 +562,6 @@ document.addEventListener('DOMContentLoaded', function () {
     .catch(function () {
       lista.innerHTML = '<p style="color:#3a463f;font-size:15px">Não foi possível carregar os artigos agora. <a href="blog.html">Abrir o blog →</a></p>';
     });
-});
-</script>
-
-<script src="assets/js/config.js"></script>
-<script>
-// ---- Formulário de dúvidas da home → abre o WhatsApp com a mensagem pronta ----
-document.addEventListener('DOMContentLoaded', function () {
-  var WHATSAPP = (typeof SITE_CONFIG !== 'undefined' && SITE_CONFIG.whatsapp) || '5511991680688';
-  var campos = {
-    nome: document.getElementById('home-duvida-nome'),
-    email: document.getElementById('home-duvida-email'),
-    texto: document.getElementById('home-duvida-texto'),
-    consent: document.getElementById('home-duvida-consent'),
-    enviar: document.getElementById('home-duvida-enviar'),
-    hint: document.getElementById('home-duvida-hint')
-  };
-  if (!campos.enviar) return;
-
-  function podeEnviar() {
-    return campos.texto.value.trim().length > 2 && campos.consent.checked;
-  }
-
-  function atualizarBotao() {
-    var ok = podeEnviar();
-    var mob = window.matchMedia && window.matchMedia('(max-width:768px)').matches;
-    campos.enviar.style.cssText =
-      'width:100%;padding:15px;border-radius:999px;border:none;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;' +
-      "font-family:'Archivo',system-ui,sans-serif;transition:all .2s;" +
-      'background:' + (ok ? '#1c5a41' : (mob ? '#e3e0d7' : 'rgba(15,53,39,.15)')) + ';' +
-      'color:' + (ok ? '#fff' : (mob ? '#9b988d' : '#7f9188')) + ';' +
-      'cursor:' + (ok ? 'pointer' : 'not-allowed');
-    campos.hint.textContent = ok
-      ? 'O WhatsApp abre com a sua mensagem pronta. É só confirmar por lá.'
-      : 'Escreva sua dúvida e marque o consentimento para habilitar o envio.';
-  }
-
-  ['input', 'change'].forEach(function (ev) {
-    campos.nome.addEventListener(ev, atualizarBotao);
-    campos.email.addEventListener(ev, atualizarBotao);
-    campos.texto.addEventListener(ev, atualizarBotao);
-    campos.consent.addEventListener(ev, atualizarBotao);
-  });
-
-  campos.enviar.addEventListener('click', function () {
-    if (!podeEnviar()) return;
-    var nome = campos.nome.value.trim();
-    var email = campos.email.value.trim();
-    var duvida = campos.texto.value.trim();
-    var msg = 'Olá Ygor! ';
-    if (nome) msg += 'Meu nome é ' + nome + '. ';
-    msg += 'Tenho uma dúvida: ' + duvida;
-    if (email) msg += ' (contato: ' + email + ')';
-    window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
-  });
-
-  atualizarBotao();
 });
 </script>
 
@@ -696,26 +610,259 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
-
-  // ---- FAQ acordeão (um aberto por vez) ----
-  var faqItems = document.querySelectorAll('.m-faq-item');
-  faqItems.forEach(function (item) {
-    var btn = item.querySelector('.m-faq-btn');
-    if (!btn) return;
-    btn.addEventListener('click', function () {
-      var isOpen = item.classList.contains('open');
-      faqItems.forEach(function (other) {
-        other.classList.remove('open');
-        var b = other.querySelector('.m-faq-btn');
-        if (b) b.setAttribute('aria-expanded', 'false');
-      });
-      if (!isOpen) {
-        item.classList.add('open');
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    });
-  });
 });
+</script>
+
+<script>
+// ---- Linha do tempo trabalhista (scrollytelling em JS puro) ----
+(function () {
+  var tl = document.getElementById('tl-timeline');
+  if (!tl) return;
+
+  var ICONS = {
+    'file-text': [['path', { d: 'M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z' }], ['path', { d: 'M14 2v4a2 2 0 0 0 2 2h4' }], ['path', { d: 'M16 13H8' }], ['path', { d: 'M16 17H8' }], ['path', { d: 'M10 9H8' }]],
+    'mail': [['rect', { x: 2, y: 4, width: 20, height: 16, rx: 2 }], ['path', { d: 'm22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7' }]],
+    'users': [['path', { d: 'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2' }], ['circle', { cx: 9, cy: 7, r: 4 }], ['path', { d: 'M22 21v-2a4 4 0 0 0-3-3.87' }], ['path', { d: 'M16 3.13a4 4 0 0 1 0 7.75' }]],
+    'shield': [['path', { d: 'M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z' }]],
+    'reply': [['path', { d: 'M20 18v-2a4 4 0 0 0-4-4H4' }], ['path', { d: 'm9 17-5-5 5-5' }]],
+    'search': [['circle', { cx: 11, cy: 11, r: 8 }], ['path', { d: 'm21 21-4.3-4.3' }]],
+    'microscope': [['path', { d: 'M6 18h8' }], ['path', { d: 'M3 22h18' }], ['path', { d: 'M14 22a7 7 0 1 0 0-14h-1' }], ['path', { d: 'M9 14h2' }], ['path', { d: 'M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z' }], ['path', { d: 'M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3' }]],
+    'pen-line': [['path', { d: 'M12 20h9' }], ['path', { d: 'M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z' }]],
+    'gavel': [['path', { d: 'm14.5 12.5-8 8a2.119 2.119 0 1 1-3-3l8-8' }], ['path', { d: 'm16 16 6-6' }], ['path', { d: 'm8 8 6-6' }], ['path', { d: 'm9 7 8 8' }], ['path', { d: 'm21 11-8-8' }], ['path', { d: 'M3 21h12' }]],
+    'chevrons-up': [['path', { d: 'm17 11-5-5-5 5' }], ['path', { d: 'm17 18-5-5-5 5' }]],
+    'landmark': [['line', { x1: 3, x2: 21, y1: 22, y2: 22 }], ['line', { x1: 6, x2: 6, y1: 18, y2: 11 }], ['line', { x1: 10, x2: 10, y1: 18, y2: 11 }], ['line', { x1: 14, x2: 14, y1: 18, y2: 11 }], ['line', { x1: 18, x2: 18, y1: 18, y2: 11 }], ['polygon', { points: '12 2 20 7 4 7' }]],
+    'scale': [['path', { d: 'm16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z' }], ['path', { d: 'm2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z' }], ['path', { d: 'M7 21h10' }], ['path', { d: 'M12 3v18' }], ['path', { d: 'M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2' }]],
+    'badge-check': [['path', { d: 'M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z' }], ['path', { d: 'm9 12 2 2 4-4' }]],
+    'calculator': [['rect', { x: 4, y: 2, width: 16, height: 20, rx: 2 }], ['line', { x1: 8, x2: 16, y1: 6, y2: 6 }], ['line', { x1: 16, x2: 16, y1: 14, y2: 18 }], ['path', { d: 'M16 10h.01' }], ['path', { d: 'M12 10h.01' }], ['path', { d: 'M8 10h.01' }], ['path', { d: 'M12 14h.01' }], ['path', { d: 'M8 14h.01' }], ['path', { d: 'M12 18h.01' }], ['path', { d: 'M8 18h.01' }]],
+    'banknote': [['rect', { x: 2, y: 6, width: 20, height: 12, rx: 2 }], ['circle', { cx: 12, cy: 12, r: 2 }], ['path', { d: 'M6 12h.01M18 12h.01' }]]
+  };
+
+  var ETAPAS = [
+    { icone: 'file-text', titulo: 'Distribuição da Petição Inicial', texto: 'O reclamante ajuíza a ação na Vara do Trabalho, narrando os fatos e apresentando os pedidos.' },
+    { icone: 'mail', titulo: 'Citação do Reclamado', texto: 'A empresa é notificada oficialmente de que passou a responder a um processo.' },
+    { icone: 'users', titulo: 'Audiência Inicial (Una)', texto: 'Primeira tentativa de acordo entre as partes, conduzida pelo juiz.' },
+    { icone: 'shield', titulo: 'Contestação', texto: 'O reclamado apresenta sua defesa por escrito, rebatendo cada um dos pedidos.' },
+    { icone: 'reply', titulo: 'Réplica', texto: 'O reclamante responde aos argumentos levantados pela defesa.' },
+    { icone: 'search', titulo: 'Instrução Processual', texto: 'Fase de provas: documentos, depoimentos e testemunhas são apresentados.' },
+    { icone: 'microscope', titulo: 'Perícia (quando houver)', texto: 'Avaliação técnica, como insalubridade, periculosidade ou equiparação salarial.' },
+    { icone: 'pen-line', titulo: 'Razões Finais', texto: 'Últimas manifestações das partes antes da decisão do juiz.' },
+    { icone: 'gavel', titulo: 'Sentença', texto: 'O juiz profere a decisão de 1ª instância sobre o caso.' },
+    { icone: 'chevrons-up', titulo: 'Recurso Ordinário', texto: 'A parte inconformada recorre ao Tribunal Regional do Trabalho (TRT).' },
+    { icone: 'landmark', titulo: 'Acórdão do TRT', texto: 'O recurso é julgado pela 2ª instância, que confirma ou reforma a sentença.' },
+    { icone: 'scale', titulo: 'Recurso de Revista', texto: 'Quando cabível, o caso segue ao Tribunal Superior do Trabalho (TST).' },
+    { icone: 'badge-check', titulo: 'Trânsito em Julgado', texto: 'A decisão se torna definitiva: não cabem mais recursos.' },
+    { icone: 'calculator', titulo: 'Liquidação e Execução', texto: 'Cálculo dos valores efetivamente devidos ao reclamante.' },
+    { icone: 'banknote', titulo: 'Cumprimento da Sentença', texto: 'Pagamento dos valores devidos. O fim da jornada processual.' }
+  ];
+
+  var SVGNS = 'http://www.w3.org/2000/svg';
+
+  function buildIcon(name) {
+    var svg = document.createElementNS(SVGNS, 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('width', '22');
+    svg.setAttribute('height', '22');
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('stroke', 'currentColor');
+    svg.setAttribute('stroke-width', '1.7');
+    svg.setAttribute('stroke-linecap', 'round');
+    svg.setAttribute('stroke-linejoin', 'round');
+    (ICONS[name] || []).forEach(function (e) {
+      var node = document.createElementNS(SVGNS, e[0]);
+      for (var k in e[1]) { node.setAttribute(k, e[1][k]); }
+      svg.appendChild(node);
+    });
+    return svg;
+  }
+
+  // ---- Monta os nós e cards a partir de ETAPAS ----
+  ETAPAS.forEach(function (et, i) {
+    var step = document.createElement('div');
+    step.className = 'tl-step';
+
+    var node = document.createElement('div');
+    node.className = 'tl-node';
+    node.appendChild(buildIcon(et.icone));
+
+    var card = document.createElement('div');
+    card.className = 'tl-card';
+    var kicker = document.createElement('div');
+    kicker.className = 'tl-etapa';
+    kicker.textContent = 'Etapa ' + String(i + 1).padStart(2, '0');
+    var titulo = document.createElement('div');
+    titulo.className = 'tl-card-title';
+    titulo.textContent = et.titulo;
+    var sub = document.createElement('div');
+    sub.className = 'tl-card-sub';
+    sub.textContent = et.texto;
+    card.appendChild(kicker);
+    card.appendChild(titulo);
+    card.appendChild(sub);
+
+    step.appendChild(node);
+    step.appendChild(card);
+    tl.appendChild(step);
+  });
+
+  var svg = document.getElementById('tl-svg');
+  var bg = document.getElementById('tl-bg');
+  var fg = document.getElementById('tl-fg');
+  var steps = [].slice.call(tl.querySelectorAll('.tl-step'));
+  var nodes = [].slice.call(tl.querySelectorAll('.tl-node'));
+  var cards = [].slice.call(tl.querySelectorAll('.tl-card'));
+
+  var mobile = false, pathLen = 0, nodeFrac = [], firstY = 0, lastY = 0, estados = [];
+
+  function reduced() {
+    return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
+  function smoothPath(pts) {
+    if (pts.length < 2) return '';
+    var d = 'M ' + pts[0].x.toFixed(1) + ' ' + pts[0].y.toFixed(1);
+    for (var i = 0; i < pts.length - 1; i++) {
+      var p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+      var c1x = p1.x + (p2.x - p0.x) / 6, c1y = p1.y + (p2.y - p0.y) / 6;
+      var c2x = p2.x - (p3.x - p1.x) / 6, c2y = p2.y - (p3.y - p1.y) / 6;
+      d += ' C ' + c1x.toFixed(1) + ' ' + c1y.toFixed(1) + ' ' + c2x.toFixed(1) + ' ' + c2y.toFixed(1) + ' ' + p2.x.toFixed(1) + ' ' + p2.y.toFixed(1);
+    }
+    return d;
+  }
+
+  function reveal(card, on) {
+    var dx = parseFloat(card.dataset.dx || '1');
+    if (on) {
+      card.dataset.shown = '1';
+      card.style.opacity = '1';
+      card.style.transform = mobile ? 'translateX(0)' : 'translate(0,-50%)';
+    } else {
+      card.style.opacity = '0';
+      card.style.transform = mobile ? ('translateX(' + (dx * 16) + 'px)') : ('translate(' + (dx * 26) + 'px,-50%)');
+    }
+  }
+
+  function applyLayout() {
+    mobile = window.innerWidth <= 760;
+    steps.forEach(function (step, i) {
+      var node = nodes[i], card = cards[i];
+      var even = i % 2 === 0;
+      step.style.position = 'relative';
+      if (mobile) {
+        step.style.height = 'auto';
+        step.style.minHeight = '88px';
+        step.style.padding = '0 0 3rem 0';
+        node.style.position = 'absolute';
+        node.style.left = even ? '30px' : '92px';
+        node.style.top = '2px';
+        node.style.transform = 'translate(-50%,0)';
+        node.style.width = node.style.height = '46px';
+        card.style.position = 'static';
+        card.style.width = 'auto';
+        card.style.marginLeft = even ? '84px' : '146px';
+        card.style.textAlign = 'left';
+        card.dataset.dx = '-1';
+      } else {
+        step.style.height = 'clamp(230px,27vw,300px)';
+        step.style.minHeight = '';
+        step.style.padding = '0';
+        node.style.position = 'absolute';
+        node.style.top = '50%';
+        node.style.left = even ? '22%' : '78%';
+        node.style.transform = 'translate(-50%,-50%)';
+        node.style.width = node.style.height = '56px';
+        card.style.position = 'absolute';
+        card.style.top = '50%';
+        card.style.width = 'min(40%,420px)';
+        card.style.marginLeft = '0';
+        if (even) { card.style.left = '52%'; card.style.right = 'auto'; card.style.textAlign = 'left'; card.dataset.dx = '1'; }
+        else { card.style.right = '52%'; card.style.left = 'auto'; card.style.textAlign = 'right'; card.dataset.dx = '-1'; }
+      }
+      if (card.dataset.shown !== '1') reveal(card, false);
+    });
+  }
+
+  function buildTrail() {
+    var tlRect = tl.getBoundingClientRect();
+    var W = tl.clientWidth, H = tl.clientHeight;
+    var pts = nodes.map(function (n) {
+      var r = n.getBoundingClientRect();
+      return { x: r.left - tlRect.left + r.width / 2, y: r.top - tlRect.top + r.height / 2 };
+    });
+    firstY = pts.length ? pts[0].y : 0;
+    lastY = pts.length ? pts[pts.length - 1].y : 0;
+    if (!svg || !fg) return;
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    var d = smoothPath(pts);
+    bg.setAttribute('d', d);
+    fg.setAttribute('d', d);
+    pathLen = fg.getTotalLength();
+    fg.style.strokeDasharray = pathLen;
+    var N = 260, samples = [];
+    for (var k = 0; k <= N; k++) { var L = pathLen * k / N; var p = fg.getPointAtLength(L); samples.push({ L: L, x: p.x, y: p.y }); }
+    nodeFrac = pts.map(function (pt) {
+      var best = 0, bd = Infinity;
+      for (var s = 0; s < samples.length; s++) { var dd = Math.pow(samples[s].x - pt.x, 2) + Math.pow(samples[s].y - pt.y, 2); if (dd < bd) { bd = dd; best = samples[s].L; } }
+      return best / pathLen;
+    });
+    estados = new Array(pts.length).fill(null);
+  }
+
+  function update() {
+    if (!pathLen) return;
+    var red = reduced();
+    var tlRect = tl.getBoundingClientRect();
+    var vh = window.innerHeight;
+    cards.forEach(function (c) {
+      if (c.dataset.shown === '1') return;
+      var cr = c.getBoundingClientRect();
+      if (cr.top < vh * 0.9 && cr.bottom > 0) reveal(c, true);
+    });
+    var anchor = vh * 0.62;
+    var span = (lastY - firstY) || (tl.clientHeight || 1);
+    var p = (anchor - (tlRect.top + firstY)) / span;
+    var doc = document.scrollingElement || document.documentElement;
+    if (doc && (doc.scrollTop + doc.clientHeight) >= (doc.scrollHeight - 6)) p = 1;
+    if (red) p = 1;
+    p = Math.max(0, Math.min(1, p));
+    fg.style.strokeDashoffset = pathLen * (1 - p);
+
+    var frontier = -1;
+    for (var i = 0; i < nodes.length; i++) { if (p >= (nodeFrac[i] - 0.004)) frontier = i; }
+
+    nodes.forEach(function (node, i) {
+      var reached = p >= (nodeFrac[i] - 0.004);
+      var isFront = i === frontier && !red;
+      var key = reached ? (isFront ? 'f' : 'r') : 'u';
+      if (estados[i] === key) return;
+      estados[i] = key;
+      if (reached) {
+        node.style.background = '#1c5a41';
+        node.style.borderColor = '#1c5a41';
+        node.style.color = '#ffffff';
+        node.style.transform = (mobile ? 'translate(-50%,0)' : 'translate(-50%,-50%)') + ' scale(1.06)';
+        node.style.animation = isFront ? 'tlpulse 1.9s ease-out infinite' : 'none';
+        node.style.boxShadow = isFront ? '' : '0 0 0 5px rgba(169,133,47,.14)';
+      } else {
+        node.style.background = '#fcfbf8';
+        node.style.borderColor = '#dce6df';
+        node.style.color = '#9aa8a0';
+        node.style.transform = mobile ? 'translate(-50%,0)' : 'translate(-50%,-50%)';
+        node.style.animation = 'none';
+        node.style.boxShadow = 'none';
+      }
+      steps[i].style.opacity = reached ? '1' : '0.5';
+    });
+  }
+
+  function relayout() { applyLayout(); buildTrail(); update(); }
+
+  window.addEventListener('resize', relayout);
+  requestAnimationFrame(function () {
+    relayout();
+    (function loop() { update(); requestAnimationFrame(loop); })();
+  });
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(relayout); }
+})();
 </script>
 
 </body></html>

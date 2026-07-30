@@ -31,9 +31,21 @@
     .rlinks{gap:22px!important}
     h1{font-size:clamp(34px,10vw,56px)!important}
   }
+
+  /* --- Acessibilidade: pular para o conteúdo --- */
+  .skip-link{position:absolute;left:8px;top:-48px;z-index:100;background:#0f3527;color:#fff;padding:11px 18px;border-radius:0 0 10px 10px;font-size:14px;font-weight:600;transition:top .2s}
+  .skip-link:focus{top:0;outline:2px solid #a9852f;outline-offset:2px}
+
+  /* --- prefers-reduced-motion --- */
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .deco-simbolo{animation:none!important}
+  }
 </style>
 </head>
 <body>
+
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
 <div style="max-width:100%;overflow:hidden">
 
@@ -52,9 +64,11 @@
     </div>
   </nav>
 
+  <main id="conteudo">
+
   <!-- HEADER -->
   <header style="position:relative;padding:clamp(44px,6vw,80px) 6vw clamp(20px,3vw,32px);overflow:hidden">
-    <div style="position:absolute;top:-70px;right:2vw;font-family:'Fraunces',serif;font-size:clamp(200px,28vw,400px);color:rgba(169,133,47,.06);line-height:1;pointer-events:none;animation:floaty 9s ease-in-out infinite">§</div>
+    <div class="deco-simbolo" style="position:absolute;top:-70px;right:2vw;font-family:'Fraunces',serif;font-size:clamp(200px,28vw,400px);color:rgba(169,133,47,.06);line-height:1;pointer-events:none;animation:floaty 9s ease-in-out infinite">§</div>
     <span style="font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#a9852f">Dúvidas</span>
     <h1 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(38px,5.5vw,72px);line-height:1;letter-spacing:-1.5px;margin:14px 0 14px;color:#0f3527">Ficou com alguma dúvida?</h1>
     <p style="font-size:clamp(16px,1.5vw,20px);line-height:1.6;max-width:56ch;color:#3a463f;margin:0">Escreva abaixo e envie. A mensagem abre direto no WhatsApp, já pronta. Antes, dê uma olhada nas perguntas mais comuns.</p>
@@ -81,7 +95,7 @@
           <label for="duvida-nome" style="display:block;font-size:13px;font-weight:600;color:#0f3527;margin-bottom:8px">Seu nome</label>
           <input id="duvida-nome" type="text" placeholder="Como você se chama" style="width:100%;padding:13px 15px;border:1.5px solid rgba(15,53,39,.15);border-radius:12px;font-size:15px;color:#0f3527;margin-bottom:18px;transition:border-color .2s,box-shadow .2s">
 
-          <label for="duvida-email" style="display:block;font-size:13px;font-weight:600;color:#0f3527;margin-bottom:8px">Seu e-mail <span style="color:#7f9188;font-weight:400">(opcional)</span></label>
+          <label for="duvida-email" style="display:block;font-size:13px;font-weight:600;color:#0f3527;margin-bottom:8px">Seu e-mail <span style="color:#616c66;font-weight:400">(opcional)</span></label>
           <input id="duvida-email" type="email" placeholder="voce@email.com" style="width:100%;padding:13px 15px;border:1.5px solid rgba(15,53,39,.15);border-radius:12px;font-size:15px;color:#0f3527;margin-bottom:18px;transition:border-color .2s,box-shadow .2s">
 
           <label for="duvida-texto" style="display:block;font-size:13px;font-weight:600;color:#0f3527;margin-bottom:8px">Sua dúvida</label>
@@ -93,11 +107,13 @@
           </label>
 
           <button id="duvida-enviar" type="button">Enviar pelo WhatsApp</button>
-          <p id="duvida-hint" style="font-size:12px;color:#7f9188;line-height:1.5;margin:14px 0 0;text-align:center"></p>
+          <p id="duvida-hint" style="font-size:12px;color:#616c66;line-height:1.5;margin:14px 0 0;text-align:center"></p>
         </div>
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- FOOTER -->
   <footer style="background:#0f3527;color:#d3ddd6;padding:clamp(56px,6vw,88px) 6vw 40px">
@@ -127,7 +143,7 @@
         </div>
       </div>
     </div>
-    <div style="padding-top:24px;font-size:13px;color:#7f9188">© 2026 Ygor Soares. Todos os direitos reservados. Conteúdo informativo e educacional.</div>
+    <div style="padding-top:24px;font-size:13px;color:#95a49b">© 2026 Ygor Soares. Todos os direitos reservados. Conteúdo informativo e educacional.</div>
   </footer>
 
 </div>
@@ -156,6 +172,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var btn = document.createElement('button');
     btn.type = 'button';
+    btn.setAttribute('aria-expanded', 'false');
     btn.style.cssText = "width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 22px;background:transparent;border:none;cursor:pointer;text-align:left;font-family:'Archivo',system-ui,sans-serif";
     var q = document.createElement('span');
     q.style.cssText = "font-family:'Fraunces',serif;font-size:18px;font-weight:500;color:#0f3527;line-height:1.25";
@@ -181,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
     box.appendChild(btn);
     box.appendChild(painel);
     lista.appendChild(box);
-    itens.push({ painel: painel, mais: mais });
+    itens.push({ painel: painel, mais: mais, btn: btn });
   });
 
   function atualizarFaq() {
@@ -189,6 +206,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var open = aberta === i;
       item.painel.style.maxHeight = open ? '260px' : '0';
       item.mais.style.transform = open ? 'rotate(45deg)' : 'none';
+      item.btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
   }
   atualizarFaq();
@@ -213,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function () {
       'width:100%;padding:15px;border-radius:999px;border:none;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;' +
       "font-family:'Archivo',system-ui,sans-serif;transition:all .2s;" +
       'background:' + (ok ? '#1c5a41' : 'rgba(15,53,39,.15)') + ';' +
-      'color:' + (ok ? '#fff' : '#7f9188') + ';' +
+      'color:' + (ok ? '#fff' : '#616c66') + ';' +
       'cursor:' + (ok ? 'pointer' : 'not-allowed');
     campos.hint.textContent = ok
       ? 'O WhatsApp abre com a sua mensagem pronta. É só confirmar por lá.'

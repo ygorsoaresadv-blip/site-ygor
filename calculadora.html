@@ -31,9 +31,21 @@
     .rlinks{gap:22px!important}
     h1{font-size:clamp(34px,10vw,56px)!important}
   }
+
+  /* --- Acessibilidade: pular para o conteúdo --- */
+  .skip-link{position:absolute;left:8px;top:-48px;z-index:100;background:#0f3527;color:#fff;padding:11px 18px;border-radius:0 0 10px 10px;font-size:14px;font-weight:600;transition:top .2s}
+  .skip-link:focus{top:0;outline:2px solid #a9852f;outline-offset:2px}
+
+  /* --- prefers-reduced-motion --- */
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .deco-simbolo{animation:none!important}
+  }
 </style>
 </head>
 <body>
+
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
 <div style="max-width:100%;overflow:hidden">
 
@@ -52,9 +64,11 @@
     </div>
   </nav>
 
+  <main id="conteudo">
+
   <!-- HEADER -->
   <header style="position:relative;padding:clamp(44px,6vw,80px) 6vw clamp(20px,3vw,36px);overflow:hidden">
-    <div style="position:absolute;top:-70px;right:2vw;font-family:'Fraunces',serif;font-size:clamp(200px,28vw,400px);color:rgba(169,133,47,.06);line-height:1;pointer-events:none;animation:floaty 9s ease-in-out infinite">§</div>
+    <div class="deco-simbolo" style="position:absolute;top:-70px;right:2vw;font-family:'Fraunces',serif;font-size:clamp(200px,28vw,400px);color:rgba(169,133,47,.06);line-height:1;pointer-events:none;animation:floaty 9s ease-in-out infinite">§</div>
     <span style="font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#a9852f">Ferramenta gratuita</span>
     <h1 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(38px,5.5vw,72px);line-height:1;letter-spacing:-1.5px;margin:14px 0 14px;color:#0f3527">Calculadora de rescisão</h1>
     <p style="font-size:clamp(16px,1.5vw,20px);line-height:1.6;max-width:60ch;color:#3a463f;margin:0">Preencha os dados do contrato e veja na hora uma estimativa de cada verba. É apenas uma <strong style="color:#1c5a41">simulação educativa</strong>. O valor final depende de detalhes do seu caso.</p>
@@ -95,7 +109,7 @@
           <button type="button" data-aviso="indenizado">Indenizado</button>
           <button type="button" data-aviso="trabalhado">Trabalhado</button>
         </div>
-        <p id="calc-hint" style="font-size:12.5px;color:#7f9188;line-height:1.5;margin:10px 0 0"></p>
+        <p id="calc-hint" style="font-size:12.5px;color:#616c66;line-height:1.5;margin:10px 0 0"></p>
       </div>
 
       <!-- RESULTS -->
@@ -108,10 +122,12 @@
           <div id="calc-verbas" style="display:flex;flex-direction:column"></div>
           <a id="calc-whatsapp" href="https://wa.me/5511991680688?text=Ol%C3%A1%20Ygor,%20fiz%20uma%20simula%C3%A7%C3%A3o%20de%20rescis%C3%A3o%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida." target="_blank" rel="noopener" style="display:block;text-align:center;margin-top:24px;padding:15px;background:#a9852f;color:#0f3527;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase">Tirar dúvida no WhatsApp</a>
         </div>
-        <p style="font-size:12.5px;color:#7f9188;line-height:1.6;margin:16px 4px 0">Estimativa educativa baseada em regras gerais da CLT. Não considera descontos (INSS, IR, faltas), adicionais nem particularidades do contrato. Para um cálculo oficial, procure orientação profissional.</p>
+        <p style="font-size:12.5px;color:#616c66;line-height:1.6;margin:16px 4px 0">Estimativa educativa baseada em regras gerais da CLT. Não considera descontos (INSS, IR, faltas), adicionais nem particularidades do contrato. Para um cálculo oficial, procure orientação profissional.</p>
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- FOOTER -->
   <footer style="background:#0f3527;color:#d3ddd6;padding:clamp(56px,6vw,88px) 6vw 40px">
@@ -141,7 +157,7 @@
         </div>
       </div>
     </div>
-    <div style="padding-top:24px;font-size:13px;color:#7f9188">© 2026 Ygor Soares. Todos os direitos reservados. Conteúdo informativo e educacional.</div>
+    <div style="padding-top:24px;font-size:13px;color:#95a49b">© 2026 Ygor Soares. Todos os direitos reservados. Conteúdo informativo e educacional.</div>
   </footer>
 
 </div>

@@ -31,9 +31,22 @@
     .rlinks{gap:22px!important}
     h1{font-size:clamp(34px,10vw,56px)!important}
   }
+
+  /* --- Acessibilidade: pular para o conteúdo --- */
+  .skip-link{position:absolute;left:8px;top:-48px;z-index:100;background:#0f3527;color:#fff;padding:11px 18px;border-radius:0 0 10px 10px;font-size:14px;font-weight:600;transition:top .2s}
+  .skip-link:focus{top:0;outline:2px solid #a9852f;outline-offset:2px}
+
+  /* --- prefers-reduced-motion --- */
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .deco-simbolo{animation:none!important}
+    .card-lift:hover{transform:none}
+  }
 </style>
 </head>
 <body>
+
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
 <div style="max-width:100%;overflow:hidden">
 
@@ -52,9 +65,11 @@
     </div>
   </nav>
 
+  <main id="conteudo">
+
   <!-- HEADER -->
   <header style="position:relative;padding:clamp(44px,6vw,80px) 6vw clamp(28px,3vw,40px);overflow:hidden">
-    <div style="position:absolute;top:-70px;right:2vw;font-family:'Fraunces',serif;font-size:clamp(200px,28vw,400px);color:rgba(169,133,47,.06);line-height:1;pointer-events:none;animation:floaty 9s ease-in-out infinite">§</div>
+    <div class="deco-simbolo" style="position:absolute;top:-70px;right:2vw;font-family:'Fraunces',serif;font-size:clamp(200px,28vw,400px);color:rgba(169,133,47,.06);line-height:1;pointer-events:none;animation:floaty 9s ease-in-out infinite">§</div>
     <span style="font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#a9852f">Blog</span>
     <h1 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(38px,5.5vw,72px);line-height:1;letter-spacing:-1.5px;margin:14px 0 14px;color:#0f3527">Seus direitos, explicados</h1>
     <p style="font-size:clamp(16px,1.5vw,20px);line-height:1.6;max-width:56ch;color:#3a463f;margin:0">Leituras curtas e diretas sobre os temas do Direito do Trabalho que mais geram dúvida no dia a dia.</p>
@@ -67,8 +82,10 @@
   <section style="padding:clamp(20px,3vw,36px) 6vw clamp(56px,6vw,90px)">
     <div id="blog-filtros" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px"></div>
     <div class="r3" id="blog-cards" style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.5vw,30px)"></div>
-    <p style="text-align:center;font-size:15px;color:#7f9188;margin:44px 0 0">Novos artigos toda semana. Acompanhe também no <a href="https://www.instagram.com/ygorsoares_bjj/" target="_blank" rel="noopener" style="font-weight:600">Instagram</a>.</p>
+    <p style="text-align:center;font-size:15px;color:#616c66;margin:44px 0 0">Novos artigos toda semana. Acompanhe também no <a href="https://www.instagram.com/ygorsoares_bjj/" target="_blank" rel="noopener" style="font-weight:600">Instagram</a>.</p>
   </section>
+
+  </main>
 
   <!-- FOOTER -->
   <footer style="background:#0f3527;color:#d3ddd6;padding:clamp(56px,6vw,88px) 6vw 40px">
@@ -98,7 +115,7 @@
         </div>
       </div>
     </div>
-    <div style="padding-top:24px;font-size:13px;color:#7f9188">© 2026 Ygor Soares. Todos os direitos reservados. Conteúdo informativo e educacional.</div>
+    <div style="padding-top:24px;font-size:13px;color:#95a49b">© 2026 Ygor Soares. Todos os direitos reservados. Conteúdo informativo e educacional.</div>
   </footer>
 
 </div>
@@ -136,7 +153,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }, { threshold: 0.1 });
 
+  var semMovimento = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function prepararReveal(el, i) {
+    if (semMovimento) { el.style.opacity = '1'; el.style.transform = 'none'; return; }
     el.style.opacity = '0';
     el.style.transform = 'translateY(26px)';
     el.style.transition = 'opacity .6s cubic-bezier(.2,.7,.2,1) ' + (i * 60) + 'ms, transform .6s cubic-bezier(.2,.7,.2,1) ' + (i * 60) + 'ms';
@@ -236,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var rodape = document.createElement('div');
       rodape.style.cssText = 'margin-top:auto;padding-top:22px;display:flex;justify-content:space-between;align-items:center';
       var data = document.createElement('span');
-      data.style.cssText = 'font-size:13px;color:#7f9188';
+      data.style.cssText = 'font-size:13px;color:#616c66';
       data.textContent = formatarDataBR(p.data);
       var ler = document.createElement('span');
       ler.style.cssText = 'font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#a9852f';

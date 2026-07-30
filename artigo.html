@@ -40,9 +40,21 @@
     .rnav{flex-direction:column!important;align-items:flex-start!important;gap:12px!important}
     .rlinks{gap:22px!important}
   }
+
+  /* --- Acessibilidade: pular para o conteúdo --- */
+  .skip-link{position:absolute;left:8px;top:-48px;z-index:100;background:#0f3527;color:#fff;padding:11px 18px;border-radius:0 0 10px 10px;font-size:14px;font-weight:600;transition:top .2s}
+  .skip-link:focus{top:0;outline:2px solid #a9852f;outline-offset:2px}
+
+  /* --- prefers-reduced-motion --- */
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .card-lift:hover{transform:none}
+  }
 </style>
 </head>
 <body>
+
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
 <div style="max-width:100%;overflow:hidden">
 
@@ -61,12 +73,14 @@
     </div>
   </nav>
 
+  <main id="conteudo">
+
   <article style="padding:clamp(36px,5vw,68px) 6vw clamp(56px,6vw,90px)">
     <div style="max-width:720px;margin:0 auto">
-      <a href="blog.html" style="display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#7f9188;margin-bottom:26px">← Voltar ao blog</a>
+      <a href="blog.html" style="display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#616c66;margin-bottom:26px">← Voltar ao blog</a>
       <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap">
         <span id="artigo-tag" style="padding:5px 13px;background:#edf3ef;color:#1c5a41;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase">Direito do Trabalho</span>
-        <span id="artigo-meta" style="font-size:13px;color:#7f9188"></span>
+        <span id="artigo-meta" style="font-size:13px;color:#616c66"></span>
       </div>
       <h1 id="artigo-titulo" style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(30px,4.4vw,52px);line-height:1.08;letter-spacing:-1px;color:#0f3527;margin:0 0 20px">Carregando…</h1>
       <p id="artigo-intro" style="font-size:clamp(17px,1.6vw,21px);line-height:1.6;color:#3a463f;margin:0 0 14px;font-weight:500"></p>
@@ -74,7 +88,7 @@
         <div style="width:40px;height:40px;border-radius:50%;background:#0f3527;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;color:#a9852f;font-size:20px;flex:none">§</div>
         <div>
           <div style="font-size:14px;font-weight:600;color:#0f3527">Ygor Soares</div>
-          <div style="font-size:12.5px;color:#7f9188">Conteúdo sobre Direito do Trabalho</div>
+          <div style="font-size:12.5px;color:#616c66">Conteúdo sobre Direito do Trabalho</div>
         </div>
       </div>
 
@@ -95,6 +109,8 @@
       </div>
     </div>
   </article>
+
+  </main>
 
   <!-- FOOTER -->
   <footer style="background:#0f3527;color:#d3ddd6;padding:clamp(56px,6vw,88px) 6vw 40px">
@@ -124,7 +140,7 @@
         </div>
       </div>
     </div>
-    <div style="padding-top:24px;font-size:13px;color:#7f9188">© 2026 Ygor Soares. Todos os direitos reservados. Conteúdo informativo e educacional.</div>
+    <div style="padding-top:24px;font-size:13px;color:#95a49b">© 2026 Ygor Soares. Todos os direitos reservados. Conteúdo informativo e educacional.</div>
   </footer>
 
 </div>
