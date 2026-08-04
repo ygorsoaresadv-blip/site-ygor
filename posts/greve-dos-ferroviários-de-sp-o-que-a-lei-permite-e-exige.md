@@ -68,8 +68,6 @@ Pode haver aplicação de multa diária fixada judicialmente, como ocorreu no ca
 
 A greve dos ferroviários de São Paulo é um bom exemplo de como o direito de greve convive, na prática, com obrigações específicas voltadas à proteção da população usuária de serviços essenciais. O desfecho dessa negociação, e a eventual discussão judicial sobre a legalidade ou abusividade da paralisação, deve continuar se desenvolvendo nos próximos dias, à medida que sindicato, concessionária e governo estadual buscam uma solução.
 
-Se você quer continuar acompanhando casos que envolvem direitos trabalhistas e coletivos, segue o Ygor.blog no Instagram.
-
 **Fontes:**
 
 JORNAL DE BRASÍLIA. Ferroviários de SP confirmam greve por tempo indeterminado em três linhas a partir de terça (4). 4 ago. 2026. Disponível em: <https://jornaldebrasilia.com.br/noticias/brasil/ferroviarios-de-sp-confirmam-greve-por-tempo-indeterminado-em-tres-linhas-a-partir-de-terca-4/>
