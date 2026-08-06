@@ -8,7 +8,7 @@ tags: aeronautas, Lei 13475/2017, direitos trabalhistas aeronautas, jornada de
   comissário de bordo, piloto direitos trabalhistas, direito do trabalho,
   aviação civil
 ---
-## Aeronautas têm regras próprias: entenda por que a CLT comum não basta para quem trabalha voando
+##  Aeronautas têm regras próprias: entenda por que a CLT comum não basta para quem trabalha voando
 
 Pilotos, copilotos, comissários de bordo e mecânicos de voo convivem com uma rotina que a maioria dos trabalhadores nunca vai enfrentar: fuso horário mudando toda semana, noites inteiras acordado num voo intercontinental e decisões que, se malfeitas por causa de cansaço, colocam vidas em risco. Não é à toa que essa categoria não é regida pela CLT comum, e sim por uma legislação própria, construída especificamente para dar conta dessa realidade.
 
