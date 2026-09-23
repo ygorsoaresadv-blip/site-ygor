@@ -247,6 +247,24 @@ fieldset.campo legend{padding:0;margin-bottom:8px}
 .prosa code{background:var(--tile);padding:2px 7px;border-radius:6px;font-size:.9em}
 .prosa img{border-radius:18px}
 
+/* Texto justificado (padrão editorial do blog)
+   - só em parágrafos corridos; nunca em títulos, rótulos, datas ou textos centralizados
+   - hifenização em pt-BR evita espaços largos entre palavras em colunas estreitas
+   - a última linha de cada parágrafo continua alinhada à esquerda */
+.justificado,
+.prosa p,.prosa li,.prosa blockquote,
+.card__resumo{
+  text-align:justify;
+  text-justify:inter-word;
+  -webkit-hyphens:auto;
+  hyphens:auto;
+  hyphenate-limit-chars:7 3 3;
+  overflow-wrap:break-word;
+  text-wrap:wrap;
+}
+/* componentes com texto curto dentro de .prosa ficam alinhados à esquerda */
+.prosa .chips li,.prosa .passos p,.prosa .cargos,.prosa .votacao p,.prosa .composicao p,.prosa .sistema p,.prosa .contagem p{text-align:left;hyphens:manual;-webkit-hyphens:manual}
+
 .destaque-caixa{padding:20px 24px;border-radius:18px;background:var(--tile)}
 .destaque-caixa__rotulo{font-size:14px;font-weight:600;color:var(--ouro-texto);margin-bottom:6px}
 .destaque-caixa p{font-size:16px;line-height:1.6;color:var(--ink-2)}

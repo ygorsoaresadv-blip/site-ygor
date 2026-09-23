@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var texto = S.el('div', 'destaque__texto');
     texto.appendChild(S.el('p', 'eyebrow', 'Em destaque · ' + S.tema(p.tags)));
     texto.appendChild(S.el('h2', 'h2 h2--sm', p.titulo));
-    if (p.resumo) texto.appendChild(S.el('p', 'lead', S.resumir(p.resumo, 180)));
+    if (p.resumo) texto.appendChild(S.el('p', 'lead justificado', S.resumir(p.resumo, 180)));
     var ler = S.el('span', 'mais', 'Ler artigo ');
     ler.appendChild(S.el('span', 'chev', '›')).setAttribute('aria-hidden', 'true');
     texto.appendChild(ler);
