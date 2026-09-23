@@ -1,11 +1,11 @@
 # Site — Ygor Soares
 
-Site estático (HTML + CSS + JavaScript puro, sem build) com conteúdo sobre Direito do Trabalho: home, calculadora de rescisão, blog em markdown, área de dúvidas via WhatsApp e política de privacidade (LGPD).
+Site estático (HTML + CSS + JavaScript puro, sem build) com conteúdo sobre Direito do Trabalho: home, calculadora de rescisão, blog em markdown, área de dúvidas via WhatsApp, guia das eleições 2026 e política de privacidade (LGPD).
 
 ## Estrutura
 
 ```
-index.html            Home (hero, sobre, destaque da calculadora, últimos posts)
+index.html            Home (hero, sobre, calculadora, dúvidas, últimos posts, linha do tempo)
 calculadora.html      Calculadora de rescisão trabalhista (tempo real)
 blog.html             Listagem de artigos (lê posts/posts.json)
 artigo.html           Página de artigo (carrega posts/<slug>.md via ?post=)
@@ -14,7 +14,9 @@ duvidas.html          Formulário de dúvidas → abre o WhatsApp com a mensagem
 privacidade.html      Política de Privacidade (LGPD)
 posts/                Artigos em markdown + posts.json (índice)
 admin/                Painel Decap CMS (publicação de artigos)
-assets/css/fonts.css  Fontes locais (Archivo + Fraunces)
+assets/css/fonts.css  Fontes locais (Geist + Fraunces itálico)
+assets/css/site.css   Estilos compartilhados: cores, navegação, botões, cards, formulários, acordeões, rodapé, animações
+assets/js/site.js     Menu do celular, animações de entrada, contagem numérica, acordeões e utilitários
 assets/fonts/         Arquivos .woff2 das fontes
 assets/js/config.js   ⚙️ Configuração: WhatsApp, redes, widget do Instagram
 assets/js/md.js       Conversor de markdown usado pela página de artigo
@@ -57,7 +59,7 @@ O site é 100% estático — basta arrastar a pasta inteira em https://app.netli
 
 ## Como colocar a foto do "Sobre"
 
-Salve a foto como `assets/img/ygor.jpg` (retrato, proporção 4:5 — por exemplo 800×1000px). Enquanto ela não existir, a home mostra um placeholder elegante.
+A home usa `assets/img/ygor.jpg` (bloco "Sobre") e `assets/img/ygor-3.jpg` (bloco das redes). Para trocar, substitua os arquivos mantendo os nomes (retrato, de preferência 4:5).
 
 ## Como ativar o embed do Instagram
 

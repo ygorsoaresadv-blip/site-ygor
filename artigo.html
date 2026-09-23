@@ -5,149 +5,131 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Artigo · Ygor Soares</title>
 <meta name="description" content="Artigo do blog de Ygor Soares: Direito do Trabalho em linguagem acessível.">
+<meta name="theme-color" content="#fbfaf7">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230f3527'/%3E%3Ctext x='50' y='70' font-family='Georgia,serif' font-size='60' fill='%23a9852f' text-anchor='middle'%3E%C2%A7%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js');</script>
 <style>
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;background:#fcfbf8;color:#2c3531;font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-  a{color:#1c5a41;text-decoration:none}
-  a:hover{color:#a9852f}
-  ::selection{background:#a9852f;color:#fff}
-  p{text-align:justify;hyphens:auto}
-  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-  .card-lift:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(15,53,39,.1);color:inherit}
-  /* Corpo do artigo (markdown): tipografia do design */
-  .artigo-corpo h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(22px,2.6vw,30px);letter-spacing:-.4px;color:#0f3527;margin:34px 0 12px;line-height:1.2}
-  .artigo-corpo h3{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(19px,2.2vw,24px);letter-spacing:-.3px;color:#0f3527;margin:28px 0 10px;line-height:1.25}
-  .artigo-corpo p{margin:0 0 18px}
-  .artigo-corpo ul,.artigo-corpo ol{margin:0 0 18px;padding-left:26px}
-  .artigo-corpo li{margin:0 0 8px;text-align:justify;hyphens:auto}
-  .artigo-corpo blockquote{margin:0 0 18px;padding:14px 20px;border-left:3px solid #a9852f;background:#edf3ef;border-radius:0 12px 12px 0}
-  .artigo-corpo blockquote p{margin:0}
-  .artigo-corpo hr{border:none;border-top:1px solid rgba(15,53,39,.12);margin:30px 0}
-  .artigo-corpo code{background:#edf3ef;padding:2px 7px;border-radius:6px;font-size:.92em}
-  .artigo-corpo strong{color:#0f3527}
-  @media (max-width:820px){
-    .r2{grid-template-columns:1fr!important}
-    .rfoot{grid-template-columns:1fr!important;gap:30px!important}
-    .rcta{display:none!important}
-    .rlinks{gap:18px!important}
-    .rlinks a{font-size:12px!important;letter-spacing:.6px!important}
-    .rnav{gap:16px!important;padding-left:5vw!important;padding-right:5vw!important}
-  }
-  @media (max-width:560px){
-    .rnav{flex-direction:column!important;align-items:flex-start!important;gap:12px!important}
-    .rlinks{gap:22px!important}
-  }
+  .artigo{padding-block:clamp(32px,4.4vw,64px) clamp(72px,9.7vw,140px)}
+  .artigo__topo{display:flex;flex-direction:column;gap:16px;margin-bottom:32px}
+  .artigo__meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:15px;color:var(--muted)}
+  .artigo__meta .card__tag{font-size:15px}
+  .artigo__titulo{font-size:clamp(36px,4.4vw,56px);line-height:1.08}
+  .artigo__intro{font-size:clamp(19px,1.5vw,22px);line-height:1.5;color:var(--ink-2)}
+  .autor{display:flex;align-items:center;gap:12px;padding-block:20px;border-block:1px solid var(--line);margin-bottom:40px}
+  .autor__selo{flex:none;width:44px;height:44px;border-radius:50%;background:var(--verde-noite);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;font-size:22px;color:var(--ouro)}
+  .autor strong{display:block;font-size:15px;font-weight:600;color:var(--verde-noite)}
+  .autor span{font-size:14px;color:var(--muted)}
+  .artigo .chamada{margin-top:56px}
+  .relacionados{margin-top:56px;display:flex;flex-direction:column;gap:20px}
 
-  /* --- Acessibilidade: pular para o conteúdo --- */
-  .skip-link{position:absolute;left:8px;top:-48px;z-index:100;background:#0f3527;color:#fff;padding:11px 18px;border-radius:0 0 10px 10px;font-size:14px;font-weight:600;transition:top .2s}
-  .skip-link:focus{top:0;outline:2px solid #a9852f;outline-offset:2px}
-
-  /* --- prefers-reduced-motion --- */
-  @media (prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto}
-    .card-lift:hover{transform:none}
+  /* Esqueleto enquanto o texto carrega (pulso suave, sem brilho correndo) */
+  .esqueleto{display:flex;flex-direction:column;gap:14px}
+  .esqueleto i{display:block;height:18px;border-radius:9px;background:var(--hair)}
+  .esqueleto i:nth-child(3n){width:82%}
+  .esqueleto i:nth-child(4n){width:64%}
+  @media (prefers-reduced-motion:no-preference){
+    @keyframes pulso{50%{opacity:.5}}
+    .esqueleto i{animation:pulso 1.6s var(--ease) infinite}
   }
+  @media (max-width:760px){ .artigo.wrap--texto{padding-inline:20px} }
 </style>
 </head>
 <body>
 
 <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-<div style="max-width:100%;overflow:hidden">
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a href="index.html" class="logo" aria-label="Ygor Soares, início"><span class="logo__s" aria-hidden="true">§</span>Ygor Soares</a>
+    <nav class="nav__links" aria-label="Principal">
+      <a href="index.html#sobre">Sobre</a>
+      <a href="calculadora.html">Calculadora</a>
+      <a href="blog.html" aria-current="page">Blog</a>
+      <a href="duvidas.html">Dúvidas</a>
+    </nav>
+    <a class="nav__cta" href="https://www.instagram.com/ygorsoares_bjj/" target="_blank" rel="noopener">Seguir</a>
+    <button type="button" class="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="m-menu"><span></span><span></span></button>
+  </div>
+</header>
 
-  <nav class="rnav" style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px 6vw;background:rgba(252,251,248,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(15,53,39,.08)">
-    <a href="index.html" style="display:flex;align-items:center;gap:10px">
-      <span style="font-family:'Fraunces',serif;font-size:26px;color:#a9852f;line-height:1">§</span>
-      <span style="font-family:'Fraunces',serif;font-weight:600;font-size:19px;letter-spacing:-.3px;color:#0f3527">Ygor Soares</span>
-    </a>
-    <div style="display:flex;align-items:center;gap:34px">
-      <div class="rlinks" style="display:flex;gap:30px">
-        <a href="index.html" style="font-size:13px;font-weight:600;letter-spacing:1.3px;text-transform:uppercase;color:#2c3531">Início</a>
-        <a href="calculadora.html" style="font-size:13px;font-weight:600;letter-spacing:1.3px;text-transform:uppercase;color:#2c3531">Calculadora</a>
-        <a href="blog.html" style="font-size:13px;font-weight:600;letter-spacing:1.3px;text-transform:uppercase;color:#1c5a41;border-bottom:2px solid #a9852f;padding-bottom:3px">Blog</a>
-      </div>
-      <a class="rcta" href="https://www.instagram.com/ygorsoares_bjj/" target="_blank" rel="noopener" style="padding:10px 22px;background:#1c5a41;color:#fff;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase">Seguir</a>
+<nav id="m-menu" class="m-menu" aria-label="Menu" inert>
+  <a href="index.html">Início</a>
+  <a href="calculadora.html">Calculadora</a>
+  <a href="blog.html" aria-current="page">Blog</a>
+  <a href="duvidas.html">Dúvidas</a>
+  <a class="btn" href="https://www.instagram.com/ygorsoares_bjj/" target="_blank" rel="noopener">Seguir no Instagram</a>
+</nav>
+
+<main id="conteudo">
+  <article class="wrap wrap--texto artigo">
+
+    <div class="artigo__topo surgir">
+      <a href="blog.html" class="mais mais--voltar">Blog <span class="chev" aria-hidden="true">‹</span></a>
+      <div class="artigo__meta"><span id="artigo-tag" class="card__tag">Direito do Trabalho</span><span id="artigo-meta"></span></div>
+      <h1 id="artigo-titulo" class="h1 artigo__titulo">Carregando…</h1>
+      <p id="artigo-intro" class="artigo__intro"></p>
     </div>
-  </nav>
 
-  <main id="conteudo">
-
-  <article style="padding:clamp(36px,5vw,68px) 6vw clamp(56px,6vw,90px)">
-    <div style="max-width:720px;margin:0 auto">
-      <a href="blog.html" style="display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:#616c66;margin-bottom:26px">← Voltar ao blog</a>
-      <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap">
-        <span id="artigo-tag" style="padding:5px 13px;background:#edf3ef;color:#1c5a41;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase">Direito do Trabalho</span>
-        <span id="artigo-meta" style="font-size:13px;color:#616c66"></span>
-      </div>
-      <h1 id="artigo-titulo" style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(30px,4.4vw,52px);line-height:1.08;letter-spacing:-1px;color:#0f3527;margin:0 0 20px">Carregando…</h1>
-      <p id="artigo-intro" style="font-size:clamp(17px,1.6vw,21px);line-height:1.6;color:#3a463f;margin:0 0 14px;font-weight:500"></p>
-      <div style="display:flex;align-items:center;gap:12px;padding:18px 0 30px;border-bottom:1px solid rgba(15,53,39,.12);margin-bottom:36px">
-        <div style="width:40px;height:40px;border-radius:50%;background:#0f3527;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;color:#a9852f;font-size:20px;flex:none">§</div>
-        <div>
-          <div style="font-size:14px;font-weight:600;color:#0f3527">Ygor Soares</div>
-          <div style="font-size:12.5px;color:#616c66">Conteúdo sobre Direito do Trabalho</div>
-        </div>
-      </div>
-
-      <div id="artigo-corpo" class="artigo-corpo" style="font-size:clamp(16px,1.4vw,18px);line-height:1.75;color:#2c3531"></div>
-
-      <div style="margin-top:44px;background:#0f3527;color:#eef3ef;border-radius:18px;padding:clamp(24px,3vw,34px)">
-        <div style="font-family:'Fraunces',serif;font-size:23px;color:#fff;margin-bottom:10px">Ficou com uma dúvida sobre o seu caso?</div>
-        <p style="font-size:15px;line-height:1.65;color:#d3ddd6;margin:0 0 20px;max-width:52ch">Este conteúdo é educativo e não substitui a orientação individual. Se precisar, fale por um dos canais abaixo.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:12px">
-          <a id="artigo-whatsapp" href="https://wa.me/5511991680688" target="_blank" rel="noopener" style="padding:12px 24px;background:#a9852f;color:#0f3527;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase">WhatsApp</a>
-          <a href="duvidas.html" style="padding:12px 24px;border:1.5px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase">Enviar dúvida</a>
-        </div>
-      </div>
-
-      <div id="artigo-relacionados-wrap" style="margin-top:52px">
-        <div style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#a9852f;margin-bottom:20px">Continue lendo</div>
-        <div class="r2" id="artigo-relacionados" style="display:grid;grid-template-columns:1fr 1fr;gap:18px"></div>
-      </div>
+    <div class="autor">
+      <span class="autor__selo" aria-hidden="true">§</span>
+      <div><strong>Ygor Soares</strong><span>Conteúdo sobre Direito do Trabalho</span></div>
     </div>
+
+    <div id="artigo-corpo" class="prosa">
+      <div class="esqueleto" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+
+    <aside class="tile tile--escuro on-dark chamada reveal" aria-labelledby="chamada-titulo">
+      <h2 id="chamada-titulo" class="h3">Ficou com uma dúvida sobre o seu caso?</h2>
+      <p class="lead">Este conteúdo é educativo e não substitui a orientação individual. Se precisar, fale por um dos canais abaixo.</p>
+      <div class="acoes">
+        <a id="artigo-whatsapp" class="btn btn--claro" href="https://wa.me/5511991680688" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn--contorno" href="duvidas.html">Enviar dúvida</a>
+      </div>
+    </aside>
+
+    <section id="artigo-relacionados-wrap" class="relacionados" aria-labelledby="rel-titulo">
+      <h2 id="rel-titulo" class="h3">Continue lendo</h2>
+      <div class="cards cards--2" id="artigo-relacionados"></div>
+    </section>
+
   </article>
+</main>
 
-  </main>
-
-  <!-- FOOTER -->
-  <footer style="background:#0f3527;color:#d3ddd6;padding:clamp(56px,6vw,88px) 6vw 40px">
-    <div class="rfoot" style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.12)">
-      <div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
-          <span style="font-family:'Fraunces',serif;font-size:26px;color:#a9852f">§</span>
-          <span style="font-family:'Fraunces',serif;font-weight:600;font-size:20px;color:#fff">Ygor Soares</span>
-        </div>
-        <p style="font-size:15px;line-height:1.6;max-width:34ch;margin:0;color:#a9b6ad">Conteúdo sobre Direito do Trabalho, direto ao ponto: no site, no Instagram e no LinkedIn.</p>
+<footer class="rodape">
+  <div class="wrap">
+    <p class="rodape__aviso">Conteúdo informativo e educacional. Os valores da calculadora são estimativas e não substituem a análise de um advogado sobre o seu caso.</p>
+    <div class="rodape__grade">
+      <div class="rodape__col">
+        <span class="logo"><span class="logo__s" aria-hidden="true">§</span>Ygor Soares</span>
+        <span>Direito do Trabalho, direto ao ponto: no site, no Instagram e no LinkedIn.</span>
       </div>
-      <div>
-        <div style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#c8a84e;margin-bottom:16px">Navegue</div>
-        <div style="display:flex;flex-direction:column;gap:11px">
-          <a href="calculadora.html" style="color:#d3ddd6;font-size:15px">Calculadora de rescisão</a>
-          <a href="blog.html" style="color:#d3ddd6;font-size:15px">Blog</a>
-          <a href="duvidas.html" style="color:#d3ddd6;font-size:15px">Dúvidas</a>
-          <a href="privacidade.html" style="color:#d3ddd6;font-size:15px">Política de Privacidade</a>
-        </div>
-      </div>
-      <div>
-        <div style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#c8a84e;margin-bottom:16px">Canais</div>
-        <div style="display:flex;flex-direction:column;gap:11px">
-          <a href="https://www.instagram.com/ygorsoares_bjj/" target="_blank" rel="noopener" style="color:#d3ddd6;font-size:15px">Instagram</a>
-          <a href="https://www.linkedin.com/in/ygor-pinheiro-soares-b109342ba/" target="_blank" rel="noopener" style="color:#d3ddd6;font-size:15px">LinkedIn</a>
-          <a href="https://wa.me/5511991680688" target="_blank" rel="noopener" style="color:#d3ddd6;font-size:15px">WhatsApp</a>
-        </div>
-      </div>
+      <nav class="rodape__col" aria-label="Navegue">
+        <strong>Navegue</strong>
+        <a href="calculadora.html">Calculadora de rescisão</a>
+        <a href="blog.html">Blog</a>
+        <a href="duvidas.html">Dúvidas</a>
+        <a href="privacidade.html">Política de Privacidade</a>
+      </nav>
+      <nav class="rodape__col" aria-label="Canais">
+        <strong>Canais</strong>
+        <a href="https://www.instagram.com/ygorsoares_bjj/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/in/ygor-pinheiro-soares-b109342ba/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://wa.me/5511991680688" target="_blank" rel="noopener">WhatsApp</a>
+      </nav>
     </div>
-    <div style="padding-top:24px;font-size:13px;color:#95a49b">© 2026 Ygor Soares. Todos os direitos reservados. Conteúdo informativo e educacional.</div>
-  </footer>
-
-</div>
+    <p class="rodape__base">© 2026 Ygor Soares. Todos os direitos reservados.</p>
+  </div>
+</footer>
 
 <script src="assets/js/md.js"></script>
+<script src="assets/js/site.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+  var S = window.Site;
   var params = new URLSearchParams(location.search);
   // aceita ?post= (padrão) e ?a= (links antigos do design)
   var slug = (params.get('post') || params.get('a') || '').replace(/[\/\\]/g, '').replace(/\.\./g, '');
@@ -162,21 +144,13 @@ document.addEventListener('DOMContentLoaded', function () {
     relacionadosWrap: document.getElementById('artigo-relacionados-wrap')
   };
 
-  function formatarDataBR(iso) {
-    var partes = String(iso || '').split('-');
-    var meses = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
-    if (partes.length < 3) return '';
-    return Number(partes[2]) + ' de ' + meses[Number(partes[1]) - 1] + '. de ' + partes[0];
-  }
-
   function falhar(msg) {
     el.titulo.textContent = 'Artigo não encontrado';
+    el.intro.style.display = 'none';
     el.corpo.innerHTML = '';
-    var p = document.createElement('p');
-    p.textContent = msg;
-    var volta = document.createElement('p');
-    volta.innerHTML = '<a href="blog.html">← Voltar para o blog</a>';
-    el.corpo.appendChild(p);
+    el.corpo.appendChild(S.el('p', null, msg));
+    var volta = S.el('p');
+    volta.innerHTML = '<a href="blog.html">Voltar para o blog</a>';
     el.corpo.appendChild(volta);
     el.relacionadosWrap.style.display = 'none';
   }
@@ -193,12 +167,12 @@ document.addEventListener('DOMContentLoaded', function () {
       var titulo = meta.titulo || slug;
       document.title = titulo + ' · Ygor Soares';
       el.titulo.textContent = titulo;
-      el.tag.textContent = String(meta.tags || 'Direito do Trabalho').split(',')[0].trim();
+      el.tag.textContent = S.tema(meta.tags);
 
       var palavras = md.split(/\s+/).filter(Boolean).length;
       var minutos = Math.max(1, Math.round(palavras / 200));
       var partesMeta = [];
-      if (meta.data) partesMeta.push(formatarDataBR(meta.data));
+      if (meta.data) partesMeta.push(S.dataBR(meta.data));
       partesMeta.push(minutos + ' min de leitura');
       el.meta.textContent = partesMeta.join(' · ');
 
@@ -206,6 +180,7 @@ document.addEventListener('DOMContentLoaded', function () {
       else el.intro.style.display = 'none';
 
       el.corpo.innerHTML = markdownParaHtml(md);
+      el.corpo.classList.add('entrar');
     })
     .catch(function () { falhar('Este artigo pode ter sido movido ou ainda não foi publicado.'); });
 
@@ -218,24 +193,17 @@ document.addEventListener('DOMContentLoaded', function () {
         .filter(function (p) { return p.slug !== slug; })
         .slice(0, 2);
       if (!outros.length) { el.relacionadosWrap.style.display = 'none'; return; }
-      outros.forEach(function (p) {
-        var a = document.createElement('a');
-        a.href = 'artigo.html?post=' + encodeURIComponent(p.slug);
-        a.className = 'card-lift';
-        a.style.cssText = 'display:flex;flex-direction:column;background:#fff;border:1px solid rgba(15,53,39,.08);border-radius:14px;padding:20px;transition:transform .3s,box-shadow .3s;color:inherit';
-        var chip = document.createElement('span');
-        chip.style.cssText = 'align-self:flex-start;padding:4px 11px;background:#edf3ef;color:#1c5a41;border-radius:999px;font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase';
-        chip.textContent = (p.tags && p.tags[0]) || 'Direito do Trabalho';
-        var h3 = document.createElement('h3');
-        h3.style.cssText = "font-family:'Fraunces',serif;font-weight:500;font-size:18px;line-height:1.25;letter-spacing:-.3px;color:#0f3527;margin:12px 0 0";
-        h3.textContent = p.titulo;
-        a.appendChild(chip);
-        a.appendChild(h3);
-        el.relacionados.appendChild(a);
+      outros.forEach(function (p, i) {
+        var card = S.cardPost(p, { compacto: true });
+        card.classList.add('reveal');
+        card.style.setProperty('--d', (i * 80) + 'ms');
+        el.relacionados.appendChild(card);
+        S.observar(card);
       });
     })
     .catch(function () { el.relacionadosWrap.style.display = 'none'; });
 });
 </script>
 
-</body></html>
+</body>
+</html>

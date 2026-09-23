@@ -5,504 +5,474 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Eleições 2026: O Que Faz Cada Cargo e os Ministros do STF · Ygor Soares</title>
 <meta name="description" content="Guia completo das eleições 2026: funções de presidente, governador, senador e deputados, além de como funciona o STF e seus ministros.">
+<meta name="theme-color" content="#fbfaf7">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230f3527'/%3E%3Ctext x='50' y='70' font-family='Georgia,serif' font-size='60' fill='%23a9852f' text-anchor='middle'%3E%C2%A7%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap">
+<link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js');</script>
 <style>
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{margin:0;background:#fcfbf8;color:#2c3531;font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-  a{color:#1c5a41;text-decoration:none}
-  a:hover{color:#a9852f}
-  ::selection{background:#a9852f;color:#fff}
-  p{text-align:justify;hyphens:auto}
-  button{font-family:inherit}
-  .card-lift{transition:transform .25s,box-shadow .25s}
-  .card-lift:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(15,53,39,.1)}
-  .seg-btn{border:none;background:none;padding:9px 18px;border-radius:999px;font-size:12.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;cursor:pointer;color:#616c66}
-  .seg-btn.active{background:#0f3527;color:#fff}
-  .acc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease}
-  .acc-body.open{grid-template-rows:1fr}
-  .acc-body>div{overflow:hidden}
-  .acc-chevron{display:inline-block;transition:transform .3s ease}
-  .acc-chevron.open{transform:rotate(180deg)}
-  .faq-chevron.open{transform:rotate(45deg)}
-  .sistema-panel{display:none}
-  .sistema-panel.active{display:block}
-  @media (max-width:820px){
-    .r2{grid-template-columns:1fr!important}
-    .rfoot{grid-template-columns:1fr!important;gap:30px!important}
-    .comp-row{grid-template-columns:1fr!important;gap:4px!important}
-    .cargo-grid{grid-template-columns:repeat(2,1fr)!important}
+  .guia{padding-block:clamp(32px,4.4vw,64px) clamp(72px,9.7vw,140px)}
+  .guia__topo{display:flex;flex-direction:column;gap:16px;margin-bottom:32px}
+  .guia__meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:15px;color:var(--muted)}
+  .guia__meta .card__tag{font-size:15px}
+  .guia__titulo{font-size:clamp(34px,4.2vw,54px);line-height:1.08}
+  .guia__intro{font-size:clamp(18px,1.45vw,21px);line-height:1.55;color:var(--ink-2)}
+  .guia .prosa > .bloco{margin-top:32px}
+  .guia .prosa > .bloco + h2,.guia .prosa > .acc + h2{margin-top:56px}
+  .figura{border-radius:var(--raio);overflow:hidden}
+  .figura img{width:100%;height:clamp(220px,32vw,340px);object-fit:cover}
+
+  /* Contagem regressiva */
+  .contagem{padding:clamp(24px,3vw,36px);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .contagem__rotulo{font-size:15px;font-weight:600;color:var(--ouro-escuro-bg)}
+  .contagem__data{font-size:14px;color:var(--claro-3);margin-top:2px}
+  .contagem__nums{display:flex;gap:clamp(14px,2.2vw,28px);margin:0}
+  .contagem__nums div{display:flex;flex-direction:column-reverse;align-items:center;min-width:52px}
+  .contagem__nums dd{margin:0;font-size:clamp(32px,3.4vw,44px);font-weight:600;letter-spacing:-.02em;line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+  .contagem__nums div:last-child dd{color:var(--ouro-escuro-bg)}
+  .contagem__nums dt{font-size:12px;color:var(--claro-3);margin-top:6px}
+
+  /* Atalhos dos cargos */
+  .cargos{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .cargo{display:flex;flex-direction:column;gap:6px;padding:18px 20px;border-radius:20px;background:var(--tile);color:var(--ink);transition:transform .35s var(--ease-out),background-color .2s var(--ease)}
+  .cargo__tipo{font-size:13px;font-weight:600;color:var(--ouro-texto)}
+  .cargo__nome{font-size:17px;font-weight:600;line-height:1.2;letter-spacing:-.01em;color:var(--verde-noite)}
+  .cargo__info{margin-top:auto;font-size:14px;color:var(--muted)}
+  @media (hover:hover) and (pointer:fine){ .cargo:hover{transform:translateY(-3px);background:var(--hair)} }
+
+  /* Majoritário × proporcional */
+  .sistema{padding:clamp(20px,2.8vw,32px);display:flex;flex-direction:column;gap:20px}
+  .sistema .segmentado{max-width:360px}
+  .colunas{display:flex;align-items:flex-end;gap:10px;height:96px}
+  .colunas i{display:block;width:44px;height:var(--h);border-radius:8px 8px 0 0;background:var(--c,var(--hair));transform-origin:bottom center}
+  .sistema__painel[hidden]{display:none}
+  .sistema__painel p{font-size:15px;line-height:1.6;color:var(--muted);margin-top:14px}
+  @media (prefers-reduced-motion:no-preference){
+    @keyframes crescer{from{transform:scaleY(0)}to{transform:none}}
+    .sistema__painel:not([hidden]) .colunas i{animation:crescer .7s var(--ease-out) both}
+    .sistema__painel .colunas i:nth-child(2){animation-delay:.06s}
+    .sistema__painel .colunas i:nth-child(3){animation-delay:.12s}
+    .sistema__painel .colunas i:nth-child(4){animation-delay:.18s}
+    .sistema__painel .colunas i:nth-child(5){animation-delay:.24s}
+    .js .sistema:not(.is-in) .colunas i{animation-play-state:paused}
   }
-  @media (prefers-reduced-motion:reduce){
-    html{scroll-behavior:auto}
-    .card-lift:hover{transform:none}
+
+  /* Cargos em acordeão */
+  .acc--cartoes .acc__btn{align-items:flex-start;gap:16px}
+  .cargo-acc__num{flex:none;width:28px;padding-top:3px;font-size:15px;font-weight:600;color:var(--ouro-texto);font-variant-numeric:tabular-nums}
+  .cargo-acc__txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+  .cargo-acc__txt small{font-size:14px;font-weight:400;color:var(--muted);letter-spacing:0}
+  .acc--cartoes .acc__icone{margin-top:9px}
+  .acc__conteudo > * + *{margin-top:14px}
+  .guia .acc__conteudo ul{padding-left:1.2em}
+  .guia .acc__conteudo li + li{margin-top:6px}
+  .acc__conteudo li::marker{color:var(--ouro-texto)}
+  .acc--cartoes .destaque-caixa{background:#fff}
+
+  /* Passos da indicação ao STF */
+  .passos{list-style:none;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+  .passos li{display:flex;flex-direction:column;gap:6px}
+  .passos__num{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+  .passos__num span{flex:none;width:30px;height:30px;border-radius:50%;background:var(--verde-noite);color:var(--ouro-escuro-bg);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600}
+  .passos__num::after{content:"";flex:1;height:2px;background:var(--hair)}
+  .passos li:last-child .passos__num::after{display:none}
+  .passos strong{font-size:16px;color:var(--verde-noite)}
+  .passos p{font-size:15px;line-height:1.5;color:var(--muted)}
+
+  /* Composição do STF */
+  .composicao{padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px}
+  .composicao__rotulo{font-size:15px;font-weight:600;color:var(--ouro-escuro-bg)}
+  .cadeiras{display:flex;flex-wrap:wrap;gap:10px}
+  .cadeiras i{width:34px;height:34px;border-radius:50%;background:var(--ouro)}
+  .cadeiras i.vaga{background:transparent;box-shadow:inset 0 0 0 2px rgba(255,255,255,.55)}
+  .composicao p{font-size:15px;line-height:1.6;color:var(--claro-2)}
+  @media (prefers-reduced-motion:no-preference){
+    .js .composicao .cadeiras i{opacity:0;transform:scale(.6);transition:opacity .4s var(--ease-out),transform .5s var(--ease-out)}
+    .js .composicao.is-in .cadeiras i{opacity:1;transform:none}
+    .js .composicao.is-in .cadeiras i:nth-child(1){transition-delay:.15s}
+    .js .composicao.is-in .cadeiras i:nth-child(2){transition-delay:.19s}
+    .js .composicao.is-in .cadeiras i:nth-child(3){transition-delay:.23s}
+    .js .composicao.is-in .cadeiras i:nth-child(4){transition-delay:.27s}
+    .js .composicao.is-in .cadeiras i:nth-child(5){transition-delay:.31s}
+    .js .composicao.is-in .cadeiras i:nth-child(6){transition-delay:.35s}
+    .js .composicao.is-in .cadeiras i:nth-child(7){transition-delay:.39s}
+    .js .composicao.is-in .cadeiras i:nth-child(8){transition-delay:.43s}
+    .js .composicao.is-in .cadeiras i:nth-child(9){transition-delay:.47s}
+    .js .composicao.is-in .cadeiras i:nth-child(10){transition-delay:.51s}
+    .js .composicao.is-in .cadeiras i:nth-child(11){transition-delay:.65s}
   }
-  .skip-link{position:absolute;left:8px;top:-48px;z-index:100;background:#0f3527;color:#fff;padding:11px 18px;border-radius:0 0 10px 10px;font-size:14px;font-weight:600;transition:top .2s}
-  .skip-link:focus{top:0;outline:2px solid #a9852f;outline-offset:2px}
+
+  /* Votação */
+  .votacao{padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:16px}
+  .votacao__rotulo{font-size:15px;font-weight:600;color:var(--ouro-texto)}
+  .votacao__linha{display:flex;flex-direction:column;gap:6px}
+  .votacao__linha div:first-child{display:flex;justify-content:space-between;font-size:15px}
+  .votacao__linha strong{font-weight:600;color:var(--verde-noite)}
+  .votacao__linha span{color:var(--muted);font-variant-numeric:tabular-nums}
+  .barra{height:12px;border-radius:6px;background:#fff;overflow:hidden}
+  .barra i{display:block;height:100%;width:var(--w);background:var(--c);border-radius:6px;transform-origin:left center}
+  .votacao .nota{padding-top:14px;border-top:1px solid var(--line)}
+  @media (prefers-reduced-motion:no-preference){
+    .js .votacao .barra i{transform:scaleX(0);transition:transform 1s var(--ease-out)}
+    .js .votacao.is-in .barra i{transform:none}
+    .js .votacao.is-in .votacao__linha:nth-of-type(1) .barra i{transition-delay:.2s}
+    .js .votacao.is-in .votacao__linha:nth-of-type(2) .barra i{transition-delay:.32s}
+    .js .votacao.is-in .votacao__linha:nth-of-type(3) .barra i{transition-delay:.44s}
+  }
+
+  /* Comparativo */
+  .tabela{width:100%;border-collapse:collapse;font-size:15px;line-height:1.5;border-radius:20px;overflow:hidden;background:var(--tile)}
+  .tabela th,.tabela td{text-align:left;vertical-align:top;padding:16px 20px}
+  .tabela thead th{background:var(--verde-noite);color:var(--ouro-escuro-bg);font-size:14px;font-weight:600}
+  .tabela tbody tr + tr td,.tabela tbody tr + tr th{border-top:1px solid var(--line)}
+  .tabela tbody th{font-weight:600;color:var(--verde-noite)}
+  .tabela td{color:var(--ink-2)}
+
+  .fontes .acc__btn{font-size:15px;color:var(--muted)}
+  .fontes .acc__conteudo{display:flex;flex-direction:column;gap:10px;font-size:14px;color:var(--muted)}
+  .fontes a{word-break:break-all}
+
+  @media (max-width:760px){
+    .guia.wrap--texto{padding-inline:20px}
+    .cargos{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .passos{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .passos li:nth-child(2) .passos__num::after{display:none}
+    .tabela thead{display:none}
+    .tabela,.tabela tbody,.tabela tr,.tabela th,.tabela td{display:block}
+    .tabela th,.tabela td{padding:4px 20px}
+    .tabela tbody tr{padding-block:14px}
+    .tabela td::before{content:attr(data-rotulo) ": ";font-weight:500;color:var(--muted)}
+  }
 </style>
 </head>
 <body>
 
 <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-<div style="max-width:100%;overflow:hidden">
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a href="index.html" class="logo" aria-label="Ygor Soares, início"><span class="logo__s" aria-hidden="true">§</span>Ygor Soares</a>
+    <nav class="nav__links" aria-label="Principal">
+      <a href="index.html#sobre">Sobre</a>
+      <a href="calculadora.html">Calculadora</a>
+      <a href="blog.html" aria-current="page">Blog</a>
+      <a href="duvidas.html">Dúvidas</a>
+    </nav>
+    <a class="nav__cta" href="https://www.instagram.com/ygorsoares_bjj/" target="_blank" rel="noopener">Seguir</a>
+    <button type="button" class="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="m-menu"><span></span><span></span></button>
+  </div>
+</header>
 
-  <nav style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px 6vw;background:rgba(252,251,248,.86);backdrop-filter:blur(12px);border-bottom:1px solid rgba(15,53,39,.08)">
-    <a href="index.html" style="display:flex;align-items:center;gap:10px">
-      <span style="font-family:'Fraunces',serif;font-size:26px;color:#a9852f;line-height:1">§</span>
-      <span style="font-family:'Fraunces',serif;font-weight:600;font-size:19px;letter-spacing:-.3px;color:#0f3527">Ygor Soares</span>
-    </a>
-    <div style="display:flex;align-items:center;gap:30px">
-      <a href="blog.html" style="font-size:13px;font-weight:600;letter-spacing:1.3px;text-transform:uppercase;color:#1c5a41;border-bottom:2px solid #a9852f;padding-bottom:3px">Blog</a>
-      <a href="https://www.instagram.com/ygorsoares_bjj/" target="_blank" rel="noopener" style="padding:10px 22px;background:#1c5a41;color:#fff;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase">Seguir</a>
+<nav id="m-menu" class="m-menu" aria-label="Menu" inert>
+  <a href="index.html">Início</a>
+  <a href="calculadora.html">Calculadora</a>
+  <a href="blog.html" aria-current="page">Blog</a>
+  <a href="duvidas.html">Dúvidas</a>
+  <a class="btn" href="https://www.instagram.com/ygorsoares_bjj/" target="_blank" rel="noopener">Seguir no Instagram</a>
+</nav>
+
+<main id="conteudo">
+  <article class="wrap wrap--texto guia">
+
+    <div class="guia__topo surgir">
+      <a href="blog.html" class="mais mais--voltar">Blog <span class="chev" aria-hidden="true">‹</span></a>
+      <div class="guia__meta"><span class="card__tag">Eleições 2026</span><span>1º turno · 4 de outubro de 2026</span></div>
+      <h1 class="h1 guia__titulo">Eleições 2026: o que cada cargo faz de verdade, e por que entender o STF também importa</h1>
+      <p class="guia__intro">Em outubro deste ano, mais de 150 milhões de brasileiros vão às urnas para escolher seis cargos diferentes numa única eleição. É fácil confundir as funções de cada um, votar sem saber exatamente o que aquele cargo faz no dia a dia, ou nem perceber que existe outro poder inteiro, o Judiciário, que não é eleito nas urnas mas influencia diretamente a vida de qualquer brasileiro. Este guia organiza tudo isso de forma direta: o que cada cargo faz, quem pode concorrer, quanto tempo dura o mandato e como funciona o Supremo Tribunal Federal, a instância que, mesmo sem voto popular, tem a palavra final sobre praticamente qualquer assunto jurídico do país.</p>
     </div>
-  </nav>
 
-  <main id="conteudo">
-    <article style="padding:clamp(36px,5vw,68px) 6vw clamp(56px,6vw,90px)">
-      <div style="max-width:760px;margin:0 auto">
+    <div class="prosa">
 
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap">
-          <span style="padding:5px 13px;background:#edf3ef;color:#1c5a41;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase">Eleições 2026</span>
-          <span style="font-size:13px;color:#616c66">1º turno · 4 de outubro de 2026</span>
+      <section class="tile tile--escuro on-dark contagem bloco reveal" aria-label="Contagem regressiva para o 1º turno">
+        <div>
+          <p class="contagem__rotulo">Faltam para o 1º turno</p>
+          <p class="contagem__data">4 de outubro de 2026</p>
         </div>
+        <dl class="contagem__nums">
+          <div><dt>dias</dt><dd id="cd-dias">–</dd></div>
+          <div><dt>horas</dt><dd id="cd-horas">–</dd></div>
+          <div><dt>min</dt><dd id="cd-min">–</dd></div>
+          <div><dt>seg</dt><dd id="cd-seg">–</dd></div>
+        </dl>
+      </section>
 
-        <h1 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(30px,4.4vw,50px);line-height:1.1;letter-spacing:-1px;color:#0f3527;margin:0 0 20px">Eleições 2026: o que cada cargo faz de verdade, e por que entender o STF também importa</h1>
+      <figure class="figura bloco reveal" style="margin-inline:0"><img src="assets/img/urna-eletronica.jpg" alt="Urna eletrônica da Justiça Eleitoral" loading="lazy" decoding="async"></figure>
 
-        <p style="font-size:clamp(17px,1.6vw,20px);line-height:1.65;color:#3a463f;margin:0 0 28px;font-weight:500">Em outubro deste ano, mais de 150 milhões de brasileiros vão às urnas para escolher seis cargos diferentes numa única eleição. É fácil confundir as funções de cada um, votar sem saber exatamente o que aquele cargo faz no dia a dia, ou nem perceber que existe outro poder inteiro, o Judiciário, que não é eleito nas urnas mas influencia diretamente a vida de qualquer brasileiro. Este guia organiza tudo isso de forma direta: o que cada cargo faz, quem pode concorrer, quanto tempo dura o mandato e como funciona o Supremo Tribunal Federal, a instância que, mesmo sem voto popular, tem a palavra final sobre praticamente qualquer assunto jurídico do país.</p>
+      <h2>Calendário e cargos em disputa em 2026</h2>
+      <p>O primeiro turno das Eleições Gerais de 2026 acontece em 4 de outubro. Havendo necessidade de segundo turno para presidente ou governador, a votação ocorre em 25 de outubro. Nessa eleição, o eleitor vota seis vezes: para presidente, governador, senador (duas vezes, já que São Paulo elege dois senadores neste pleito), deputado federal e deputado estadual ou distrital.</p>
 
-        <div style="background:#0f3527;border-radius:18px;padding:clamp(20px,3vw,30px);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:34px">
-          <div>
-            <div style="font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:#a9852f;margin-bottom:6px">Faltam para o 1º turno</div>
-            <div style="font-size:13px;color:#d3ddd6">4 de outubro de 2026</div>
-          </div>
-          <div style="display:flex;gap:18px">
-            <div style="text-align:center"><div id="cd-dias" style="font-family:'Fraunces',serif;font-weight:600;font-size:clamp(28px,4vw,38px);color:#fff;line-height:1;font-variant-numeric:tabular-nums">–</div><div style="font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:#a9b6ad;margin-top:4px">dias</div></div>
-            <div style="text-align:center"><div id="cd-horas" style="font-family:'Fraunces',serif;font-weight:600;font-size:clamp(28px,4vw,38px);color:#fff;line-height:1;font-variant-numeric:tabular-nums">–</div><div style="font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:#a9b6ad;margin-top:4px">horas</div></div>
-            <div style="text-align:center"><div id="cd-min" style="font-family:'Fraunces',serif;font-weight:600;font-size:clamp(28px,4vw,38px);color:#fff;line-height:1;font-variant-numeric:tabular-nums">–</div><div style="font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:#a9b6ad;margin-top:4px">min</div></div>
-            <div style="text-align:center"><div id="cd-seg" style="font-family:'Fraunces',serif;font-weight:600;font-size:clamp(28px,4vw,38px);color:#a9852f;line-height:1;font-variant-numeric:tabular-nums">–</div><div style="font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:#a9b6ad;margin-top:4px">seg</div></div>
-          </div>
+      <nav class="cargos bloco reveal" aria-label="Ir para um cargo">
+        <a class="cargo" href="#presidente"><span class="cargo__tipo">Majoritário</span><span class="cargo__nome">Presidente da República</span><span class="cargo__info">1 vaga · 4 anos</span></a>
+        <a class="cargo" href="#governador"><span class="cargo__tipo">Majoritário</span><span class="cargo__nome">Governador</span><span class="cargo__info">27 vagas · 4 anos</span></a>
+        <a class="cargo" href="#senador"><span class="cargo__tipo">Majoritário</span><span class="cargo__nome">Senador</span><span class="cargo__info">54 de 81 vagas · 8 anos</span></a>
+        <a class="cargo" href="#dep-federal"><span class="cargo__tipo">Proporcional</span><span class="cargo__nome">Deputado Federal</span><span class="cargo__info">513 vagas · 4 anos</span></a>
+        <a class="cargo" href="#dep-estadual"><span class="cargo__tipo">Proporcional</span><span class="cargo__nome">Deputado Estadual e Distrital</span><span class="cargo__info">1.035 + 24 vagas · 4 anos</span></a>
+      </nav>
+
+      <p>No sistema majoritário, vence quem tem mais votos, simples assim, sendo esse o critério para presidente, governador e senador. Já no sistema proporcional, usado para deputados, as cadeiras são distribuídas entre os partidos e federações conforme o total de votos que cada legenda recebe, e depois preenchidas pelos candidatos mais votados dentro de cada partido. Isso explica por que, às vezes, um candidato com muitos votos individuais não se elege, enquanto outro com menos votos consegue a vaga, porque o desempenho do partido como um todo também conta.</p>
+
+      <section class="tile sistema bloco reveal" aria-label="Comparação entre sistemas eleitorais">
+        <div class="segmentado" role="group" aria-label="Sistema eleitoral">
+          <button type="button" id="btn-maj" aria-pressed="true" aria-controls="panel-maj">Majoritário</button>
+          <button type="button" id="btn-prop" aria-pressed="false" aria-controls="panel-prop">Proporcional</button>
         </div>
-
-        <div style="margin-bottom:44px;border-radius:18px;overflow:hidden">
-          <img src="assets/img/urna-eletronica.jpg" alt="Urna eletrônica da Justiça Eleitoral" style="width:100%;height:320px;object-fit:cover;display:block">
+        <div class="sistema__painel" id="panel-maj">
+          <div class="colunas" aria-hidden="true"><i style="--h:100%;--c:var(--ouro)"></i><i style="--h:62%"></i><i style="--h:44%"></i><i style="--h:30%"></i></div>
+          <p>O candidato com mais votos (barra dourada) vence a eleição inteira — usado para presidente, governador e senador.</p>
         </div>
-
-        <h2 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(24px,2.8vw,32px);letter-spacing:-.4px;color:#0f3527;margin:0 0 16px;line-height:1.2">Calendário e cargos em disputa em 2026</h2>
-
-        <p style="font-size:clamp(16px,1.4vw,18px);line-height:1.75;color:#2c3531;margin:0 0 28px">O primeiro turno das Eleições Gerais de 2026 acontece em 4 de outubro. Havendo necessidade de segundo turno para presidente ou governador, a votação ocorre em 25 de outubro. Nessa eleição, o eleitor vota seis vezes: para presidente, governador, senador (duas vezes, já que São Paulo elege dois senadores neste pleito), deputado federal e deputado estadual ou distrital.</p>
-
-        <div class="cargo-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:32px">
-          <a class="card-lift" href="#presidente" style="display:block;background:#fff;border:1px solid rgba(15,53,39,.1);border-radius:14px;padding:16px;color:inherit">
-            <div style="font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#a9852f;margin-bottom:6px">Majoritário</div>
-            <div style="font-family:'Fraunces',serif;font-weight:500;font-size:16px;color:#0f3527;line-height:1.2;margin-bottom:8px">Presidente da República</div>
-            <div style="font-size:12.5px;color:#616c66">1 vaga · 4 anos</div>
-          </a>
-          <a class="card-lift" href="#governador" style="display:block;background:#fff;border:1px solid rgba(15,53,39,.1);border-radius:14px;padding:16px;color:inherit">
-            <div style="font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#a9852f;margin-bottom:6px">Majoritário</div>
-            <div style="font-family:'Fraunces',serif;font-weight:500;font-size:16px;color:#0f3527;line-height:1.2;margin-bottom:8px">Governador</div>
-            <div style="font-size:12.5px;color:#616c66">27 vagas · 4 anos</div>
-          </a>
-          <a class="card-lift" href="#senador" style="display:block;background:#fff;border:1px solid rgba(15,53,39,.1);border-radius:14px;padding:16px;color:inherit">
-            <div style="font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#a9852f;margin-bottom:6px">Majoritário</div>
-            <div style="font-family:'Fraunces',serif;font-weight:500;font-size:16px;color:#0f3527;line-height:1.2;margin-bottom:8px">Senador</div>
-            <div style="font-size:12.5px;color:#616c66">54 de 81 vagas · 8 anos</div>
-          </a>
-          <a class="card-lift" href="#dep-federal" style="display:block;background:#fff;border:1px solid rgba(15,53,39,.1);border-radius:14px;padding:16px;color:inherit">
-            <div style="font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#a9852f;margin-bottom:6px">Proporcional</div>
-            <div style="font-family:'Fraunces',serif;font-weight:500;font-size:16px;color:#0f3527;line-height:1.2;margin-bottom:8px">Deputado Federal</div>
-            <div style="font-size:12.5px;color:#616c66">513 vagas · 4 anos</div>
-          </a>
-          <a class="card-lift" href="#dep-estadual" style="display:block;background:#fff;border:1px solid rgba(15,53,39,.1);border-radius:14px;padding:16px;color:inherit">
-            <div style="font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#a9852f;margin-bottom:6px">Proporcional</div>
-            <div style="font-family:'Fraunces',serif;font-weight:500;font-size:16px;color:#0f3527;line-height:1.2;margin-bottom:8px">Deputado Estadual e Distrital</div>
-            <div style="font-size:12.5px;color:#616c66">1.035 + 24 vagas · 4 anos</div>
-          </a>
+        <div class="sistema__painel" id="panel-prop" hidden>
+          <div class="colunas" aria-hidden="true"><i style="--h:100%;--c:var(--verde-noite);width:36px"></i><i style="--h:78%;--c:var(--verde);width:36px"></i><i style="--h:60%;--c:var(--ouro);width:36px"></i><i style="--h:38%;--c:var(--ouro-escuro-bg);width:36px"></i><i style="--h:22%;width:36px"></i></div>
+          <p>As cadeiras se dividem entre os partidos conforme o total de votos de cada legenda, e depois vão para os candidatos mais votados dentro dela — usado para deputados.</p>
         </div>
+      </section>
 
-        <p style="font-size:clamp(16px,1.4vw,18px);line-height:1.75;color:#2c3531;margin:0 0 20px">No sistema majoritário, vence quem tem mais votos, simples assim, sendo esse o critério para presidente, governador e senador. Já no sistema proporcional, usado para deputados, as cadeiras são distribuídas entre os partidos e federações conforme o total de votos que cada legenda recebe, e depois preenchidas pelos candidatos mais votados dentro de cada partido. Isso explica por que, às vezes, um candidato com muitos votos individuais não se elege, enquanto outro com menos votos consegue a vaga, porque o desempenho do partido como um todo também conta.</p>
-
-        <div style="background:#fff;border:1px solid rgba(15,53,39,.1);border-radius:16px;padding:22px;margin-bottom:48px">
-          <div style="display:inline-flex;background:#edf3ef;border-radius:999px;padding:4px;margin-bottom:18px">
-            <button class="seg-btn active" id="btn-maj" onclick="setSistema('maj')">Majoritário</button>
-            <button class="seg-btn" id="btn-prop" onclick="setSistema('prop')">Proporcional</button>
-          </div>
-          <div class="sistema-panel active" id="panel-maj">
-            <div style="display:flex;align-items:flex-end;gap:10px;height:90px;margin-bottom:14px">
-              <div style="width:48px;background:#a9852f;border-radius:8px 8px 0 0;height:100%"></div>
-              <div style="width:48px;background:#edf3ef;border-radius:8px 8px 0 0;height:62%"></div>
-              <div style="width:48px;background:#edf3ef;border-radius:8px 8px 0 0;height:44%"></div>
-              <div style="width:48px;background:#edf3ef;border-radius:8px 8px 0 0;height:30%"></div>
-            </div>
-            <div style="font-size:13.5px;color:#616c66;line-height:1.6">O candidato com mais votos (barra dourada) vence a eleição inteira — usado para presidente, governador e senador.</div>
-          </div>
-          <div class="sistema-panel" id="panel-prop">
-            <div style="display:flex;align-items:flex-end;gap:10px;height:90px;margin-bottom:14px">
-              <div style="width:36px;background:#0f3527;border-radius:8px 8px 0 0;height:100%"></div>
-              <div style="width:36px;background:#1c5a41;border-radius:8px 8px 0 0;height:78%"></div>
-              <div style="width:36px;background:#a9852f;border-radius:8px 8px 0 0;height:60%"></div>
-              <div style="width:36px;background:#c8a84e;border-radius:8px 8px 0 0;height:38%"></div>
-              <div style="width:36px;background:#edf3ef;border-radius:8px 8px 0 0;height:22%"></div>
-            </div>
-            <div style="font-size:13.5px;color:#616c66;line-height:1.6">As cadeiras se dividem entre os partidos conforme o total de votos de cada legenda, e depois vão para os candidatos mais votados dentro dela — usado para deputados.</div>
-          </div>
-        </div>
-
-        <section id="presidente" style="background:#fff;border:1px solid rgba(15,53,39,.1);border-radius:16px;margin-bottom:18px;overflow:hidden;scroll-margin-top:90px">
-          <button class="acc-toggle" data-target="body-presidente" style="width:100%;display:flex;align-items:center;gap:16px;padding:20px 22px;background:none;border:none;cursor:pointer;text-align:left">
-            <div style="font-family:'Fraunces',serif;font-size:15px;color:#a9852f;flex:none;width:26px">01</div>
-            <div style="flex:1;min-width:0">
-              <div style="font-family:'Fraunces',serif;font-weight:500;font-size:19px;color:#0f3527;letter-spacing:-.3px">Presidente da República</div>
-              <div style="font-size:12.5px;color:#616c66;margin-top:3px">1 vaga · mandato de 4 anos · idade mínima 35 anos</div>
-            </div>
-            <div class="acc-chevron open" style="flex:none;color:#a9852f;font-size:20px;line-height:1">⌄</div>
-          </button>
-          <div class="acc-body open" id="body-presidente"><div>
-            <div style="padding:0 22px 24px">
-              <p style="font-size:16px;line-height:1.7;color:#2c3531;margin:0 0 14px">O presidente é a autoridade máxima do Poder Executivo federal, e acumula duas funções distintas. Como chefe de Estado, representa o Brasil nas relações internacionais, assina tratados e recebe autoridades estrangeiras. Como chefe de Governo, comanda a administração federal, coordena as políticas públicas nacionais e é o comandante supremo das Forças Armadas.</p>
-              <ul style="margin:0 0 14px;padding-left:22px">
-                <li style="font-size:15.5px;line-height:1.6;color:#2c3531;margin-bottom:6px">Propor projetos de lei sobre matérias de competência da União, como criação ou extinção de ministérios</li>
-                <li style="font-size:15.5px;line-height:1.6;color:#2c3531;margin-bottom:6px">Sancionar ou vetar leis aprovadas pelo Congresso Nacional</li>
-                <li style="font-size:15.5px;line-height:1.6;color:#2c3531;margin-bottom:6px">Nomear ministros de Estado</li>
-                <li style="font-size:15.5px;line-height:1.6;color:#2c3531;margin-bottom:6px">Indicar autoridades para cargos-chave, incluindo ministros do STF, do STJ e o presidente do Banco Central, sujeitos à aprovação do Senado</li>
-                <li style="font-size:15.5px;line-height:1.6;color:#2c3531;margin-bottom:6px">Editar medidas provisórias em casos de relevância e urgência</li>
-              </ul>
-              <div style="padding:14px 18px;background:#edf3ef;border-left:3px solid #a9852f;border-radius:0 12px 12px 0">
-                <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#1c5a41;margin-bottom:6px">Exemplo prático</div>
-                <p style="font-size:14.5px;line-height:1.6;color:#2c3531;margin:0">Quando o governo federal decide lançar um programa de infraestrutura nacional, como a construção de uma nova rodovia federal, é o Poder Executivo, chefiado pelo presidente, quem planeja, orçamenta e executa essa obra, enquanto cabe ao Congresso aprovar o orçamento que viabiliza o projeto.</p>
-              </div>
-            </div>
-          </div></div>
+      <div class="acc acc--cartoes bloco" id="cargos-acc">
+        <section class="acc__item is-open" id="presidente">
+          <h3><button type="button" class="acc__btn" aria-controls="body-presidente"><span class="cargo-acc__num">01</span><span class="cargo-acc__txt">Presidente da República<small>1 vaga · mandato de 4 anos · idade mínima 35 anos</small></span><svg class="acc__icone" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3>
+          <div class="acc__painel" id="body-presidente"><div class="acc__inner"><div class="acc__conteudo">
+            <p>O presidente é a autoridade máxima do Poder Executivo federal, e acumula duas funções distintas. Como chefe de Estado, representa o Brasil nas relações internacionais, assina tratados e recebe autoridades estrangeiras. Como chefe de Governo, comanda a administração federal, coordena as políticas públicas nacionais e é o comandante supremo das Forças Armadas.</p>
+            <ul>
+              <li>Propor projetos de lei sobre matérias de competência da União, como criação ou extinção de ministérios</li>
+              <li>Sancionar ou vetar leis aprovadas pelo Congresso Nacional</li>
+              <li>Nomear ministros de Estado</li>
+              <li>Indicar autoridades para cargos-chave, incluindo ministros do STF, do STJ e o presidente do Banco Central, sujeitos à aprovação do Senado</li>
+              <li>Editar medidas provisórias em casos de relevância e urgência</li>
+            </ul>
+            <div class="destaque-caixa"><p class="destaque-caixa__rotulo">Exemplo prático</p><p>Quando o governo federal decide lançar um programa de infraestrutura nacional, como a construção de uma nova rodovia federal, é o Poder Executivo, chefiado pelo presidente, quem planeja, orçamenta e executa essa obra, enquanto cabe ao Congresso aprovar o orçamento que viabiliza o projeto.</p></div>
+          </div></div></div>
         </section>
 
-        <section id="governador" style="background:#fff;border:1px solid rgba(15,53,39,.1);border-radius:16px;margin-bottom:18px;overflow:hidden;scroll-margin-top:90px">
-          <button class="acc-toggle" data-target="body-governador" style="width:100%;display:flex;align-items:center;gap:16px;padding:20px 22px;background:none;border:none;cursor:pointer;text-align:left">
-            <div style="font-family:'Fraunces',serif;font-size:15px;color:#a9852f;flex:none;width:26px">02</div>
-            <div style="flex:1;min-width:0">
-              <div style="font-family:'Fraunces',serif;font-weight:500;font-size:19px;color:#0f3527;letter-spacing:-.3px">Governador</div>
-              <div style="font-size:12.5px;color:#616c66;margin-top:3px">27 vagas · mandato de 4 anos · idade mínima 30 anos</div>
-            </div>
-            <div class="acc-chevron" style="flex:none;color:#a9852f;font-size:20px;line-height:1">⌄</div>
-          </button>
-          <div class="acc-body" id="body-governador"><div>
-            <div style="padding:0 22px 24px">
-              <p style="font-size:16px;line-height:1.7;color:#2c3531;margin:0 0 14px">O governador é o chefe do Poder Executivo em cada estado e no Distrito Federal, com foco em políticas estaduais como segurança pública, educação regionalizada, saúde e articulação com o governo federal.</p>
-              <ul style="margin:0 0 14px;padding-left:22px">
-                <li style="font-size:15.5px;line-height:1.6;color:#2c3531;margin-bottom:6px">Sancionar ou vetar projetos de lei aprovados pela Assembleia Legislativa</li>
-                <li style="font-size:15.5px;line-height:1.6;color:#2c3531;margin-bottom:6px">Encaminhar propostas legislativas sobre matérias de competência do Executivo estadual</li>
-                <li style="font-size:15.5px;line-height:1.6;color:#2c3531;margin-bottom:6px">Administrar a polícia militar e civil do estado</li>
-              </ul>
-              <div style="padding:14px 18px;background:#edf3ef;border-left:3px solid #a9852f;border-radius:0 12px 12px 0">
-                <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#1c5a41;margin-bottom:6px">Exemplo prático</div>
-                <p style="font-size:14.5px;line-height:1.6;color:#2c3531;margin:0">A segurança pública nas ruas de uma cidade, o policiamento ostensivo e a Polícia Militar, é responsabilidade do governo estadual, não do governo federal, ainda que o Exército, força federal, responda diretamente ao presidente.</p>
-              </div>
-            </div>
-          </div></div>
+        <section class="acc__item" id="governador">
+          <h3><button type="button" class="acc__btn" aria-controls="body-governador"><span class="cargo-acc__num">02</span><span class="cargo-acc__txt">Governador<small>27 vagas · mandato de 4 anos · idade mínima 30 anos</small></span><svg class="acc__icone" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3>
+          <div class="acc__painel" id="body-governador"><div class="acc__inner"><div class="acc__conteudo">
+            <p>O governador é o chefe do Poder Executivo em cada estado e no Distrito Federal, com foco em políticas estaduais como segurança pública, educação regionalizada, saúde e articulação com o governo federal.</p>
+            <ul>
+              <li>Sancionar ou vetar projetos de lei aprovados pela Assembleia Legislativa</li>
+              <li>Encaminhar propostas legislativas sobre matérias de competência do Executivo estadual</li>
+              <li>Administrar a polícia militar e civil do estado</li>
+            </ul>
+            <div class="destaque-caixa"><p class="destaque-caixa__rotulo">Exemplo prático</p><p>A segurança pública nas ruas de uma cidade, o policiamento ostensivo e a Polícia Militar, é responsabilidade do governo estadual, não do governo federal, ainda que o Exército, força federal, responda diretamente ao presidente.</p></div>
+          </div></div></div>
         </section>
 
-        <section id="senador" style="background:#fff;border:1px solid rgba(15,53,39,.1);border-radius:16px;margin-bottom:18px;overflow:hidden;scroll-margin-top:90px">
-          <button class="acc-toggle" data-target="body-senador" style="width:100%;display:flex;align-items:center;gap:16px;padding:20px 22px;background:none;border:none;cursor:pointer;text-align:left">
-            <div style="font-family:'Fraunces',serif;font-size:15px;color:#a9852f;flex:none;width:26px">03</div>
-            <div style="flex:1;min-width:0">
-              <div style="font-family:'Fraunces',serif;font-weight:500;font-size:19px;color:#0f3527;letter-spacing:-.3px">Senador</div>
-              <div style="font-size:12.5px;color:#616c66;margin-top:3px">54 de 81 vagas · mandato de 8 anos · idade mínima 35 anos</div>
-            </div>
-            <div class="acc-chevron" style="flex:none;color:#a9852f;font-size:20px;line-height:1">⌄</div>
-          </button>
-          <div class="acc-body" id="body-senador"><div>
-            <div style="padding:0 22px 24px">
-              <p style="font-size:16px;line-height:1.7;color:#2c3531;margin:0 0 14px">Cada estado e o Distrito Federal elegem três senadores, com mandato de 8 anos, o mais longo entre os cargos eletivos. Como o Senado se renova parcialmente a cada quatro anos, alternando entre um e dois terços da Casa, em 2026 serão escolhidos 54 dos 81 senadores.</p>
-              <p style="font-size:16px;line-height:1.7;color:#2c3531;margin:0 0 14px">Os senadores representam os estados, e não a população proporcionalmente, o que significa que estados pequenos e grandes têm o mesmo número de representantes no Senado, diferente do que ocorre na Câmara dos Deputados.</p>
-              <ul style="margin:0 0 14px;padding-left:22px">
-                <li style="font-size:15.5px;line-height:1.6;color:#2c3531;margin-bottom:6px">Processar e julgar o presidente da República em crimes de responsabilidade</li>
-                <li style="font-size:15.5px;line-height:1.6;color:#2c3531;margin-bottom:6px">Aprovar, por maioria absoluta, indicações do presidente para cargos como ministros do STF, do STJ e do Banco Central</li>
-              </ul>
-              <div style="padding:14px 18px;background:#edf3ef;border-left:3px solid #a9852f;border-radius:0 12px 12px 0">
-                <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#1c5a41;margin-bottom:6px">Exemplo prático</div>
-                <p style="font-size:14.5px;line-height:1.6;color:#2c3531;margin:0">Foi exatamente esse poder do Senado que ficou em evidência em abril de 2026, quando o Plenário rejeitou, pela primeira vez desde 1894, a indicação de um nome para o Supremo Tribunal Federal, mostrando na prática que a aprovação do Senado não é mera formalidade.</p>
-              </div>
-            </div>
-          </div></div>
+        <section class="acc__item" id="senador">
+          <h3><button type="button" class="acc__btn" aria-controls="body-senador"><span class="cargo-acc__num">03</span><span class="cargo-acc__txt">Senador<small>54 de 81 vagas · mandato de 8 anos · idade mínima 35 anos</small></span><svg class="acc__icone" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3>
+          <div class="acc__painel" id="body-senador"><div class="acc__inner"><div class="acc__conteudo">
+            <p>Cada estado e o Distrito Federal elegem três senadores, com mandato de 8 anos, o mais longo entre os cargos eletivos. Como o Senado se renova parcialmente a cada quatro anos, alternando entre um e dois terços da Casa, em 2026 serão escolhidos 54 dos 81 senadores.</p>
+            <p>Os senadores representam os estados, e não a população proporcionalmente, o que significa que estados pequenos e grandes têm o mesmo número de representantes no Senado, diferente do que ocorre na Câmara dos Deputados.</p>
+            <ul>
+              <li>Processar e julgar o presidente da República em crimes de responsabilidade</li>
+              <li>Aprovar, por maioria absoluta, indicações do presidente para cargos como ministros do STF, do STJ e do Banco Central</li>
+            </ul>
+            <div class="destaque-caixa"><p class="destaque-caixa__rotulo">Exemplo prático</p><p>Foi exatamente esse poder do Senado que ficou em evidência em abril de 2026, quando o Plenário rejeitou, pela primeira vez desde 1894, a indicação de um nome para o Supremo Tribunal Federal, mostrando na prática que a aprovação do Senado não é mera formalidade.</p></div>
+          </div></div></div>
         </section>
 
-        <section id="dep-federal" style="background:#fff;border:1px solid rgba(15,53,39,.1);border-radius:16px;margin-bottom:18px;overflow:hidden;scroll-margin-top:90px">
-          <button class="acc-toggle" data-target="body-dep-federal" style="width:100%;display:flex;align-items:center;gap:16px;padding:20px 22px;background:none;border:none;cursor:pointer;text-align:left">
-            <div style="font-family:'Fraunces',serif;font-size:15px;color:#a9852f;flex:none;width:26px">04</div>
-            <div style="flex:1;min-width:0">
-              <div style="font-family:'Fraunces',serif;font-weight:500;font-size:19px;color:#0f3527;letter-spacing:-.3px">Deputado Federal</div>
-              <div style="font-size:12.5px;color:#616c66;margin-top:3px">513 vagas · mandato de 4 anos · idade mínima 21 anos</div>
-            </div>
-            <div class="acc-chevron" style="flex:none;color:#a9852f;font-size:20px;line-height:1">⌄</div>
-          </button>
-          <div class="acc-body" id="body-dep-federal"><div>
-            <div style="padding:0 22px 24px">
-              <p style="font-size:16px;line-height:1.7;color:#2c3531;margin:0 0 14px">Os deputados federais representam a população de cada estado na Câmara dos Deputados, com mandato de 4 anos. São responsáveis por propor, discutir e votar leis de âmbito nacional, fiscalizar as contas e os atos do governo federal, e aprovar o orçamento público da União.</p>
-              <p style="font-size:16px;line-height:1.7;color:#2c3531;margin:0 0 14px">Diferente do Senado, o número de deputados federais por estado é proporcional à população, o que faz de estados como São Paulo os que mais elegem representantes na Câmara.</p>
-              <div style="padding:14px 18px;background:#edf3ef;border-left:3px solid #a9852f;border-radius:0 12px 12px 0">
-                <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#1c5a41;margin-bottom:6px">Exemplo prático</div>
-                <p style="font-size:14.5px;line-height:1.6;color:#2c3531;margin:0">Uma mudança na legislação trabalhista, como um novo direito para determinada categoria profissional, geralmente começa como projeto de lei discutido e votado na Câmara dos Deputados, antes de seguir para o Senado.</p>
-              </div>
-            </div>
-          </div></div>
+        <section class="acc__item" id="dep-federal">
+          <h3><button type="button" class="acc__btn" aria-controls="body-dep-federal"><span class="cargo-acc__num">04</span><span class="cargo-acc__txt">Deputado Federal<small>513 vagas · mandato de 4 anos · idade mínima 21 anos</small></span><svg class="acc__icone" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3>
+          <div class="acc__painel" id="body-dep-federal"><div class="acc__inner"><div class="acc__conteudo">
+            <p>Os deputados federais representam a população de cada estado na Câmara dos Deputados, com mandato de 4 anos. São responsáveis por propor, discutir e votar leis de âmbito nacional, fiscalizar as contas e os atos do governo federal, e aprovar o orçamento público da União.</p>
+            <p>Diferente do Senado, o número de deputados federais por estado é proporcional à população, o que faz de estados como São Paulo os que mais elegem representantes na Câmara.</p>
+            <div class="destaque-caixa"><p class="destaque-caixa__rotulo">Exemplo prático</p><p>Uma mudança na legislação trabalhista, como um novo direito para determinada categoria profissional, geralmente começa como projeto de lei discutido e votado na Câmara dos Deputados, antes de seguir para o Senado.</p></div>
+          </div></div></div>
         </section>
 
-        <section id="dep-estadual" style="background:#fff;border:1px solid rgba(15,53,39,.1);border-radius:16px;margin-bottom:18px;overflow:hidden;scroll-margin-top:90px">
-          <button class="acc-toggle" data-target="body-dep-estadual" style="width:100%;display:flex;align-items:center;gap:16px;padding:20px 22px;background:none;border:none;cursor:pointer;text-align:left">
-            <div style="font-family:'Fraunces',serif;font-size:15px;color:#a9852f;flex:none;width:26px">05</div>
-            <div style="flex:1;min-width:0">
-              <div style="font-family:'Fraunces',serif;font-weight:500;font-size:19px;color:#0f3527;letter-spacing:-.3px">Deputado Estadual e Distrital</div>
-              <div style="font-size:12.5px;color:#616c66;margin-top:3px">1.035 + 24 vagas · mandato de 4 anos · idade mínima 21 anos</div>
-            </div>
-            <div class="acc-chevron" style="flex:none;color:#a9852f;font-size:20px;line-height:1">⌄</div>
-          </button>
-          <div class="acc-body" id="body-dep-estadual"><div>
-            <div style="padding:0 22px 24px">
-              <p style="font-size:16px;line-height:1.7;color:#2c3531;margin:0 0 14px">Os deputados estaduais atuam nas Assembleias Legislativas de cada estado, e os deputados distritais atuam na Câmara Legislativa do Distrito Federal, ambos com mandato de 4 anos. Legislam sobre matérias de competência estadual ou distrital, fiscalizam o governo local e aprovam o orçamento do estado ou do DF.</p>
-              <div style="padding:14px 18px;background:#edf3ef;border-left:3px solid #a9852f;border-radius:0 12px 12px 0">
-                <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#1c5a41;margin-bottom:6px">Exemplo prático</div>
-                <p style="font-size:14.5px;line-height:1.6;color:#2c3531;margin:0">Uma lei estadual que cria um programa de incentivo fiscal para empresas que se instalam em determinado estado passa pela Assembleia Legislativa, não pelo Congresso Nacional.</p>
-              </div>
-            </div>
-          </div></div>
+        <section class="acc__item" id="dep-estadual">
+          <h3><button type="button" class="acc__btn" aria-controls="body-dep-estadual"><span class="cargo-acc__num">05</span><span class="cargo-acc__txt">Deputado Estadual e Distrital<small>1.035 + 24 vagas · mandato de 4 anos · idade mínima 21 anos</small></span><svg class="acc__icone" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3>
+          <div class="acc__painel" id="body-dep-estadual"><div class="acc__inner"><div class="acc__conteudo">
+            <p>Os deputados estaduais atuam nas Assembleias Legislativas de cada estado, e os deputados distritais atuam na Câmara Legislativa do Distrito Federal, ambos com mandato de 4 anos. Legislam sobre matérias de competência estadual ou distrital, fiscalizam o governo local e aprovam o orçamento do estado ou do DF.</p>
+            <div class="destaque-caixa"><p class="destaque-caixa__rotulo">Exemplo prático</p><p>Uma lei estadual que cria um programa de incentivo fiscal para empresas que se instalam em determinado estado passa pela Assembleia Legislativa, não pelo Congresso Nacional.</p></div>
+          </div></div></div>
         </section>
-
-        <h2 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(24px,2.8vw,32px);letter-spacing:-.4px;color:#0f3527;margin:52px 0 16px;line-height:1.2">E o Supremo Tribunal Federal? Por que ele importa mesmo sem eleição</h2>
-
-        <p style="font-size:clamp(16px,1.4vw,18px);line-height:1.75;color:#2c3531;margin:0 0 30px">Aqui está o ponto que costuma gerar mais confusão: ministros do STF não são eleitos pelo povo. Eles são indicados pelo presidente da República e precisam ser aprovados pela maioria absoluta do Senado, ou seja, ao menos 41 dos 81 senadores. Mesmo sem passar pelas urnas, o STF exerce um poder que afeta diretamente a vida de qualquer brasileiro, porque é a última instância de julgamento do país e o guardião da Constituição Federal.</p>
-
-        <h3 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(19px,2.2vw,23px);letter-spacing:-.3px;color:#0f3527;margin:0 0 12px;line-height:1.25">Como funciona a escolha de um ministro</h3>
-        <p style="font-size:16px;line-height:1.75;color:#2c3531;margin:0 0 24px">A Constituição exige que o indicado seja brasileiro nato, tenha entre 35 e 70 anos, e possua notável saber jurídico e reputação ilibada. O nome escolhido pelo presidente passa por uma sabatina na Comissão de Constituição e Justiça do Senado, e depois precisa ser aprovado em votação no Plenário. Se aprovado, tem posse vitalícia, ou seja, permanece no cargo até a aposentadoria compulsória, atualmente fixada aos 75 anos, sem mandato com prazo determinado.</p>
-
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;margin-bottom:40px">
-          <div style="padding:0 10px 0 0"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><div style="width:30px;height:30px;border-radius:50%;background:#0f3527;color:#a9852f;font-family:'Fraunces',serif;font-size:14px;display:flex;align-items:center;justify-content:center;flex:none">1</div><div style="flex:1;height:2px;background:#edf3ef"></div></div><div style="font-size:14.5px;font-weight:600;color:#0f3527;margin-bottom:5px">Indicação</div><div style="font-size:13px;color:#616c66;line-height:1.5">O presidente escolhe um nome com notável saber jurídico e reputação ilibada.</div></div>
-          <div style="padding:0 10px 0 0"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><div style="width:30px;height:30px;border-radius:50%;background:#0f3527;color:#a9852f;font-family:'Fraunces',serif;font-size:14px;display:flex;align-items:center;justify-content:center;flex:none">2</div><div style="flex:1;height:2px;background:#edf3ef"></div></div><div style="font-size:14.5px;font-weight:600;color:#0f3527;margin-bottom:5px">Sabatina na CCJ</div><div style="font-size:13px;color:#616c66;line-height:1.5">O indicado é ouvido pela Comissão de Constituição e Justiça do Senado.</div></div>
-          <div style="padding:0 10px 0 0"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><div style="width:30px;height:30px;border-radius:50%;background:#0f3527;color:#a9852f;font-family:'Fraunces',serif;font-size:14px;display:flex;align-items:center;justify-content:center;flex:none">3</div><div style="flex:1;height:2px;background:#edf3ef"></div></div><div style="font-size:14.5px;font-weight:600;color:#0f3527;margin-bottom:5px">Votação no Plenário</div><div style="font-size:13px;color:#616c66;line-height:1.5">É preciso maioria absoluta: ao menos 41 dos 81 senadores.</div></div>
-          <div style="padding:0 10px 0 0"><div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><div style="width:30px;height:30px;border-radius:50%;background:#0f3527;color:#a9852f;font-family:'Fraunces',serif;font-size:14px;display:flex;align-items:center;justify-content:center;flex:none">4</div><div style="flex:1;height:2px;background:#edf3ef"></div></div><div style="font-size:14.5px;font-weight:600;color:#0f3527;margin-bottom:5px">Posse vitalícia</div><div style="font-size:13px;color:#616c66;line-height:1.5">Se aprovado, permanece no cargo até a aposentadoria compulsória, aos 75 anos.</div></div>
-        </div>
-
-        <h3 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(19px,2.2vw,23px);letter-spacing:-.3px;color:#0f3527;margin:0 0 12px;line-height:1.25">O que o STF de fato faz</h3>
-        <p style="font-size:16px;line-height:1.75;color:#2c3531;margin:0 0 18px">O STF julga ações que questionam a constitucionalidade de leis, resolve conflitos entre os Poderes, julga autoridades com foro privilegiado, como o próprio presidente da República e parlamentares, em determinados crimes, e funciona como última instância de recurso em questões constitucionais que chegam de todo o país. Na prática, é o STF quem tem a palavra final sobre se uma lei aprovada pelo Congresso e sancionada pelo presidente é válida ou não.</p>
-        <div style="padding:14px 18px;background:#edf3ef;border-left:3px solid #a9852f;border-radius:0 12px 12px 0;margin-bottom:36px">
-          <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#1c5a41;margin-bottom:6px">Exemplo prático</div>
-          <p style="font-size:14.5px;line-height:1.6;color:#2c3531;margin:0">Quando uma lei aprovada pelo Congresso é questionada por violar algum direito previsto na Constituição, é o STF quem julga essa disputa, podendo declarar a lei inconstitucional e retirá-la do ordenamento jurídico, mesmo que ela tenha sido aprovada pelos representantes eleitos pelo povo.</p>
-        </div>
-
-        <h3 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(19px,2.2vw,23px);letter-spacing:-.3px;color:#0f3527;margin:0 0 12px;line-height:1.25">O momento atual do STF</h3>
-        <p style="font-size:16px;line-height:1.75;color:#2c3531;margin:0 0 22px">O Supremo é composto por 11 ministros, mas atualmente conta com apenas 10 em atividade. Uma cadeira está vaga desde a aposentadoria antecipada do ministro Luís Roberto Barroso, em outubro de 2025. A indicação feita pelo presidente Lula para ocupar essa vaga foi rejeitada pelo Plenário do Senado em abril de 2026, por 42 votos contra 34, com uma abstenção, episódio inédito desde 1894. A vaga segue em aberto, e cabe ao presidente enviar uma nova indicação, sem prazo legal definido para isso.</p>
-
-        <div style="background:#0f3527;border-radius:16px;padding:clamp(22px,3vw,30px);margin-bottom:20px">
-          <div style="font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#a9852f;margin-bottom:16px">Composição atual — 11 cadeiras</div>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px">
-            <div style="width:34px;height:34px;border-radius:50%;background:#a9852f"></div>
-            <div style="width:34px;height:34px;border-radius:50%;background:#a9852f"></div>
-            <div style="width:34px;height:34px;border-radius:50%;background:#a9852f"></div>
-            <div style="width:34px;height:34px;border-radius:50%;background:#a9852f"></div>
-            <div style="width:34px;height:34px;border-radius:50%;background:#a9852f"></div>
-            <div style="width:34px;height:34px;border-radius:50%;background:#a9852f"></div>
-            <div style="width:34px;height:34px;border-radius:50%;background:#a9852f"></div>
-            <div style="width:34px;height:34px;border-radius:50%;background:#a9852f"></div>
-            <div style="width:34px;height:34px;border-radius:50%;background:#a9852f"></div>
-            <div style="width:34px;height:34px;border-radius:50%;background:#a9852f"></div>
-            <div style="width:34px;height:34px;border-radius:50%;background:transparent;border:2px dashed rgba(255,255,255,.5)"></div>
-          </div>
-          <div style="font-size:13px;color:#d3ddd6;line-height:1.6">A cadeira em aberto (contorno pontilhado) está vaga desde outubro de 2025, após a aposentadoria antecipada do ministro Luís Roberto Barroso.</div>
-        </div>
-
-        <div style="background:#fff;border:1px solid rgba(15,53,39,.1);border-radius:16px;padding:clamp(22px,3vw,30px);margin-bottom:40px">
-          <div style="font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#a9852f;margin-bottom:18px">Votação da indicação rejeitada — abril de 2026</div>
-          <div style="display:flex;flex-direction:column;gap:14px">
-            <div><div style="display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:6px"><span style="color:#0f3527;font-weight:600">Contra</span><span style="color:#616c66">42 votos</span></div><div style="height:14px;background:#edf3ef;border-radius:8px;overflow:hidden"><div style="width:52%;height:100%;background:#0f3527"></div></div></div>
-            <div><div style="display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:6px"><span style="color:#0f3527;font-weight:600">A favor</span><span style="color:#616c66">34 votos</span></div><div style="height:14px;background:#edf3ef;border-radius:8px;overflow:hidden"><div style="width:42%;height:100%;background:#a9852f"></div></div></div>
-            <div><div style="display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:6px"><span style="color:#0f3527;font-weight:600">Abstenção</span><span style="color:#616c66">1 voto</span></div><div style="height:14px;background:#edf3ef;border-radius:8px;overflow:hidden"><div style="width:2%;height:100%;background:#616c66"></div></div></div>
-          </div>
-          <div style="font-size:12.5px;color:#616c66;margin-top:14px;padding-top:14px;border-top:1px solid rgba(15,53,39,.1)">Eram necessários ao menos 41 votos, de 81 senadores, para aprovar — a maioria absoluta.</div>
-        </div>
-
-        <p style="font-size:16px;line-height:1.75;color:#2c3531;margin:0 0 40px">Esse episódio ilustra bem a lógica de freios e contrapesos entre os Poderes: mesmo sendo o presidente quem escolhe o nome, é o Senado, formado por representantes eleitos pelo povo, quem tem o poder de barrar essa indicação.</p>
-
-        <div style="margin-bottom:44px;border-radius:18px;overflow:hidden">
-          <img src="assets/img/stf-fachada.jpg" alt="Fachada do edifício-sede do Supremo Tribunal Federal" style="width:100%;height:280px;object-fit:cover;display:block">
-        </div>
-
-        <h2 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(24px,2.8vw,32px);letter-spacing:-.4px;color:#0f3527;margin:0 0 20px;line-height:1.2">Comparativo rápido: quem é eleito e quem é indicado</h2>
-        <div style="background:#fff;border:1px solid rgba(15,53,39,.1);border-radius:16px;overflow:hidden;margin-bottom:48px">
-          <div class="comp-row" style="display:grid;grid-template-columns:1.3fr 1fr 1fr;background:#0f3527;color:#a9852f;font-size:11.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:14px 20px">
-            <div>Autoridade</div><div>Como chega ao cargo</div><div>Duração no cargo</div>
-          </div>
-          <div class="comp-row" style="display:grid;grid-template-columns:1.3fr 1fr 1fr;padding:18px 20px;font-size:14.5px;line-height:1.5;border-bottom:1px solid rgba(15,53,39,.08)">
-            <div style="color:#0f3527;font-weight:600">Presidente, governador, senador, deputados</div>
-            <div style="color:#2c3531">Eleição direta pelo voto popular</div>
-            <div style="color:#2c3531">Mandato fixo (4 ou 8 anos)</div>
-          </div>
-          <div class="comp-row" style="display:grid;grid-template-columns:1.3fr 1fr 1fr;padding:18px 20px;font-size:14.5px;line-height:1.5;background:#fbfbf9">
-            <div style="color:#0f3527;font-weight:600">Ministros do STF</div>
-            <div style="color:#2c3531">Indicação do presidente + aprovação do Senado</div>
-            <div style="color:#2c3531">Vitalício, até aposentadoria compulsória aos 75 anos</div>
-          </div>
-        </div>
-
-        <h2 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(24px,2.8vw,32px);letter-spacing:-.4px;color:#0f3527;margin:0 0 20px;line-height:1.2">Perguntas frequentes</h2>
-        <div style="margin-bottom:48px" id="faq-wrap">
-          <div style="border-bottom:1px solid rgba(15,53,39,.12)">
-            <button class="faq-toggle" data-target="faq-1" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 0;background:none;border:none;cursor:pointer;text-align:left">
-              <span style="font-size:16px;font-weight:600;color:#0f3527;line-height:1.4">Por que o Senado tem mandato de 8 anos, e não 4 anos como os demais cargos eletivos?</span>
-              <span class="faq-chevron" style="flex:none;color:#a9852f;font-size:22px;line-height:1;font-weight:300">+</span>
-            </button>
-            <div class="acc-body" id="faq-1"><div><p style="font-size:15px;line-height:1.7;color:#2c3531;margin:0 0 20px">Essa diferença foi pensada para dar mais estabilidade e continuidade ao Senado, que representa os estados de forma paritária. Como o mandato é mais longo, a Casa se renova parcialmente a cada eleição, alternando entre um e dois terços de suas cadeiras.</p></div></div>
-          </div>
-          <div style="border-bottom:1px solid rgba(15,53,39,.12)">
-            <button class="faq-toggle" data-target="faq-2" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 0;background:none;border:none;cursor:pointer;text-align:left">
-              <span style="font-size:16px;font-weight:600;color:#0f3527;line-height:1.4">Qual a diferença entre sistema majoritário e sistema proporcional?</span>
-              <span class="faq-chevron" style="flex:none;color:#a9852f;font-size:22px;line-height:1;font-weight:300">+</span>
-            </button>
-            <div class="acc-body" id="faq-2"><div><p style="font-size:15px;line-height:1.7;color:#2c3531;margin:0 0 20px">No majoritário, usado para presidente, governador e senador, vence simplesmente quem tem mais votos. No proporcional, usado para deputados, as cadeiras são distribuídas conforme o total de votos de cada partido, e depois preenchidas pelos candidatos mais votados dentro dessa legenda.</p></div></div>
-          </div>
-          <div style="border-bottom:1px solid rgba(15,53,39,.12)">
-            <button class="faq-toggle" data-target="faq-3" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 0;background:none;border:none;cursor:pointer;text-align:left">
-              <span style="font-size:16px;font-weight:600;color:#0f3527;line-height:1.4">Ministros do STF podem ser removidos do cargo?</span>
-              <span class="faq-chevron" style="flex:none;color:#a9852f;font-size:22px;line-height:1;font-weight:300">+</span>
-            </button>
-            <div class="acc-body" id="faq-3"><div><p style="font-size:15px;line-height:1.7;color:#2c3531;margin:0 0 20px">Em regra, não, salvo por aposentadoria compulsória aos 75 anos, morte, renúncia ou, em hipóteses excepcionais, processo de impeachment por crime de responsabilidade, que também depende de julgamento pelo Senado.</p></div></div>
-          </div>
-          <div style="border-bottom:1px solid rgba(15,53,39,.12)">
-            <button class="faq-toggle" data-target="faq-4" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 0;background:none;border:none;cursor:pointer;text-align:left">
-              <span style="font-size:16px;font-weight:600;color:#0f3527;line-height:1.4">Por que a rejeição de uma indicação ao STF pelo Senado é um fato tão raro?</span>
-              <span class="faq-chevron" style="flex:none;color:#a9852f;font-size:22px;line-height:1;font-weight:300">+</span>
-            </button>
-            <div class="acc-body" id="faq-4"><div><p style="font-size:15px;line-height:1.7;color:#2c3531;margin:0 0 20px">Porque, historicamente, o Senado costuma aprovar as indicações presidenciais ao Supremo. A rejeição ocorrida em abril de 2026 foi a primeira desde 1894, o que mostra como esse tipo de veto é excepcional na prática política brasileira.</p></div></div>
-          </div>
-          <div style="border-bottom:1px solid rgba(15,53,39,.12)">
-            <button class="faq-toggle" data-target="faq-5" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 0;background:none;border:none;cursor:pointer;text-align:left">
-              <span style="font-size:16px;font-weight:600;color:#0f3527;line-height:1.4">Quem escolhe o presidente do STF?</span>
-              <span class="faq-chevron" style="flex:none;color:#a9852f;font-size:22px;line-height:1;font-weight:300">+</span>
-            </button>
-            <div class="acc-body" id="faq-5"><div><p style="font-size:15px;line-height:1.7;color:#2c3531;margin:0 0 20px">Os próprios ministros da Corte elegem, entre seus pares, quem exercerá a presidência do tribunal, geralmente seguindo critério de antiguidade, mas essa escolha não depende de indicação do presidente da República nem de aprovação do Senado.</p></div></div>
-          </div>
-        </div>
-
-        <h2 style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(24px,2.8vw,32px);letter-spacing:-.4px;color:#0f3527;margin:0 0 16px;line-height:1.2">Por que entender isso ajuda o eleitor</h2>
-        <p style="font-size:16px;line-height:1.75;color:#2c3531;margin:0 0 18px">Saber exatamente o que cada cargo faz evita expectativas equivocadas e cobranças no lugar errado: reclamar de segurança pública com o presidente da República, quando essa é, em regra, competência do governador, ou esperar que um deputado estadual resolva uma questão de política externa, que é atribuição federal, são exemplos de confusões comuns que dificultam a cobrança eficaz dos representantes eleitos.</p>
-        <p style="font-size:16px;line-height:1.75;color:#2c3531;margin:0 0 18px">Entender também o papel do STF, mesmo sem voto direto para essa Corte, ajuda a compreender por que as indicações presidenciais para o Supremo costumam gerar tanto debate público: elas moldam, por décadas, quem terá a palavra final sobre questões constitucionais que afetam toda a sociedade brasileira.</p>
-        <p style="font-size:16px;line-height:1.75;color:#2c3531;margin:0 0 40px">Se você quer continuar entendendo como funciona o poder no Brasil, segue o <a href="https://www.instagram.com/ygorsoares_bjj/" target="_blank" rel="noopener" style="font-weight:600">Ygor.blog</a> no Instagram.</p>
-
-        <div style="background:#0f3527;color:#eef3ef;border-radius:18px;padding:clamp(24px,3vw,34px);margin-bottom:40px">
-          <div style="font-family:'Fraunces',serif;font-size:23px;color:#fff;margin-bottom:10px">Ficou com uma dúvida sobre o seu caso?</div>
-          <p style="font-size:15px;line-height:1.65;color:#d3ddd6;margin:0 0 20px;max-width:52ch">Este conteúdo é educativo e não substitui a orientação individual. Se precisar, fale por um dos canais abaixo.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:12px">
-            <a href="https://wa.me/5511991680688" target="_blank" rel="noopener" style="padding:12px 24px;background:#a9852f;color:#0f3527;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase">WhatsApp</a>
-            <a href="duvidas.html" style="padding:12px 24px;border:1.5px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase">Enviar dúvida</a>
-          </div>
-        </div>
-
-        <div style="border-top:1px solid rgba(15,53,39,.12);padding-top:24px;margin-bottom:24px">
-          <button id="btn-fontes" style="display:flex;align-items:center;gap:8px;background:none;border:none;cursor:pointer;padding:0;font-size:12px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#616c66">
-            <span>Fontes</span><span id="fontes-chevron" style="color:#a9852f;font-size:15px;display:inline-block;transition:transform .3s ease">⌄</span>
-          </button>
-          <div class="acc-body" id="fontes-body"><div>
-            <div style="padding-top:16px;display:flex;flex-direction:column;gap:10px">
-              <div style="font-size:13px;line-height:1.6;color:#616c66">TSE. Confira quais cargos estarão em disputa nas Eleições 2026. Disponível em: <a href="https://www.tse.jus.br/comunicacao/noticias/2026/Janeiro/confira-quais-cargos-estarao-em-disputa-nas-eleicoes-2026" target="_blank" rel="noopener" style="color:#1c5a41;word-break:break-all">https://www.tse.jus.br/comunicacao/noticias/2026/Janeiro/confira-quais-cargos-estarao-em-disputa-nas-eleicoes-2026</a></div>
-              <div style="font-size:13px;line-height:1.6;color:#616c66">TSE. Faltam 21 dias: conheça os cargos em disputa nas Eleições 2026. Disponível em: <a href="https://www.tse.jus.br/comunicacao/noticias/2026/Setembro/faltam-21-dias-conheca-os-cargos-em-disputa-nas-eleicoes-2026" target="_blank" rel="noopener" style="color:#1c5a41;word-break:break-all">https://www.tse.jus.br/comunicacao/noticias/2026/Setembro/faltam-21-dias-conheca-os-cargos-em-disputa-nas-eleicoes-2026</a></div>
-              <div style="font-size:13px;line-height:1.6;color:#616c66">Senado Notícias. O que está em disputa nas eleições 2026: cargos, mandatos e quantidade de votos. Disponível em: <a href="https://www12.senado.leg.br/radio/1/noticia/2026/08/10/o-que-esta-em-disputa-nas-eleicoes-2026-cargos-mandatos-e-quantidade-de-votos" target="_blank" rel="noopener" style="color:#1c5a41;word-break:break-all">https://www12.senado.leg.br/radio/1/noticia/2026/08/10/o-que-esta-em-disputa-nas-eleicoes-2026-cargos-mandatos-e-quantidade-de-votos</a></div>
-              <div style="font-size:13px;line-height:1.6;color:#616c66">Senado Notícias. Conheça os indicados para o STF desde a Constituição. Disponível em: <a href="https://www12.senado.leg.br/noticias/infomaterias/2026/04/conheca-os-indicados-para-o-stf-desde-a-constituicao" target="_blank" rel="noopener" style="color:#1c5a41;word-break:break-all">https://www12.senado.leg.br/noticias/infomaterias/2026/04/conheca-os-indicados-para-o-stf-desde-a-constituicao</a></div>
-              <div style="font-size:13px;line-height:1.6;color:#616c66">Brasil. Constituição da República Federativa do Brasil de 1988. Disponível em: <a href="https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm" target="_blank" rel="noopener" style="color:#1c5a41;word-break:break-all">https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm</a></div>
-            </div>
-          </div></div>
-        </div>
-
-        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px">
-          <span style="padding:5px 12px;background:#edf3ef;color:#616c66;border-radius:999px;font-size:11.5px">eleições 2026</span>
-          <span style="padding:5px 12px;background:#edf3ef;color:#616c66;border-radius:999px;font-size:11.5px">cargos eletivos</span>
-          <span style="padding:5px 12px;background:#edf3ef;color:#616c66;border-radius:999px;font-size:11.5px">presidente da República</span>
-          <span style="padding:5px 12px;background:#edf3ef;color:#616c66;border-radius:999px;font-size:11.5px">governador</span>
-          <span style="padding:5px 12px;background:#edf3ef;color:#616c66;border-radius:999px;font-size:11.5px">senador</span>
-          <span style="padding:5px 12px;background:#edf3ef;color:#616c66;border-radius:999px;font-size:11.5px">deputado federal</span>
-          <span style="padding:5px 12px;background:#edf3ef;color:#616c66;border-radius:999px;font-size:11.5px">deputado estadual</span>
-          <span style="padding:5px 12px;background:#edf3ef;color:#616c66;border-radius:999px;font-size:11.5px">STF</span>
-          <span style="padding:5px 12px;background:#edf3ef;color:#616c66;border-radius:999px;font-size:11.5px">ministros do Supremo</span>
-          <span style="padding:5px 12px;background:#edf3ef;color:#616c66;border-radius:999px;font-size:11.5px">sistema majoritário</span>
-          <span style="padding:5px 12px;background:#edf3ef;color:#616c66;border-radius:999px;font-size:11.5px">sistema proporcional</span>
-          <span style="padding:5px 12px;background:#edf3ef;color:#616c66;border-radius:999px;font-size:11.5px">Constituição Federal</span>
-        </div>
-
       </div>
-    </article>
-  </main>
 
-  <footer style="background:#0f3527;color:#d3ddd6;padding:clamp(56px,6vw,88px) 6vw 40px">
-    <div class="rfoot" style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.12)">
-      <div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
-          <span style="font-family:'Fraunces',serif;font-size:26px;color:#a9852f">§</span>
-          <span style="font-family:'Fraunces',serif;font-weight:600;font-size:20px;color:#fff">Ygor Soares</span>
+      <h2>E o Supremo Tribunal Federal? Por que ele importa mesmo sem eleição</h2>
+      <p>Aqui está o ponto que costuma gerar mais confusão: ministros do STF não são eleitos pelo povo. Eles são indicados pelo presidente da República e precisam ser aprovados pela maioria absoluta do Senado, ou seja, ao menos 41 dos 81 senadores. Mesmo sem passar pelas urnas, o STF exerce um poder que afeta diretamente a vida de qualquer brasileiro, porque é a última instância de julgamento do país e o guardião da Constituição Federal.</p>
+
+      <h3>Como funciona a escolha de um ministro</h3>
+      <p>A Constituição exige que o indicado seja brasileiro nato, tenha entre 35 e 70 anos, e possua notável saber jurídico e reputação ilibada. O nome escolhido pelo presidente passa por uma sabatina na Comissão de Constituição e Justiça do Senado, e depois precisa ser aprovado em votação no Plenário. Se aprovado, tem posse vitalícia, ou seja, permanece no cargo até a aposentadoria compulsória, atualmente fixada aos 75 anos, sem mandato com prazo determinado.</p>
+
+      <ol class="passos bloco reveal">
+        <li><div class="passos__num"><span>1</span></div><strong>Indicação</strong><p>O presidente escolhe um nome com notável saber jurídico e reputação ilibada.</p></li>
+        <li><div class="passos__num"><span>2</span></div><strong>Sabatina na CCJ</strong><p>O indicado é ouvido pela Comissão de Constituição e Justiça do Senado.</p></li>
+        <li><div class="passos__num"><span>3</span></div><strong>Votação no Plenário</strong><p>É preciso maioria absoluta: ao menos 41 dos 81 senadores.</p></li>
+        <li><div class="passos__num"><span>4</span></div><strong>Posse vitalícia</strong><p>Se aprovado, permanece no cargo até a aposentadoria compulsória, aos 75 anos.</p></li>
+      </ol>
+
+      <h3>O que o STF de fato faz</h3>
+      <p>O STF julga ações que questionam a constitucionalidade de leis, resolve conflitos entre os Poderes, julga autoridades com foro privilegiado, como o próprio presidente da República e parlamentares, em determinados crimes, e funciona como última instância de recurso em questões constitucionais que chegam de todo o país. Na prática, é o STF quem tem a palavra final sobre se uma lei aprovada pelo Congresso e sancionada pelo presidente é válida ou não.</p>
+      <div class="destaque-caixa"><p class="destaque-caixa__rotulo">Exemplo prático</p><p>Quando uma lei aprovada pelo Congresso é questionada por violar algum direito previsto na Constituição, é o STF quem julga essa disputa, podendo declarar a lei inconstitucional e retirá-la do ordenamento jurídico, mesmo que ela tenha sido aprovada pelos representantes eleitos pelo povo.</p></div>
+
+      <h3>O momento atual do STF</h3>
+      <p>O Supremo é composto por 11 ministros, mas atualmente conta com apenas 10 em atividade. Uma cadeira está vaga desde a aposentadoria antecipada do ministro Luís Roberto Barroso, em outubro de 2025. A indicação feita pelo presidente Lula para ocupar essa vaga foi rejeitada pelo Plenário do Senado em abril de 2026, por 42 votos contra 34, com uma abstenção, episódio inédito desde 1894. A vaga segue em aberto, e cabe ao presidente enviar uma nova indicação, sem prazo legal definido para isso.</p>
+
+      <section class="tile tile--escuro on-dark composicao bloco reveal" aria-label="Composição atual do STF">
+        <p class="composicao__rotulo">Composição atual — 11 cadeiras</p>
+        <div class="cadeiras" role="img" aria-label="10 cadeiras ocupadas e 1 vaga"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="vaga"></i></div>
+        <p>A cadeira em aberto (contorno) está vaga desde outubro de 2025, após a aposentadoria antecipada do ministro Luís Roberto Barroso.</p>
+      </section>
+
+      <section class="tile votacao bloco reveal" aria-label="Votação da indicação rejeitada">
+        <p class="votacao__rotulo">Votação da indicação rejeitada — abril de 2026</p>
+        <div class="votacao__linha"><div><strong>Contra</strong><span>42 votos</span></div><div class="barra"><i style="--w:52%;--c:var(--verde-noite)"></i></div></div>
+        <div class="votacao__linha"><div><strong>A favor</strong><span>34 votos</span></div><div class="barra"><i style="--w:42%;--c:var(--ouro)"></i></div></div>
+        <div class="votacao__linha"><div><strong>Abstenção</strong><span>1 voto</span></div><div class="barra"><i style="--w:2%;--c:var(--muted)"></i></div></div>
+        <p class="nota">Eram necessários ao menos 41 votos, de 81 senadores, para aprovar — a maioria absoluta.</p>
+      </section>
+
+      <p>Esse episódio ilustra bem a lógica de freios e contrapesos entre os Poderes: mesmo sendo o presidente quem escolhe o nome, é o Senado, formado por representantes eleitos pelo povo, quem tem o poder de barrar essa indicação.</p>
+
+      <figure class="figura bloco reveal" style="margin-inline:0"><img src="assets/img/stf-fachada.jpg" alt="Fachada do edifício-sede do Supremo Tribunal Federal" loading="lazy" decoding="async"></figure>
+
+      <h2>Comparativo rápido: quem é eleito e quem é indicado</h2>
+      <table class="tabela reveal">
+        <thead><tr><th scope="col">Autoridade</th><th scope="col">Como chega ao cargo</th><th scope="col">Duração no cargo</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Presidente, governador, senador, deputados</th><td data-rotulo="Como chega ao cargo">Eleição direta pelo voto popular</td><td data-rotulo="Duração">Mandato fixo (4 ou 8 anos)</td></tr>
+          <tr><th scope="row">Ministros do STF</th><td data-rotulo="Como chega ao cargo">Indicação do presidente + aprovação do Senado</td><td data-rotulo="Duração">Vitalício, até aposentadoria compulsória aos 75 anos</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Perguntas frequentes</h2>
+      <div class="acc">
+        <div class="acc__item">
+          <h3><button type="button" class="acc__btn" aria-controls="faq-1">Por que o Senado tem mandato de 8 anos, e não 4 anos como os demais cargos eletivos?<svg class="acc__icone" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3>
+          <div class="acc__painel" id="faq-1"><div class="acc__inner"><p class="acc__conteudo">Essa diferença foi pensada para dar mais estabilidade e continuidade ao Senado, que representa os estados de forma paritária. Como o mandato é mais longo, a Casa se renova parcialmente a cada eleição, alternando entre um e dois terços de suas cadeiras.</p></div></div>
         </div>
-        <p style="font-size:15px;line-height:1.6;max-width:34ch;margin:0;color:#a9b6ad">Conteúdo sobre Direito do Trabalho, direto ao ponto: no site, no Instagram e no LinkedIn.</p>
-      </div>
-      <div>
-        <div style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#c8a84e;margin-bottom:16px">Navegue</div>
-        <div style="display:flex;flex-direction:column;gap:11px">
-          <a href="calculadora.html" style="color:#d3ddd6;font-size:15px">Calculadora de rescisão</a>
-          <a href="blog.html" style="color:#d3ddd6;font-size:15px">Blog</a>
-          <a href="duvidas.html" style="color:#d3ddd6;font-size:15px">Dúvidas</a>
-          <a href="privacidade.html" style="color:#d3ddd6;font-size:15px">Política de Privacidade</a>
+        <div class="acc__item">
+          <h3><button type="button" class="acc__btn" aria-controls="faq-2">Qual a diferença entre sistema majoritário e sistema proporcional?<svg class="acc__icone" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3>
+          <div class="acc__painel" id="faq-2"><div class="acc__inner"><p class="acc__conteudo">No majoritário, usado para presidente, governador e senador, vence simplesmente quem tem mais votos. No proporcional, usado para deputados, as cadeiras são distribuídas conforme o total de votos de cada partido, e depois preenchidas pelos candidatos mais votados dentro dessa legenda.</p></div></div>
+        </div>
+        <div class="acc__item">
+          <h3><button type="button" class="acc__btn" aria-controls="faq-3">Ministros do STF podem ser removidos do cargo?<svg class="acc__icone" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3>
+          <div class="acc__painel" id="faq-3"><div class="acc__inner"><p class="acc__conteudo">Em regra, não, salvo por aposentadoria compulsória aos 75 anos, morte, renúncia ou, em hipóteses excepcionais, processo de impeachment por crime de responsabilidade, que também depende de julgamento pelo Senado.</p></div></div>
+        </div>
+        <div class="acc__item">
+          <h3><button type="button" class="acc__btn" aria-controls="faq-4">Por que a rejeição de uma indicação ao STF pelo Senado é um fato tão raro?<svg class="acc__icone" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3>
+          <div class="acc__painel" id="faq-4"><div class="acc__inner"><p class="acc__conteudo">Porque, historicamente, o Senado costuma aprovar as indicações presidenciais ao Supremo. A rejeição ocorrida em abril de 2026 foi a primeira desde 1894, o que mostra como esse tipo de veto é excepcional na prática política brasileira.</p></div></div>
+        </div>
+        <div class="acc__item">
+          <h3><button type="button" class="acc__btn" aria-controls="faq-5">Quem escolhe o presidente do STF?<svg class="acc__icone" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h3>
+          <div class="acc__painel" id="faq-5"><div class="acc__inner"><p class="acc__conteudo">Os próprios ministros da Corte elegem, entre seus pares, quem exercerá a presidência do tribunal, geralmente seguindo critério de antiguidade, mas essa escolha não depende de indicação do presidente da República nem de aprovação do Senado.</p></div></div>
         </div>
       </div>
-      <div>
-        <div style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#c8a84e;margin-bottom:16px">Canais</div>
-        <div style="display:flex;flex-direction:column;gap:11px">
-          <a href="https://www.instagram.com/ygorsoares_bjj/" target="_blank" rel="noopener" style="color:#d3ddd6;font-size:15px">Instagram</a>
-          <a href="https://www.linkedin.com/in/ygor-pinheiro-soares-b109342ba/" target="_blank" rel="noopener" style="color:#d3ddd6;font-size:15px">LinkedIn</a>
-          <a href="https://wa.me/5511991680688" target="_blank" rel="noopener" style="color:#d3ddd6;font-size:15px">WhatsApp</a>
+
+      <h2>Por que entender isso ajuda o eleitor</h2>
+      <p>Saber exatamente o que cada cargo faz evita expectativas equivocadas e cobranças no lugar errado: reclamar de segurança pública com o presidente da República, quando essa é, em regra, competência do governador, ou esperar que um deputado estadual resolva uma questão de política externa, que é atribuição federal, são exemplos de confusões comuns que dificultam a cobrança eficaz dos representantes eleitos.</p>
+      <p>Entender também o papel do STF, mesmo sem voto direto para essa Corte, ajuda a compreender por que as indicações presidenciais para o Supremo costumam gerar tanto debate público: elas moldam, por décadas, quem terá a palavra final sobre questões constitucionais que afetam toda a sociedade brasileira.</p>
+      <p>Se você quer continuar entendendo como funciona o poder no Brasil, segue o <a href="https://www.instagram.com/ygorsoares_bjj/" target="_blank" rel="noopener">Ygor.blog</a> no Instagram.</p>
+
+      <aside class="tile tile--escuro on-dark chamada bloco reveal" aria-labelledby="chamada-titulo">
+        <h2 id="chamada-titulo" class="h3" style="margin-top:0">Ficou com uma dúvida sobre o seu caso?</h2>
+        <p class="lead">Este conteúdo é educativo e não substitui a orientação individual. Se precisar, fale por um dos canais abaixo.</p>
+        <div class="acoes">
+          <a class="btn btn--claro" href="https://wa.me/5511991680688" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn btn--contorno" href="duvidas.html">Enviar dúvida</a>
+        </div>
+      </aside>
+
+      <div class="acc fontes bloco">
+        <div class="acc__item">
+          <h2 style="margin:0;font-size:inherit"><button type="button" class="acc__btn" aria-controls="fontes-body">Fontes<svg class="acc__icone" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></h2>
+          <div class="acc__painel" id="fontes-body"><div class="acc__inner"><div class="acc__conteudo">
+            <p>TSE. Confira quais cargos estarão em disputa nas Eleições 2026. Disponível em: <a href="https://www.tse.jus.br/comunicacao/noticias/2026/Janeiro/confira-quais-cargos-estarao-em-disputa-nas-eleicoes-2026" target="_blank" rel="noopener">https://www.tse.jus.br/comunicacao/noticias/2026/Janeiro/confira-quais-cargos-estarao-em-disputa-nas-eleicoes-2026</a></p>
+            <p>TSE. Faltam 21 dias: conheça os cargos em disputa nas Eleições 2026. Disponível em: <a href="https://www.tse.jus.br/comunicacao/noticias/2026/Setembro/faltam-21-dias-conheca-os-cargos-em-disputa-nas-eleicoes-2026" target="_blank" rel="noopener">https://www.tse.jus.br/comunicacao/noticias/2026/Setembro/faltam-21-dias-conheca-os-cargos-em-disputa-nas-eleicoes-2026</a></p>
+            <p>Senado Notícias. O que está em disputa nas eleições 2026: cargos, mandatos e quantidade de votos. Disponível em: <a href="https://www12.senado.leg.br/radio/1/noticia/2026/08/10/o-que-esta-em-disputa-nas-eleicoes-2026-cargos-mandatos-e-quantidade-de-votos" target="_blank" rel="noopener">https://www12.senado.leg.br/radio/1/noticia/2026/08/10/o-que-esta-em-disputa-nas-eleicoes-2026-cargos-mandatos-e-quantidade-de-votos</a></p>
+            <p>Senado Notícias. Conheça os indicados para o STF desde a Constituição. Disponível em: <a href="https://www12.senado.leg.br/noticias/infomaterias/2026/04/conheca-os-indicados-para-o-stf-desde-a-constituicao" target="_blank" rel="noopener">https://www12.senado.leg.br/noticias/infomaterias/2026/04/conheca-os-indicados-para-o-stf-desde-a-constituicao</a></p>
+            <p>Brasil. Constituição da República Federativa do Brasil de 1988. Disponível em: <a href="https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm" target="_blank" rel="noopener">https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm</a></p>
+          </div></div></div>
         </div>
       </div>
+
+      <ul class="chips" aria-label="Temas" style="list-style:none;padding:0">
+        <li class="chip chip--estatico">eleições 2026</li>
+        <li class="chip chip--estatico">cargos eletivos</li>
+        <li class="chip chip--estatico">presidente da República</li>
+        <li class="chip chip--estatico">governador</li>
+        <li class="chip chip--estatico">senador</li>
+        <li class="chip chip--estatico">deputado federal</li>
+        <li class="chip chip--estatico">deputado estadual</li>
+        <li class="chip chip--estatico">STF</li>
+        <li class="chip chip--estatico">ministros do Supremo</li>
+        <li class="chip chip--estatico">sistema majoritário</li>
+        <li class="chip chip--estatico">sistema proporcional</li>
+        <li class="chip chip--estatico">Constituição Federal</li>
+      </ul>
+
     </div>
-    <div style="padding-top:24px;font-size:13px;color:#95a49b">© 2026 Ygor Soares. Todos os direitos reservados. Conteúdo informativo e educacional.</div>
-  </footer>
+  </article>
+</main>
 
-</div>
+<footer class="rodape">
+  <div class="wrap">
+    <p class="rodape__aviso">Conteúdo informativo e educacional. Os valores da calculadora são estimativas e não substituem a análise de um advogado sobre o seu caso.</p>
+    <div class="rodape__grade">
+      <div class="rodape__col">
+        <span class="logo"><span class="logo__s" aria-hidden="true">§</span>Ygor Soares</span>
+        <span>Direito do Trabalho, direto ao ponto: no site, no Instagram e no LinkedIn.</span>
+      </div>
+      <nav class="rodape__col" aria-label="Navegue">
+        <strong>Navegue</strong>
+        <a href="calculadora.html">Calculadora de rescisão</a>
+        <a href="blog.html">Blog</a>
+        <a href="duvidas.html">Dúvidas</a>
+        <a href="privacidade.html">Política de Privacidade</a>
+      </nav>
+      <nav class="rodape__col" aria-label="Canais">
+        <strong>Canais</strong>
+        <a href="https://www.instagram.com/ygorsoares_bjj/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/in/ygor-pinheiro-soares-b109342ba/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://wa.me/5511991680688" target="_blank" rel="noopener">WhatsApp</a>
+      </nav>
+    </div>
+    <p class="rodape__base">© 2026 Ygor Soares. Todos os direitos reservados.</p>
+  </div>
+</footer>
 
+<script src="assets/js/site.js"></script>
 <script>
-  // Countdown
-  var target = new Date('2026-10-04T00:00:00-03:00').getTime();
-  function pad(n){ return String(n).padStart(2,'0'); }
-  function tick(){
-    var diff = Math.max(0, target - Date.now());
-    document.getElementById('cd-dias').textContent = Math.floor(diff/86400000);
-    document.getElementById('cd-horas').textContent = pad(Math.floor((diff%86400000)/3600000));
-    document.getElementById('cd-min').textContent = pad(Math.floor((diff%3600000)/60000));
-    document.getElementById('cd-seg').textContent = pad(Math.floor((diff%60000)/1000));
-  }
-  tick();
-  setInterval(tick, 1000);
+(function () {
+  var S = window.Site;
 
-  // Sistema toggle
-  function setSistema(v){
-    document.getElementById('btn-maj').classList.toggle('active', v==='maj');
-    document.getElementById('btn-prop').classList.toggle('active', v==='prop');
-    document.getElementById('panel-maj').classList.toggle('active', v==='maj');
-    document.getElementById('panel-prop').classList.toggle('active', v==='prop');
+  // ---- Contagem regressiva ----
+  var alvo = new Date('2026-10-04T00:00:00-03:00').getTime();
+  var cd = { d: document.getElementById('cd-dias'), h: document.getElementById('cd-horas'), m: document.getElementById('cd-min'), s: document.getElementById('cd-seg') };
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function tick() {
+    var diff = Math.max(0, alvo - Date.now());
+    cd.d.textContent = Math.floor(diff / 86400000);
+    cd.h.textContent = pad(Math.floor((diff % 86400000) / 3600000));
+    cd.m.textContent = pad(Math.floor((diff % 3600000) / 60000));
+    cd.s.textContent = pad(Math.floor((diff % 60000) / 1000));
+    return diff;
+  }
+  if (tick() > 0) {
+    var relogio = setInterval(function () { if (!tick()) clearInterval(relogio); }, 1000);
   }
 
-  // Accordions (cargos + FAQ)
-  document.querySelectorAll('.acc-toggle, .faq-toggle').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var body = document.getElementById(btn.getAttribute('data-target'));
-      var chevron = btn.querySelector('.acc-chevron, .faq-chevron');
-      var willOpen = !body.classList.contains('open');
-      body.classList.toggle('open', willOpen);
-      if (chevron) chevron.classList.toggle('open', willOpen);
+  // ---- Majoritário × proporcional ----
+  var botoes = { maj: document.getElementById('btn-maj'), prop: document.getElementById('btn-prop') };
+  var paineis = { maj: document.getElementById('panel-maj'), prop: document.getElementById('panel-prop') };
+  function setSistema(v) {
+    Object.keys(botoes).forEach(function (k) {
+      botoes[k].setAttribute('aria-pressed', k === v ? 'true' : 'false');
+      paineis[k].hidden = k !== v;
     });
-  });
+  }
+  botoes.maj.addEventListener('click', function () { setSistema('maj'); });
+  botoes.prop.addEventListener('click', function () { setSistema('prop'); });
 
-  // Fontes
-  document.getElementById('btn-fontes').addEventListener('click', function(){
-    var body = document.getElementById('fontes-body');
-    var chevron = document.getElementById('fontes-chevron');
-    var willOpen = !body.classList.contains('open');
-    body.classList.toggle('open', willOpen);
-    chevron.style.transform = willOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+  // ---- Atalhos dos cargos: abrem o acordeão correspondente ----
+  function abrirCargo(id) {
+    var item = document.getElementById(id);
+    if (item && item.classList.contains('acc__item')) S.abrirItem(item, true);
+  }
+  document.querySelectorAll('.cargo').forEach(function (a) {
+    a.addEventListener('click', function () { abrirCargo(a.getAttribute('href').slice(1)); });
   });
+  if (location.hash) abrirCargo(location.hash.slice(1));
+})();
 </script>
 
 </body>
