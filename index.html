@@ -9,7 +9,8 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230f3527'/%3E%3Ctext x='50' y='70' font-family='Georgia,serif' font-size='60' fill='%23a9852f' text-anchor='middle'%3E%C2%A7%3C/text%3E%3C/svg%3E">
 <link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/fonts.css">
-<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/site.css?v=20260926">
+<link rel="stylesheet" href="assets/css/jornada.css?v=20260926">
 <script>document.documentElement.classList.add('js');</script>
 <style>
   /* ---------- Hero ---------- */
@@ -83,9 +84,13 @@
   .bloco-duvidas .lead{max-width:440px}
   .bloco-duvidas__acoes{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
   .redes{display:grid;grid-template-columns:minmax(0,1fr) 300px;min-height:520px}
-  .redes > .corpo{padding:72px 0 72px 64px;justify-content:space-between;gap:40px}
+  .redes > .corpo{padding:72px 40px 72px 64px;justify-content:space-between;gap:40px}
   .redes__links{display:flex;flex-direction:column;gap:2px}
-  .redes img{object-position:50% 20%}
+  .redes img{object-position:50% 38%}
+  /* títulos dos dois blocos: menores e com quebras escritas à mão,
+     para o justificado não esticar os espaços entre as palavras */
+  .h2--bloco{font-size:clamp(30px,2.6vw,40px);line-height:1.08}
+  .so-movel{display:none}
 
   /* ---------- Blog ---------- */
   .secao{padding-top:clamp(72px,9.7vw,140px)}
@@ -93,36 +98,18 @@
   .secao__cab > div{display:flex;flex-direction:column;gap:12px}
   .secao__cab .lead{font-size:clamp(17px,1.5vw,21px)}
   #home-blog-cards{min-height:320px}
-
-  /* ---------- Linha do tempo processual ---------- */
-  .jornada{padding-block:clamp(72px,9.7vw,140px)}
-  .jornada__cab{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;margin-bottom:clamp(36px,4.4vw,64px)}
-  .jornada__cab .lead{max-width:620px;font-size:clamp(17px,1.5vw,21px)}
-  .tl{--p:1;position:relative;list-style:none;margin:0;padding:40px 0 0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:32px}
-  .tl__trilho{position:absolute;left:0;right:0;top:6px;height:2px;background:var(--line);border-radius:2px;overflow:hidden}
-  .tl__fill{position:absolute;inset:0;background:linear-gradient(90deg,var(--verde-noite),var(--verde) 80%,var(--ouro));transform-origin:left center;transform:scaleX(var(--p))}
-  .tl-fase{position:relative;display:flex;flex-direction:column;gap:12px}
-  .tl-fase__ponto{position:absolute;top:-40px;left:0;width:14px;height:14px;border-radius:50%;background:var(--verde-noite);box-shadow:0 0 0 4px var(--bg)}
-  .tl-fase:last-child .tl-fase__ponto{background:var(--ouro)}
-  .tl-fase h3{font-size:24px;font-weight:600;letter-spacing:-.02em;color:var(--verde-noite)}
-  .tl-fase p{font-size:16px;line-height:1.5;color:var(--muted)}
-  .tl-fase ol{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:15px}
-  .tl-fase ol span{display:inline-block;min-width:28px;color:var(--ouro-texto);font-variant-numeric:tabular-nums}
-  @media (prefers-reduced-motion:no-preference){
-    .js .tl-fase__ponto{transition:background-color .3s var(--ease),transform .45s var(--ease-out),box-shadow .3s var(--ease)}
-    .js .tl-fase > :not(.tl-fase__ponto){transition:opacity .45s var(--ease-out),transform .45s var(--ease-out)}
-    .js .tl-fase:not(.is-alcancada) .tl-fase__ponto{background:var(--bg);box-shadow:0 0 0 4px var(--bg),inset 0 0 0 2px var(--line);transform:scale(.86)}
-    .js .tl-fase:not(.is-alcancada) > :not(.tl-fase__ponto){opacity:.4;transform:translateY(6px)}
-  }
+  #blog{padding-bottom:clamp(72px,9.7vw,140px)}
 
   /* ---------- Responsivo ---------- */
   @media (max-width:1100px){
     .sobre > .corpo,.calc{padding:56px 48px}
     .calc{gap:48px}
     .bloco-duvidas{padding:56px 48px}
-    .redes > .corpo{padding:56px 0 56px 48px}
+    .redes > .corpo{padding:56px 32px 56px 48px}
     .redes{grid-template-columns:minmax(0,1fr) 240px}
     .numeros{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 16px}
+    .par{grid-template-columns:minmax(0,1fr)}
+    .bloco-duvidas,.redes{min-height:440px}
   }
   @media (max-width:900px){
     .sobre,.calc,.par,.redes{grid-template-columns:minmax(0,1fr)}
@@ -137,19 +124,10 @@
     .bloco-duvidas{padding:36px 24px;gap:24px;justify-content:flex-start}
     .redes > .corpo{padding:36px 24px 28px;gap:14px}
     .redes__links{flex-direction:row;gap:24px}
-    .redes img{height:300px;object-position:50% 18%}
+    .so-movel{display:revert}
+    .redes img{height:340px;object-position:50% 40%}
     #home-blog-cards{min-height:0}
 
-    .tl{grid-template-columns:minmax(0,1fr);gap:32px;padding:0 0 0 30px;margin-left:6px}
-    .tl__trilho{left:0;right:auto;top:8px;bottom:0;width:2px;height:auto}
-    .tl__fill{transform-origin:center top;transform:scaleY(var(--p))}
-    .tl-fase{gap:8px}
-    .tl-fase__ponto{top:6px;left:-36px}
-    .tl-fase h3{font-size:21px}
-    .tl-fase p{font-size:15px}
-    .tl-fase ol{flex-direction:row;flex-wrap:wrap;gap:4px 14px;font-size:14px;margin-top:2px}
-    .tl-fase ol span{min-width:0;margin-right:4px}
-    .jornada__cab{align-items:flex-start;text-align:left;gap:12px}
   }
   @media (max-width:760px){
     .hero{padding-inline:20px}
@@ -157,7 +135,7 @@
     .hero__acoes .btn{width:100%}
     .hero__acoes .mais{justify-content:center}
     .wrap--tiles{padding-inline:12px}
-    .secao .secao__cab,.jornada .wrap{padding-inline:8px}
+    .secao .secao__cab{padding-inline:8px}
   }
 </style>
 </head>
@@ -246,7 +224,7 @@
       <section class="tile bloco-duvidas reveal" aria-labelledby="duvidas-titulo">
         <div class="pilha">
           <p class="eyebrow">Dúvidas</p>
-          <h2 id="duvidas-titulo" class="h2 h2--sm">Ficou com alguma dúvida?</h2>
+          <h2 id="duvidas-titulo" class="h2 h2--bloco">Ficou com alguma<br class="so-movel"> dúvida?</h2>
           <p class="lead">Escreva sua pergunta. A mensagem abre direto no WhatsApp, já pronta para enviar.</p>
         </div>
         <div class="bloco-duvidas__acoes">
@@ -260,14 +238,14 @@
         <div class="corpo">
           <div class="pilha">
             <p class="eyebrow">Instagram e LinkedIn</p>
-            <h2 id="redes-titulo" class="h2 h2--sm">Um tema por dia, sem rodeios.</h2>
+            <h2 id="redes-titulo" class="h2 h2--bloco">Um tema<br> por dia,<br> sem rodeios.</h2>
           </div>
           <div class="redes__links">
             <a href="https://www.instagram.com/ygorsoares_bjj/" target="_blank" rel="noopener" class="mais">Seguir no Instagram <span class="chev" aria-hidden="true">›</span></a>
             <a href="https://www.linkedin.com/in/ygor-pinheiro-soares-b109342ba/" target="_blank" rel="noopener" class="mais">Conectar no LinkedIn <span class="chev" aria-hidden="true">›</span></a>
           </div>
         </div>
-        <img src="assets/img/ygor-3.jpg" alt="Ygor Soares" width="800" height="1000" loading="lazy" decoding="async">
+        <img src="assets/img/ygor-terno.jpg" alt="Ygor Soares de terno e gravata" width="900" height="1600" loading="lazy" decoding="async">
       </section>
     </div>
 
@@ -287,68 +265,305 @@
     </div>
   </section>
 
-  <!-- LINHA DO TEMPO -->
-  <section class="jornada" aria-labelledby="jornada-titulo">
-    <div class="wrap">
-      <div class="jornada__cab reveal">
-        <p class="eyebrow">Linha do tempo</p>
-        <h2 id="jornada-titulo" class="h2">A jornada de uma ação trabalhista.</h2>
-        <p class="lead">Quinze etapas, cinco momentos. Do protocolo ao pagamento.</p>
-      </div>
+  <!-- LINHA DO TEMPO: roda das fases (assets/js/jornada.js) -->
+  <section class="jornada on-dark" id="jornada" aria-labelledby="jornada-titulo" style="--n:5">
+    <div class="jornada__trilho">
+      <div class="jornada__palco">
 
-      <ol class="tl" id="tl" aria-label="Fases do processo trabalhista">
-        <li class="tl__trilho" aria-hidden="true"><span class="tl__fill"></span></li>
-        <li class="tl-fase">
-          <span class="tl-fase__ponto" aria-hidden="true"></span>
-          <h3>Início</h3>
-          <p>A ação é ajuizada, a empresa é notificada e o juiz tenta o primeiro acordo.</p>
+        <div class="roda" aria-hidden="true"><div class="roda__eixo"></div></div>
+
+        <header class="jornada__rotulo centro">
+          <p class="eyebrow">Linha do tempo</p>
+          <h2 id="jornada-titulo" class="h2">A jornada de uma<br> ação trabalhista.</h2>
+          <p class="lead">Quinze etapas, cinco momentos. Do protocolo ao pagamento.</p>
+          <p class="jornada__dica" aria-hidden="true">Role para girar <span>↓</span></p>
+        </header>
+
+        <ol class="jornada__fases">
+
+          <li class="fase">
+            <figure class="fase__arte">
+              <svg viewBox="0 0 580 400" role="img" aria-label="A petição inicial é protocolada, a empresa recebe a citação e as partes vão à audiência na Vara do Trabalho">
+                <rect width="580" height="400" fill="#f2f1ec"/>
+                <ellipse cx="290" cy="336" rx="250" ry="14" fill="#e4e2da"/>
+                <g transform="translate(64 78) rotate(-4)">
+                  <rect width="150" height="206" rx="12" fill="#fff" stroke="#dcdbd4" stroke-width="2"/>
+                  <rect x="18" y="20" width="76" height="10" rx="5" fill="#0f3527"/>
+                  <rect x="18" y="46" width="114" height="7" rx="3.5" fill="#dcdbd4"/>
+                  <rect x="18" y="62" width="100" height="7" rx="3.5" fill="#dcdbd4"/>
+                  <rect x="18" y="78" width="114" height="7" rx="3.5" fill="#dcdbd4"/>
+                  <rect x="18" y="94" width="84" height="7" rx="3.5" fill="#dcdbd4"/>
+                  <rect x="18" y="110" width="110" height="7" rx="3.5" fill="#dcdbd4"/>
+                  <rect x="18" y="126" width="70" height="7" rx="3.5" fill="#dcdbd4"/>
+                  <circle cx="116" cy="168" r="21" fill="#a9852f"/>
+                  <text x="116" y="176" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="24" fill="#fff">§</text>
+                </g>
+                <g transform="translate(196 236) rotate(-38)">
+                  <rect width="92" height="13" rx="6.5" fill="#1c5a41"/>
+                  <path d="M92 0 L108 6.5 L92 13 Z" fill="#e6d7a8"/>
+                </g>
+                <path d="M232 132 C 258 84, 292 80, 312 112" fill="none" stroke="#a9852f" stroke-width="3" stroke-dasharray="7 7" stroke-linecap="round"/>
+                <path d="M304 104 L314 116 L318 100" fill="none" stroke="#a9852f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <g transform="translate(290 126)">
+                  <rect width="112" height="76" rx="9" fill="#fff" stroke="#dcdbd4" stroke-width="2"/>
+                  <path d="M2 8 L56 46 L110 8" fill="none" stroke="#dcdbd4" stroke-width="2.5" stroke-linejoin="round"/>
+                  <circle cx="56" cy="46" r="11" fill="#1c5a41"/>
+                </g>
+                <g transform="translate(404 128)">
+                  <path d="M0 60 L80 16 L160 60 Z" fill="#0f3527"/>
+                  <rect y="60" width="160" height="12" fill="#1c5a41"/>
+                  <rect x="14" y="78" width="16" height="104" rx="3" fill="#0f3527"/>
+                  <rect x="52" y="78" width="16" height="104" rx="3" fill="#0f3527"/>
+                  <rect x="92" y="78" width="16" height="104" rx="3" fill="#0f3527"/>
+                  <rect x="130" y="78" width="16" height="104" rx="3" fill="#0f3527"/>
+                  <rect x="-8" y="182" width="176" height="12" rx="3" fill="#1c5a41"/>
+                  <rect x="-16" y="194" width="192" height="12" rx="3" fill="#0f3527"/>
+                  <circle cx="80" cy="42" r="8" fill="#d4b566"/>
+                </g>
+                <g transform="translate(446 62)">
+                  <rect width="98" height="36" rx="18" fill="#fff" stroke="#dcdbd4" stroke-width="2"/>
+                  <path d="M26 35 L20 48 L38 35" fill="#fff" stroke="#dcdbd4" stroke-width="2" stroke-linejoin="round"/>
+                  <rect x="22" y="34" width="20" height="4" fill="#fff"/>
+                  <text x="49" y="23" text-anchor="middle" font-family="Geist, system-ui, sans-serif" font-size="14" font-weight="600" fill="#0f3527">Acordo?</text>
+                </g>
+                <g font-family="Geist, system-ui, sans-serif" font-size="13" font-weight="600">
+                  <g transform="translate(62 346)"><rect width="126" height="30" rx="15" fill="#fff"/><text x="14" y="20" fill="#7d5f18">01</text><text x="38" y="20" fill="#0f3527">Petição</text></g>
+                  <g transform="translate(286 222)"><rect width="118" height="30" rx="15" fill="#fff"/><text x="14" y="20" fill="#7d5f18">02</text><text x="38" y="20" fill="#0f3527">Citação</text></g>
+                  <g transform="translate(418 346)"><rect width="134" height="30" rx="15" fill="#fff"/><text x="14" y="20" fill="#7d5f18">03</text><text x="38" y="20" fill="#0f3527">Audiência</text></g>
+                </g>
+              </svg>
+            </figure>
+            <div class="fase__texto">
+              <p class="fase__num">Fase 01 de 05</p>
+              <h3 class="fase__titulo">Início</h3>
+              <p class="fase__lead">Tudo começa quando o trabalhador, chamado de reclamante, leva o seu pedido à Justiça do Trabalho. A empresa é chamada a responder e o juiz tenta, logo de início, um acordo entre as partes.</p>
+              <ol class="fase__etapas">
+                <li><span>01</span><div><strong>Petição inicial</strong><p>O reclamante ajuíza a ação na Vara do Trabalho, narrando os fatos e apresentando os pedidos.</p></div></li>
+                <li><span>02</span><div><strong>Citação do reclamado</strong><p>A empresa é notificada oficialmente de que passou a responder a um processo.</p></div></li>
+                <li><span>03</span><div><strong>Audiência inicial</strong><p>Primeira tentativa de acordo entre as partes, conduzida pelo juiz.</p></div></li>
+              </ol>
+            </div>
+          </li>
+
+          <li class="fase">
+            <figure class="fase__arte">
+              <svg viewBox="0 0 580 400" role="img" aria-label="A empresa apresenta a contestação e o trabalhador responde com a réplica">
+                <rect width="580" height="400" fill="#f2f1ec"/>
+                <ellipse cx="290" cy="330" rx="240" ry="14" fill="#e4e2da"/>
+                <g transform="translate(62 74)">
+                  <rect width="176" height="232" rx="14" fill="#0f3527"/>
+                  <path d="M88 26 L116 37 V61 C116 81 103 92 88 98 C73 92 60 81 60 61 V37 Z" fill="#d4b566"/>
+                  <path d="M76 62 L85 71 L101 54" fill="none" stroke="#0f3527" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <rect x="22" y="122" width="132" height="8" rx="4" fill="#2f5c48"/>
+                  <rect x="22" y="140" width="116" height="8" rx="4" fill="#2f5c48"/>
+                  <rect x="22" y="158" width="132" height="8" rx="4" fill="#2f5c48"/>
+                  <rect x="22" y="176" width="92" height="8" rx="4" fill="#2f5c48"/>
+                  <rect x="22" y="194" width="124" height="8" rx="4" fill="#2f5c48"/>
+                </g>
+                <g transform="translate(342 74)">
+                  <rect width="176" height="232" rx="14" fill="#fff" stroke="#dcdbd4" stroke-width="2"/>
+                  <path d="M118 88 V78 C118 62 106 52 90 52 H56 M72 34 L54 52 L72 70" fill="none" stroke="#1c5a41" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                  <rect x="22" y="122" width="132" height="8" rx="4" fill="#dcdbd4"/>
+                  <rect x="22" y="140" width="108" height="8" rx="4" fill="#dcdbd4"/>
+                  <rect x="22" y="158" width="132" height="8" rx="4" fill="#dcdbd4"/>
+                  <rect x="22" y="176" width="120" height="8" rx="4" fill="#dcdbd4"/>
+                  <rect x="22" y="194" width="84" height="8" rx="4" fill="#dcdbd4"/>
+                </g>
+                <path d="M248 130 C 272 92, 308 92, 332 126" fill="none" stroke="#a9852f" stroke-width="4" stroke-linecap="round"/>
+                <path d="M320 122 L333 129 L336 114" fill="none" stroke="#a9852f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M332 250 C 308 288, 272 288, 248 254" fill="none" stroke="#1c5a41" stroke-width="4" stroke-linecap="round"/>
+                <path d="M260 258 L247 251 L244 266" fill="none" stroke="#1c5a41" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <g font-family="Geist, system-ui, sans-serif" font-size="13" font-weight="600">
+                  <g transform="translate(78 342)"><rect width="146" height="30" rx="15" fill="#fff"/><text x="14" y="20" fill="#7d5f18">04</text><text x="38" y="20" fill="#0f3527">Contestação</text></g>
+                  <g transform="translate(372 342)"><rect width="116" height="30" rx="15" fill="#fff"/><text x="14" y="20" fill="#7d5f18">05</text><text x="38" y="20" fill="#0f3527">Réplica</text></g>
+                </g>
+              </svg>
+            </figure>
+            <div class="fase__texto">
+              <p class="fase__num">Fase 02 de 05</p>
+              <h3 class="fase__titulo">Defesa</h3>
+              <p class="fase__lead">Sem acordo, cada lado apresenta a sua versão por escrito. É nesta fase que os pontos em discussão ficam definidos: o que é pedido, o que é negado e por quê.</p>
+              <ol class="fase__etapas">
+                <li><span>04</span><div><strong>Contestação</strong><p>O reclamado apresenta sua defesa por escrito, rebatendo cada um dos pedidos.</p></div></li>
+                <li><span>05</span><div><strong>Réplica</strong><p>O reclamante responde aos argumentos levantados pela defesa.</p></div></li>
+              </ol>
+            </div>
+          </li>
+
+          <li class="fase">
+            <figure class="fase__arte">
+              <svg viewBox="0 0 580 400" role="img" aria-label="Documentos analisados com lupa, testemunha depondo e perícia técnica medindo as condições de trabalho">
+                <rect width="580" height="400" fill="#f2f1ec"/>
+                <ellipse cx="290" cy="330" rx="250" ry="14" fill="#e4e2da"/>
+                <g transform="translate(58 70)">
+                  <rect width="156" height="210" rx="12" fill="#fff" stroke="#dcdbd4" stroke-width="2"/>
+                  <circle cx="30" cy="40" r="9" fill="#1c5a41"/><path d="M25 40 L29 44 L36 36" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <rect x="48" y="36" width="88" height="8" rx="4" fill="#dcdbd4"/>
+                  <circle cx="30" cy="76" r="9" fill="#1c5a41"/><path d="M25 76 L29 80 L36 72" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <rect x="48" y="72" width="76" height="8" rx="4" fill="#dcdbd4"/>
+                  <circle cx="30" cy="112" r="9" fill="#1c5a41"/><path d="M25 112 L29 116 L36 108" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <rect x="48" y="108" width="92" height="8" rx="4" fill="#dcdbd4"/>
+                  <circle cx="30" cy="148" r="9" fill="none" stroke="#dcdbd4" stroke-width="3"/>
+                  <rect x="48" y="144" width="64" height="8" rx="4" fill="#dcdbd4"/>
+                </g>
+                <circle cx="198" cy="168" r="50" fill="#e6efe9" fill-opacity=".72" stroke="#0f3527" stroke-width="12"/>
+                <path d="M234 204 L276 246" stroke="#0f3527" stroke-width="18" stroke-linecap="round"/>
+                <g transform="translate(314 92)">
+                  <circle cx="52" cy="42" r="24" fill="#0f3527"/>
+                  <path d="M14 112 C14 78 90 78 90 112 Z" fill="#0f3527"/>
+                  <rect x="0" y="104" width="104" height="120" rx="8" fill="#1c5a41"/>
+                  <rect x="0" y="104" width="104" height="10" rx="4" fill="#a9852f"/>
+                </g>
+                <g transform="translate(410 58)">
+                  <rect width="84" height="38" rx="19" fill="#fff" stroke="#dcdbd4" stroke-width="2"/>
+                  <path d="M16 36 L8 50 L30 36" fill="#fff" stroke="#dcdbd4" stroke-width="2" stroke-linejoin="round"/>
+                  <rect x="14" y="34" width="18" height="4" fill="#fff"/>
+                  <circle cx="26" cy="19" r="4.5" fill="#1c5a41"/><circle cx="42" cy="19" r="4.5" fill="#1c5a41"/><circle cx="58" cy="19" r="4.5" fill="#1c5a41"/>
+                </g>
+                <g transform="translate(482 222)">
+                  <circle r="46" fill="#fff" stroke="#dcdbd4" stroke-width="2"/>
+                  <path d="M-32 14 A34 34 0 0 1 32 14" fill="none" stroke="#dcdbd4" stroke-width="8" stroke-linecap="round"/>
+                  <path d="M-32 14 A34 34 0 0 1 14 -30" fill="none" stroke="#a9852f" stroke-width="8" stroke-linecap="round"/>
+                  <path d="M0 10 L18 -20" stroke="#0f3527" stroke-width="5" stroke-linecap="round"/>
+                  <circle cy="10" r="7" fill="#0f3527"/>
+                </g>
+                <g font-family="Geist, system-ui, sans-serif" font-size="13" font-weight="600">
+                  <g transform="translate(56 346)"><rect width="132" height="30" rx="15" fill="#fff"/><text x="14" y="20" fill="#7d5f18">06</text><text x="38" y="20" fill="#0f3527">Instrução</text></g>
+                  <g transform="translate(418 290)"><rect width="118" height="30" rx="15" fill="#fff"/><text x="14" y="20" fill="#7d5f18">07</text><text x="38" y="20" fill="#0f3527">Perícia</text></g>
+                  <g transform="translate(238 346)"><rect width="162" height="30" rx="15" fill="#fff"/><text x="14" y="20" fill="#7d5f18">08</text><text x="38" y="20" fill="#0f3527">Razões finais</text></g>
+                </g>
+              </svg>
+            </figure>
+            <div class="fase__texto">
+              <p class="fase__num">Fase 03 de 05</p>
+              <h3 class="fase__titulo">Provas</h3>
+              <p class="fase__lead">Para decidir, o juiz precisa de elementos concretos: documentos, depoimentos das partes e de testemunhas e, quando o tema é técnico, a avaliação de um perito.</p>
+              <ol class="fase__etapas">
+                <li><span>06</span><div><strong>Instrução processual</strong><p>Fase de provas: documentos, depoimentos e testemunhas são apresentados.</p></div></li>
+                <li><span>07</span><div><strong>Perícia (quando houver)</strong><p>Avaliação técnica, como insalubridade, periculosidade ou equiparação salarial.</p></div></li>
+                <li><span>08</span><div><strong>Razões finais</strong><p>Últimas manifestações das partes antes da decisão do juiz.</p></div></li>
+              </ol>
+            </div>
+          </li>
+
+          <li class="fase">
+            <figure class="fase__arte">
+              <svg viewBox="0 0 580 400" role="img" aria-label="O martelo do juiz marca a sentença na Vara; os recursos sobem ao TRT e ao TST">
+                <rect width="580" height="400" fill="#f2f1ec"/>
+                <ellipse cx="290" cy="332" rx="256" ry="14" fill="#e4e2da"/>
+                <g transform="translate(40 268)">
+                  <rect width="136" height="26" rx="8" fill="#0f3527"/>
+                  <rect x="12" y="-10" width="112" height="12" rx="6" fill="#1c5a41"/>
+                </g>
+                <g transform="translate(58 150) rotate(-28)">
+                  <rect x="0" y="0" width="112" height="46" rx="10" fill="#1c5a41"/>
+                  <rect x="18" y="0" width="12" height="46" fill="#a9852f"/>
+                  <rect x="82" y="0" width="12" height="46" fill="#a9852f"/>
+                  <rect x="48" y="44" width="16" height="118" rx="8" fill="#0f3527"/>
+                </g>
+                <path d="M150 238 L170 224 M156 256 L182 252 M136 222 L144 200" stroke="#a9852f" stroke-width="4" stroke-linecap="round"/>
+                <g font-family="Geist, system-ui, sans-serif" font-weight="600" text-anchor="middle">
+                  <rect x="226" y="262" width="100" height="70" rx="8" fill="#1c5a41"/>
+                  <rect x="226" y="262" width="100" height="6" fill="#a9852f"/>
+                  <text x="276" y="304" font-size="17" fill="#fff">Vara</text>
+                  <rect x="340" y="200" width="100" height="132" rx="8" fill="#14432f"/>
+                  <rect x="340" y="200" width="100" height="6" fill="#a9852f"/>
+                  <text x="390" y="242" font-size="17" fill="#fff">TRT</text>
+                  <rect x="454" y="136" width="100" height="196" rx="8" fill="#0f3527"/>
+                  <rect x="454" y="136" width="100" height="6" fill="#a9852f"/>
+                  <text x="504" y="178" font-size="17" fill="#fff">TST</text>
+                </g>
+                <path d="M284 244 C 300 196, 340 178, 372 186" fill="none" stroke="#a9852f" stroke-width="3.5" stroke-dasharray="7 7" stroke-linecap="round"/>
+                <path d="M360 178 L373 186 L362 197" fill="none" stroke="#a9852f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M398 182 C 414 134, 452 116, 486 122" fill="none" stroke="#a9852f" stroke-width="3.5" stroke-dasharray="7 7" stroke-linecap="round"/>
+                <path d="M474 114 L487 122 L476 133" fill="none" stroke="#a9852f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <g font-family="Geist, system-ui, sans-serif" font-size="13" font-weight="600">
+                  <g transform="translate(40 346)"><rect width="130" height="30" rx="15" fill="#fff"/><text x="14" y="20" fill="#7d5f18">09</text><text x="38" y="20" fill="#0f3527">Sentença</text></g>
+                  <g transform="translate(206 150)"><rect width="126" height="30" rx="15" fill="#fff"/><text x="14" y="20" fill="#7d5f18">10</text><text x="38" y="20" fill="#0f3527">Recurso</text></g>
+                  <g transform="translate(330 346)"><rect width="120" height="30" rx="15" fill="#fff"/><text x="14" y="20" fill="#7d5f18">11</text><text x="38" y="20" fill="#0f3527">Acórdão</text></g>
+                  <g transform="translate(330 64)"><rect width="126" height="30" rx="15" fill="#fff"/><text x="14" y="20" fill="#7d5f18">12</text><text x="38" y="20" fill="#0f3527">Revista</text></g>
+                </g>
+              </svg>
+            </figure>
+            <div class="fase__texto">
+              <p class="fase__num">Fase 04 de 05</p>
+              <h3 class="fase__titulo">Decisão</h3>
+              <p class="fase__lead">O juiz decide o caso na Vara do Trabalho. Quem não concordar pode recorrer às instâncias superiores: primeiro ao Tribunal Regional (TRT) e, em situações específicas, ao Tribunal Superior do Trabalho (TST).</p>
+              <ol class="fase__etapas">
+                <li><span>09</span><div><strong>Sentença</strong><p>O juiz profere a decisão de 1ª instância sobre o caso.</p></div></li>
+                <li><span>10</span><div><strong>Recurso ordinário</strong><p>A parte inconformada recorre ao Tribunal Regional do Trabalho (TRT).</p></div></li>
+                <li><span>11</span><div><strong>Acórdão do TRT</strong><p>O recurso é julgado pela 2ª instância, que confirma ou reforma a sentença.</p></div></li>
+                <li><span>12</span><div><strong>Recurso de revista</strong><p>Quando cabível, o caso segue ao Tribunal Superior do Trabalho (TST).</p></div></li>
+              </ol>
+            </div>
+          </li>
+
+          <li class="fase">
+            <figure class="fase__arte">
+              <svg viewBox="0 0 580 400" role="img" aria-label="Selo de decisão definitiva, calculadora com o valor devido e o pagamento em dinheiro">
+                <rect width="580" height="400" fill="#f2f1ec"/>
+                <ellipse cx="290" cy="332" rx="250" ry="14" fill="#e4e2da"/>
+                <g transform="translate(126 178)">
+                  <path d="M0 -70 L18 -58 L40 -60 L48 -40 L66 -28 L60 -6 L70 14 L54 30 L50 52 L28 56 L12 70 L-8 62 L-30 66 L-40 46 L-60 36 L-58 14 L-70 -4 L-56 -22 L-54 -44 L-32 -50 L-18 -66 Z" fill="#0f3527"/>
+                  <circle r="44" fill="none" stroke="#d4b566" stroke-width="3" stroke-dasharray="4 6"/>
+                  <path d="M-20 0 L-5 16 L24 -16" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+                <g transform="translate(236 82)">
+                  <rect width="124" height="200" rx="18" fill="#1c5a41"/>
+                  <rect x="14" y="16" width="96" height="44" rx="8" fill="#e6efe9"/>
+                  <text x="100" y="46" text-anchor="end" font-family="Geist, system-ui, sans-serif" font-size="18" font-weight="700" fill="#0f3527">R$</text>
+                  <g fill="#2f6a52">
+                    <rect x="14" y="76" width="26" height="22" rx="6"/><rect x="49" y="76" width="26" height="22" rx="6"/><rect x="84" y="76" width="26" height="22" rx="6" fill="#a9852f"/>
+                    <rect x="14" y="106" width="26" height="22" rx="6"/><rect x="49" y="106" width="26" height="22" rx="6"/><rect x="84" y="106" width="26" height="22" rx="6" fill="#a9852f"/>
+                    <rect x="14" y="136" width="26" height="22" rx="6"/><rect x="49" y="136" width="26" height="22" rx="6"/><rect x="84" y="136" width="26" height="52" rx="6" fill="#d4b566"/>
+                    <rect x="14" y="166" width="61" height="22" rx="6"/>
+                  </g>
+                </g>
+                <g transform="translate(390 200)">
+                  <rect x="12" y="-24" width="150" height="80" rx="10" fill="#cfe0d4" stroke="#1c5a41" stroke-width="2"/>
+                  <rect x="6" y="-12" width="150" height="80" rx="10" fill="#dcebe0" stroke="#1c5a41" stroke-width="2"/>
+                  <rect x="0" y="0" width="150" height="80" rx="10" fill="#e6f0e9" stroke="#1c5a41" stroke-width="2"/>
+                  <circle cx="75" cy="40" r="20" fill="none" stroke="#1c5a41" stroke-width="3"/>
+                  <text x="75" y="47" text-anchor="middle" font-family="Geist, system-ui, sans-serif" font-size="18" font-weight="700" fill="#1c5a41">$</text>
+                  <rect x="12" y="14" width="18" height="6" rx="3" fill="#1c5a41"/><rect x="120" y="60" width="18" height="6" rx="3" fill="#1c5a41"/>
+                </g>
+                <g transform="translate(398 312)">
+                  <ellipse cx="22" cy="0" rx="22" ry="7" fill="#a9852f"/>
+                  <ellipse cx="22" cy="-8" rx="22" ry="7" fill="#c49a3a"/>
+                  <ellipse cx="22" cy="-16" rx="22" ry="7" fill="#d4b566"/>
+                </g>
+                <g font-family="Geist, system-ui, sans-serif" font-size="13" font-weight="600">
+                  <g transform="translate(46 290)"><rect width="160" height="30" rx="15" fill="#fff"/><text x="14" y="20" fill="#7d5f18">13</text><text x="38" y="20" fill="#0f3527">Trânsito em julgado</text></g>
+                  <g transform="translate(236 298)"><rect width="126" height="30" rx="15" fill="#fff"/><text x="14" y="20" fill="#7d5f18">14</text><text x="38" y="20" fill="#0f3527">Liquidação</text></g>
+                  <g transform="translate(418 108)"><rect width="140" height="30" rx="15" fill="#fff"/><text x="14" y="20" fill="#7d5f18">15</text><text x="38" y="20" fill="#0f3527">Pagamento</text></g>
+                </g>
+              </svg>
+            </figure>
+            <div class="fase__texto">
+              <p class="fase__num">Fase 05 de 05</p>
+              <h3 class="fase__titulo">Pagamento</h3>
+              <p class="fase__lead">Quando não cabem mais recursos, a decisão se torna definitiva. Os valores são calculados com precisão e o processo termina com o pagamento ao trabalhador.</p>
+              <ol class="fase__etapas">
+                <li><span>13</span><div><strong>Trânsito em julgado</strong><p>A decisão se torna definitiva: não cabem mais recursos.</p></div></li>
+                <li><span>14</span><div><strong>Liquidação e execução</strong><p>Cálculo dos valores efetivamente devidos ao reclamante.</p></div></li>
+                <li><span>15</span><div><strong>Cumprimento da sentença</strong><p>Pagamento dos valores devidos. O fim da jornada processual.</p></div></li>
+              </ol>
+            </div>
+          </li>
+
+        </ol>
+
+        <nav class="jornada__indice" aria-label="Ir para uma fase">
           <ol>
-            <li><span>01</span>Petição inicial</li>
-            <li><span>02</span>Citação do reclamado</li>
-            <li><span>03</span>Audiência inicial</li>
+            <li><button type="button" data-fase="0"><span>01</span>Início</button></li>
+            <li><button type="button" data-fase="1"><span>02</span>Defesa</button></li>
+            <li><button type="button" data-fase="2"><span>03</span>Provas</button></li>
+            <li><button type="button" data-fase="3"><span>04</span>Decisão</button></li>
+            <li><button type="button" data-fase="4"><span>05</span>Pagamento</button></li>
           </ol>
-        </li>
-        <li class="tl-fase">
-          <span class="tl-fase__ponto" aria-hidden="true"></span>
-          <h3>Defesa</h3>
-          <p>A empresa apresenta sua defesa por escrito e o reclamante responde.</p>
-          <ol>
-            <li><span>04</span>Contestação</li>
-            <li><span>05</span>Réplica</li>
-          </ol>
-        </li>
-        <li class="tl-fase">
-          <span class="tl-fase__ponto" aria-hidden="true"></span>
-          <h3>Provas</h3>
-          <p>Documentos, testemunhas e, quando preciso, perícia técnica.</p>
-          <ol>
-            <li><span>06</span>Instrução processual</li>
-            <li><span>07</span>Perícia (quando houver)</li>
-            <li><span>08</span>Razões finais</li>
-          </ol>
-        </li>
-        <li class="tl-fase">
-          <span class="tl-fase__ponto" aria-hidden="true"></span>
-          <h3>Decisão</h3>
-          <p>Sentença na Vara e, se houver recurso, julgamento no TRT e no TST.</p>
-          <ol>
-            <li><span>09</span>Sentença</li>
-            <li><span>10</span>Recurso ordinário</li>
-            <li><span>11</span>Acórdão do TRT</li>
-            <li><span>12</span>Recurso de revista</li>
-          </ol>
-        </li>
-        <li class="tl-fase">
-          <span class="tl-fase__ponto" aria-hidden="true"></span>
-          <h3>Pagamento</h3>
-          <p>A decisão se torna definitiva, os valores são calculados e pagos.</p>
-          <ol>
-            <li><span>13</span>Trânsito em julgado</li>
-            <li><span>14</span>Liquidação e execução</li>
-            <li><span>15</span>Cumprimento da sentença</li>
-          </ol>
-        </li>
-      </ol>
+        </nav>
+
+      </div>
     </div>
   </section>
 
@@ -380,7 +595,8 @@
   </div>
 </footer>
 
-<script src="assets/js/site.js"></script>
+<script src="assets/js/site.js?v=20260926"></script>
+<script src="assets/js/jornada.js?v=20260926"></script>
 <script>
 (function () {
   var S = window.Site;
@@ -392,7 +608,7 @@
     .then(function (posts) {
       posts.sort(function (a, b) { return a.data < b.data ? 1 : -1; });
       posts.slice(0, 3).forEach(function (p, i) {
-        var card = S.cardPost(p);
+        var card = S.cardPost(p, { resumo: true });
         card.classList.add('reveal');
         card.style.setProperty('--d', (i * 80) + 'ms');
         lista.appendChild(card);
@@ -403,78 +619,6 @@
       lista.innerHTML = '<p class="cards__erro">Não foi possível carregar os artigos agora. <a href="blog.html">Abrir o blog ›</a></p>';
     });
 
-  /* ---------- Linha do tempo processual ----------
-     - progresso ligado à rolagem, gravado em --p (transform no CSS)
-     - só escuta scroll enquanto a seção está visível
-     - no máximo 1 cálculo por quadro; medidas só no resize
-     - reduz movimento / sem suporte: tudo preenchido, sem escuta */
-  var tl = document.getElementById('tl');
-  if (!tl) return;
-  var fases = [].slice.call(tl.querySelectorAll('.tl-fase'));
-  var pontos = fases.map(function (f) { return f.querySelector('.tl-fase__ponto'); });
-  var vertical = window.matchMedia('(max-width: 900px)');
-  var limites = [];
-  var pedido = 0;
-  var ativo = false;
-
-  function tudoPronto() {
-    tl.style.setProperty('--p', '1');
-    fases.forEach(function (f) { f.classList.add('is-alcancada'); });
-  }
-  function medir() {
-    var r = tl.getBoundingClientRect();
-    limites = pontos.map(function (pt) {
-      var q = pt.getBoundingClientRect();
-      return vertical.matches
-        ? (q.top + q.height / 2 - r.top) / r.height
-        : (q.left + q.width / 2 - r.left) / r.width;
-    });
-  }
-  function progresso() {
-    var r = tl.getBoundingClientRect();
-    var vh = window.innerHeight;
-    // vertical: acompanha um "cursor" a 65% da tela; horizontal: enche enquanto o trilho sobe de 85% a 40%
-    var p = vertical.matches ? (vh * 0.65 - r.top) / r.height : (vh * 0.85 - r.top) / (vh * 0.45);
-    return Math.max(0, Math.min(1, p));
-  }
-  function pintar() {
-    pedido = 0;
-    var p = progresso();
-    tl.style.setProperty('--p', p.toFixed(4));
-    fases.forEach(function (f, i) { f.classList.toggle('is-alcancada', p >= limites[i] - 0.001); });
-  }
-  function agendar() { if (!pedido) pedido = requestAnimationFrame(pintar); }
-  function ligar() { if (!ativo) { ativo = true; window.addEventListener('scroll', agendar, { passive: true }); agendar(); } }
-  function desligar() { if (ativo) { ativo = false; window.removeEventListener('scroll', agendar); } }
-
-  var vigia = null;
-  function iniciar() {
-    if (S.semMovimento.matches || !('IntersectionObserver' in window)) {
-      desligar();
-      if (vigia) { vigia.disconnect(); vigia = null; }
-      tudoPronto();
-      return;
-    }
-    medir();
-    pintar();
-    if (!vigia) {
-      vigia = new IntersectionObserver(function (e) {
-        if (e[0].isIntersecting) ligar(); else { agendar(); desligar(); }
-      }, { rootMargin: '20% 0px 20% 0px' });
-      vigia.observe(tl);
-    }
-  }
-
-  var tResize = 0;
-  window.addEventListener('resize', function () {
-    clearTimeout(tResize);
-    tResize = setTimeout(function () { medir(); agendar(); }, 120);
-  }, { passive: true });
-  vertical.addEventListener('change', function () { medir(); agendar(); });
-  S.semMovimento.addEventListener('change', iniciar);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { medir(); agendar(); });
-
-  iniciar();
 })();
 </script>
 
