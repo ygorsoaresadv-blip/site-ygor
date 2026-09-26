@@ -247,23 +247,30 @@ fieldset.campo legend{padding:0;margin-bottom:8px}
 .prosa code{background:var(--tile);padding:2px 7px;border-radius:6px;font-size:.9em}
 .prosa img{border-radius:18px}
 
-/* Texto justificado (padrão editorial do blog)
-   - só em parágrafos corridos; nunca em títulos, rótulos, datas ou textos centralizados
-   - hifenização em pt-BR evita espaços largos entre palavras em colunas estreitas
-   - a última linha de cada parágrafo continua alinhada à esquerda */
-.justificado,
-.prosa p,.prosa li,.prosa blockquote,
-.card__resumo{
+/* ===================================================================
+   Texto justificado — padrão editorial do site
+   - textos E títulos de todas as páginas são justificados
+   - exceções: o hero da home e os cabeçalhos centralizados (.hero, .cabecalho--centro, .centro)
+   - parágrafos: hifenização pt-BR (palavras ≥ 7 letras, 3+3 nas pontas) evita
+     espaços largos em colunas estreitas; títulos não hifenizam
+   - a última linha de cada bloco fica sempre alinhada à esquerda
+   =================================================================== */
+main p,main li,main blockquote,main dd,main h2,main h3,main h4,
+.rodape__aviso,.justificado{
   text-align:justify;
   text-justify:inter-word;
+  overflow-wrap:break-word;
+}
+main p,main li,main blockquote,main dd,.rodape__aviso,.justificado{
   -webkit-hyphens:auto;
   hyphens:auto;
   hyphenate-limit-chars:7 3 3;
-  overflow-wrap:break-word;
   text-wrap:wrap;
 }
-/* componentes com texto curto dentro de .prosa ficam alinhados à esquerda */
-.prosa .chips li,.prosa .passos p,.prosa .cargos,.prosa .votacao p,.prosa .composicao p,.prosa .sistema p,.prosa .contagem p{text-align:left;hyphens:manual;-webkit-hyphens:manual}
+/* títulos: sem "balance" (ele encurta as linhas e o justificado esticaria demais) */
+main h2,main h3,main h4,.h2,.h3,.card__titulo{text-wrap:wrap;-webkit-hyphens:manual;hyphens:manual}
+/* exceções centralizadas: herdam o alinhamento do bloco */
+.hero *,.cabecalho--centro > *,.centro,.centro *{text-align:center}
 
 .destaque-caixa{padding:20px 24px;border-radius:18px;background:var(--tile)}
 .destaque-caixa__rotulo{font-size:14px;font-weight:600;color:var(--ouro-texto);margin-bottom:6px}

@@ -1,0 +1,105 @@
+/* ============================================================
+   Linha do tempo processual — "roda" das fases (home)
+   Dois modos:
+   1. estático (padrão, sem JS ou com movimento reduzido):
+      lista com ilustração + texto de cada fase
+   2. roda (.is-roda, ligado por assets/js/jornada.js):
+      palco fixo na tela; a rolagem gira um tambor 3D e cada
+      fase ocupa a tela inteira, uma de cada vez
+   ============================================================ */
+
+.jornada{background:var(--verde-noite);color:var(--claro)}
+.jornada .eyebrow{color:var(--ouro-escuro-bg)}
+.jornada .h2{color:#fff}
+.jornada .lead{color:var(--claro-2)}
+
+/* ---------- Modo estático ---------- */
+.jornada__palco{max-width:1440px;margin-inline:auto;padding:clamp(72px,9.7vw,140px) var(--gutter)}
+.jornada__rotulo{display:flex;flex-direction:column;align-items:center;gap:16px;margin-bottom:clamp(40px,5vw,80px)}
+.jornada__rotulo .lead{max-width:620px;font-size:clamp(17px,1.5vw,21px)}
+.jornada__dica,.roda,.jornada__indice{display:none}
+
+.jornada__fases{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:clamp(56px,7vw,112px)}
+.fase{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4.4vw,72px);align-items:center}
+.fase__arte{margin:0;border-radius:var(--raio);overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.55)}
+.fase__arte svg{display:block;width:100%;height:auto}
+.fase__texto{display:flex;flex-direction:column;gap:16px}
+.fase__num{font-size:15px;font-weight:600;color:var(--ouro-escuro-bg)}
+main .fase__titulo{font-size:clamp(44px,4.8vw,72px);line-height:1;font-weight:600;letter-spacing:-.035em;color:#fff}
+.fase__lead{font-size:clamp(18px,1.45vw,22px);line-height:1.5;color:var(--claro-2)}
+.fase__etapas{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column}
+.fase__etapas li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;padding:14px 0;border-top:1px solid rgba(238,243,239,.14)}
+.fase__etapas span{padding-top:2px;font-size:14px;font-weight:600;color:var(--ouro-escuro-bg);font-variant-numeric:tabular-nums}
+.fase__etapas strong{display:block;font-size:17px;font-weight:600;color:#fff}
+.fase__etapas p{margin-top:3px;font-size:15px;line-height:1.5;color:var(--claro-3)}
+
+@media (max-width:900px){
+  .fase{grid-template-columns:minmax(0,1fr)}
+  .jornada__rotulo{align-items:flex-start}
+  .jornada__rotulo.centro,.jornada__rotulo.centro *{text-align:left}
+}
+
+/* ---------- Modo roda ---------- */
+.is-roda .jornada__trilho{height:calc((var(--n) + 1.4) * 100vh)}
+.is-roda .jornada__palco{position:sticky;top:var(--nav-h);height:calc(100vh - var(--nav-h));max-width:none;padding:0;overflow:hidden}
+
+.is-roda .roda{display:block;position:absolute;inset:0;z-index:1}
+.roda__eixo{position:absolute;left:0;top:0;transform-style:preserve-3d;will-change:transform}
+.roda__carta{position:absolute;left:0;top:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;will-change:transform,opacity}
+.roda__face{display:block;width:100%;height:100%;border-radius:clamp(14px,1.6vw,22px);overflow:hidden;background:var(--tile);box-shadow:0 34px 70px -28px rgba(0,0,0,.6)}
+.roda__face svg{display:block;width:100%;height:100%}
+
+/* título do anel: na coluna da esquerda (onde depois entra o texto de cada fase),
+   longe das cartas; some quando o anel abre */
+.is-roda .jornada__rotulo{position:absolute;left:6%;top:50%;z-index:3;width:34%;margin:0;transform:translateY(-50%);pointer-events:none;gap:14px;align-items:flex-start}
+.is-roda .jornada__rotulo.centro,.is-roda .jornada__rotulo.centro *{text-align:left}
+.is-roda .jornada__rotulo .h2{font-size:clamp(34px,3.4vw,52px)}
+.is-roda .jornada__rotulo .lead{font-size:clamp(17px,1.35vw,20px);text-align:justify}
+.is-roda .jornada__dica{display:block;margin-top:6px;font-size:14px;color:var(--claro-3)}
+.jornada__dica span{display:inline-block}
+@media (prefers-reduced-motion:no-preference){
+  @keyframes quicar{0%,100%{transform:none}50%{transform:translateY(4px)}}
+  .is-roda .jornada__dica span{animation:quicar 1.6s var(--ease) infinite}
+}
+
+/* texto da fase da frente: troca com fade curto */
+.is-roda .jornada__fases{position:absolute;left:6%;top:0;bottom:0;width:36%;display:block;z-index:4;pointer-events:none}
+.is-roda .fase{position:absolute;inset:0;display:flex;align-items:center;opacity:0;visibility:hidden;transform:translateY(18px);
+  transition:opacity .35s var(--ease),transform .5s var(--ease-out),visibility 0s linear .35s}
+.is-roda .fase.is-ativa{opacity:1;visibility:visible;transform:none;transition:opacity .5s var(--ease-out) .08s,transform .7s var(--ease-out) .08s,visibility 0s}
+.is-roda .fase__arte{display:none}
+.is-roda .fase__texto{width:100%;gap:14px}
+.is-roda .fase__etapas li{padding:11px 0}
+
+/* índice das fases (canto superior direito) */
+.is-roda .jornada__indice{display:block;position:absolute;right:2.5%;top:6%;z-index:5}
+.jornada__indice ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:flex-end}
+.jornada__indice button{display:inline-flex;align-items:baseline;gap:8px;min-height:32px;padding:4px 0;border:0;background:none;cursor:pointer;font-size:14px;color:var(--claro-3);transition:color .2s var(--ease)}
+.jornada__indice button span{font-variant-numeric:tabular-nums;opacity:.7}
+.jornada__indice button[aria-current="step"]{color:#fff;font-weight:600}
+@media (hover:hover) and (pointer:fine){ .jornada__indice button:hover{color:#fff} }
+
+/* telas baixas: texto um pouco mais compacto */
+@media (min-width:901px) and (max-height:760px){
+  .is-roda .fase__lead{font-size:17px}
+  .is-roda main .fase__titulo,.is-roda .fase__titulo{font-size:clamp(38px,4vw,56px)}
+  .is-roda .fase__etapas p{font-size:14px}
+  .is-roda .fase__etapas li{padding:8px 0}
+}
+
+/* celular e tablet: roda em cima, texto embaixo */
+@media (max-width:900px){
+  .is-roda .jornada__fases{left:0;right:0;width:auto;top:50%;bottom:0;padding:0 20px 20px;background:var(--verde-noite)}
+  .is-roda .fase{inset:0 20px 20px;align-items:flex-start}
+  .is-roda .fase__texto{gap:10px}
+  .is-roda main .fase__titulo,.is-roda .fase__titulo{font-size:clamp(32px,8vw,44px)}
+  .is-roda .fase__lead{font-size:16px;line-height:1.45}
+  .is-roda .fase__etapas{flex-direction:row;flex-wrap:wrap;gap:6px 16px;margin-top:2px}
+  .is-roda .fase__etapas li{display:flex;gap:6px;padding:0;border:0;font-size:14px}
+  .is-roda .fase__etapas span{padding:0;font-size:13px}
+  .is-roda .fase__etapas strong{font-size:14px;font-weight:500;color:var(--claro-2)}
+  .is-roda .fase__etapas p{display:none}
+  .is-roda .jornada__indice{display:none}
+  .is-roda .jornada__rotulo{top:auto;bottom:6%;z-index:5;width:auto;left:20px;right:20px;transform:none;align-items:flex-start}
+  .is-roda .jornada__rotulo.centro,.is-roda .jornada__rotulo.centro *{text-align:left}
+}
