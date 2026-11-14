@@ -1,6 +1,7 @@
 ---
 titulo: Escala 6x1 é Legal? O Que a Lei Realmente Diz
 data: 2026-07-12
+tema: Jornada
 resumo: A escala 6x1, seis dias de trabalho para um de folga, é uma das mais
   usadas no comércio, em supermercados, restaurantes e no setor de serviços. Nos
   últimos tempos, ela virou tema de intenso debate público e jurídico. Mas

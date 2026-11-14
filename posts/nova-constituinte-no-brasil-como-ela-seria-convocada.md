@@ -1,6 +1,7 @@
 ---
 titulo: "Nova Constituinte no Brasil: Como Ela Seria Convocada?"
 data: 2026-10-23
+tema: Além do trabalho
 resumo: A Constituição de 1988 não prevê uma nova constituinte. Veja o que dizem
   o art. 60, o plebiscito, o STF e por que a questão divide os juristas.
 tags: nova constituinte, assembleia constituinte, constituinte exclusiva,

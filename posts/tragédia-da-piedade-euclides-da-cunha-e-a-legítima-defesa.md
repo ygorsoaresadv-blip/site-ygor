@@ -1,6 +1,7 @@
 ---
 titulo: "Tragédia da Piedade: Euclides da Cunha e a Legítima Defesa"
 data: 2026-11-03
+tema: Além do trabalho
 resumo: A tragédia da Piedade, a morte de Euclides da Cunha, as três absolvições
   de Dilermando e como o STF baniu a legítima defesa da honra na ADPF 779.
 tags: " tragédia da Piedade, Euclides da Cunha, Dilermando de Assis, legítima

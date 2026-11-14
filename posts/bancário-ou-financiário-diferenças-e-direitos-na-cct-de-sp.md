@@ -1,6 +1,7 @@
 ---
 titulo: Bancário ou Financiário? Diferenças e Direitos na CCT de SP
 data: 2026-09-15
+tema: Categorias
 resumo: Entenda a diferença entre bancário e financiário, a jornada de 6 horas
   do artigo 224 da CLT e os direitos das duas categorias na CCT de São Paulo.
 tags: bancário, financiário, artigo 224 CLT, Súmula 55 TST, jornada de 6 horas,

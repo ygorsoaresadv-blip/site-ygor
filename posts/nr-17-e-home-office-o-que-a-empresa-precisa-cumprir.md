@@ -1,6 +1,7 @@
 ---
 titulo: "NR-17 e Home Office: O Que a Empresa Precisa Cumprir"
 data: 2026-08-31
+tema: Saúde e segurança
 resumo: Entenda as obrigações da empresa com a ergonomia no home office segundo
   a NR-17, os riscos de autuação e como estruturar a conformidade.
 tags: NR-17, ergonomia home office, teletrabalho, Lei 14442/2022, artigo 75-E

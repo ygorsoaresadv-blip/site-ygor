@@ -1,6 +1,7 @@
 ---
 titulo: "Fim das Bets e Fato do Príncipe: Quem Paga as Demissões?"
 data: 2026-09-29
+tema: Rescisão
 resumo: >
   A MP que proibiu as bets pode configurar fato do príncipe? Entenda o artigo
   486 da CLT, o precedente dos bingos e o que muda para jogadores e

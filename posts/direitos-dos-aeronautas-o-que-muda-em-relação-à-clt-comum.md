@@ -1,6 +1,7 @@
 ---
 titulo: "Direitos dos Aeronautas: O Que Muda em Relação à CLT Comum"
 data: 2026-08-28
+tema: Categorias
 resumo: "Entenda os direitos diferenciados dos aeronautas: limites de voo,
   jornada, férias, terceirização restrita e as regras da Lei 13.475/2017."
 tags: aeronautas, Lei 13475/2017, direitos trabalhistas aeronautas, jornada de

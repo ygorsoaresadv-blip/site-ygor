@@ -2,6 +2,7 @@
 titulo: "Fui contratado como MEI mas trabalho como empregado: quais são os meus
   direitos?"
 data: 2026-07-12
+tema: Vínculo
 resumo: >-
   Fui contratado como MEI mas trabalho como empregado: quais são os meus
   direitos?

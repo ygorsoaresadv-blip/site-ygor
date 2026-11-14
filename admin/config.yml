@@ -22,6 +22,7 @@ collections:
     fields:
       - { label: "Título", name: "titulo", widget: "string" }
       - { label: "Data", name: "data", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, picker_utc: true }
-      - { label: "Resumo", name: "resumo", widget: "text", hint: "Aparece nos cards da listagem e na home." }
-      - { label: "Tags", name: "tags", widget: "string", hint: "Separe por vírgula se tiver mais de uma, ex.: Rescisão, FGTS" }
+      - { label: "Resumo", name: "resumo", widget: "text", hint: "Aparece no card, no topo do artigo e no Google." }
+      - { label: "Tema", name: "tema", widget: "select", options: ["Rescisão", "Jornada", "Vínculo", "Salário", "Saúde e segurança", "Processo", "Categorias", "Além do trabalho"], hint: "Aparece no card e no filtro da home. Um tema por artigo." }
+      - { label: "Palavras-chave", name: "tags", widget: "string", required: false, hint: "Opcional. Ajudam a busca do site a encontrar o artigo. Separe por vírgula." }
       - { label: "Conteúdo", name: "body", widget: "markdown" }

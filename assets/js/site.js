@@ -139,8 +139,8 @@
   function cardPost(p, opcoes) {
     opcoes = opcoes || {};
     var a = el('a', 'card' + (opcoes.compacto ? ' card--compacto' : ''));
-    a.href = 'artigo.html?post=' + encodeURIComponent(p.slug);
-    a.appendChild(el('span', 'card__tag', tema(p.tags)));
+    a.href = p.url || ('artigo.html?post=' + encodeURIComponent(p.slug));
+    a.appendChild(el('span', 'card__tag', p.tema || tema(p.tags)));
     a.appendChild(el('h3', 'card__titulo', p.titulo));
     if (opcoes.resumo && p.resumo) a.appendChild(el('p', 'card__resumo', resumir(p.resumo, 150)));
     if (!opcoes.compacto) {

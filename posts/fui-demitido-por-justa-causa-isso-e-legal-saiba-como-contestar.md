@@ -1,6 +1,7 @@
 ---
 titulo: "Fui demitido por justa causa: isso é legal? Saiba como contestar"
 data: 2026-07-12
+tema: Rescisão
 resumo: >-
   Fui demitido por justa causa: isso é mesmo legal? Saiba como contestar
 

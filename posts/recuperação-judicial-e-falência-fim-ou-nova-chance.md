@@ -1,9 +1,10 @@
 ---
 titulo: "Recuperação Judicial e Falência: Fim ou Nova Chance?"
 data: 2026-10-25
+tema: Além do trabalho
 resumo: >2
    Recuperação judicial e falência não são o fim. Entenda a Lei 11.101, os direitos dos trabalhadores e como os meios de produção voltam ao mercado.
-tags: ---   **Tags:** recuperação judicial, falência, Lei 11.101/2005, Lei
+tags: recuperação judicial, falência, Lei 11.101/2005, Lei
   14.112/2020, crédito trabalhista na recuperação judicial, artigo 54 Lei
   11.101, artigo 83 Lei de Falências, sucessão trabalhista, artigo 141 Lei
   11.101, massa falida, stay period, plano de recuperação, assembleia geral de

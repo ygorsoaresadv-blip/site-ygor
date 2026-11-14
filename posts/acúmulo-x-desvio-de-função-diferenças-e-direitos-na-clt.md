@@ -1,6 +1,7 @@
 ---
 titulo: "Acúmulo x Desvio de Função: Diferenças e Direitos na CLT"
 data: 2026-07-21
+tema: Salário
 resumo: Entenda a diferença entre acúmulo e desvio de função, a previsão legal
   na CLT, exemplos práticos e como provar o direito a diferenças salariais.
 tags: acúmulo de função, desvio de função, CLT artigo 456, CLT artigo 468, CLT

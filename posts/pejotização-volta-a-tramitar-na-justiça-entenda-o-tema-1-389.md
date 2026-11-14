@@ -1,6 +1,7 @@
 ---
 titulo: "Pejotização Volta a Tramitar na Justiça: Entenda o Tema 1.389"
 data: 2026-07-27
+tema: Vínculo
 resumo: STF liberou processos sobre pejotização na 1ª e 2ª instâncias. Entenda o
   que muda, o que continua suspenso e o que fazer com seu processo.
 tags: pejotização, Tema 1389 STF, vínculo empregatício, contratação PJ,

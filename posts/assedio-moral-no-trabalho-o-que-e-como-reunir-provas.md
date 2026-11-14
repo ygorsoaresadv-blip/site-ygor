@@ -1,6 +1,7 @@
 ---
 titulo: "Assédio Moral no Trabalho: O Que É e Como Reunir Provas"
 data: 2026-07-12
+tema: Saúde e segurança
 resumo: "O assédio moral no trabalho adoece, humilha e muitas vezes faz a pessoa
   duvidar de si mesma. Apesar de comum, ele ainda é cercado de dúvidas: o que
   conta como assédio? Tenho direito a alguma coisa? Como provar? Este artigo

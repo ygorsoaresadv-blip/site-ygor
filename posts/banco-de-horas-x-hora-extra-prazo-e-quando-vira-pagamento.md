@@ -1,6 +1,7 @@
 ---
 titulo: "Banco de Horas x Hora Extra: Prazo e Quando Vira Pagamento"
 data: 2026-07-20
+tema: Jornada
 resumo: Entenda como o banco de horas deve funcionar na CLT, os prazos de
   compensação e quando as horas viram hora extra com adicional de 50%.
 tags: banco de horas, horas extras, CLT artigo 59, compensação de jornada,

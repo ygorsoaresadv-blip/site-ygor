@@ -1,6 +1,7 @@
 ---
 titulo: "Fim da Escala 6x1: Regras, Prazos e Exceções da EC 141"
 data: 2026-10-20
+tema: Jornada
 resumo: Emenda Constitucional 141/2026 acabou com a escala 6x1. Veja prazos,
   jornada de 42 e 40 horas, exceções e o que empresas e trabalhadores devem
   fazer.

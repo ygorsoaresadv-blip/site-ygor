@@ -4,206 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Artigo · Ygor Soares</title>
-<meta name="description" content="Artigo do blog de Ygor Soares: Direito do Trabalho em linguagem acessível.">
-<meta name="theme-color" content="#fbfaf7">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230f3527'/%3E%3Ctext x='50' y='70' font-family='Georgia,serif' font-size='60' fill='%23a9852f' text-anchor='middle'%3E%C2%A7%3C/text%3E%3C/svg%3E">
-<link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/fonts.css">
-<link rel="stylesheet" href="assets/css/site.css?v=20260926">
-<script>document.documentElement.classList.add('js');</script>
-<style>
-  .artigo{padding-block:clamp(32px,4.4vw,64px) clamp(72px,9.7vw,140px)}
-  .artigo__topo{display:flex;flex-direction:column;gap:16px;margin-bottom:32px}
-  .artigo__meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:15px;color:var(--muted)}
-  .artigo__meta .card__tag{font-size:15px}
-  .artigo__titulo{font-size:clamp(36px,4.4vw,56px);line-height:1.08}
-  .artigo__intro{font-size:clamp(19px,1.5vw,22px);line-height:1.5;color:var(--ink-2)}
-  .autor{display:flex;align-items:center;gap:12px;padding-block:20px;border-block:1px solid var(--line);margin-bottom:40px}
-  .autor__selo{flex:none;width:44px;height:44px;border-radius:50%;background:var(--verde-noite);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;font-size:22px;color:var(--ouro)}
-  .autor strong{display:block;font-size:15px;font-weight:600;color:var(--verde-noite)}
-  .autor span{font-size:14px;color:var(--muted)}
-  .artigo .chamada{margin-top:56px}
-  .relacionados{margin-top:56px;display:flex;flex-direction:column;gap:20px}
-
-  /* Esqueleto enquanto o texto carrega (pulso suave, sem brilho correndo) */
-  .esqueleto{display:flex;flex-direction:column;gap:14px}
-  .esqueleto i{display:block;height:18px;border-radius:9px;background:var(--hair)}
-  .esqueleto i:nth-child(3n){width:82%}
-  .esqueleto i:nth-child(4n){width:64%}
-  @media (prefers-reduced-motion:no-preference){
-    @keyframes pulso{50%{opacity:.5}}
-    .esqueleto i{animation:pulso 1.6s var(--ease) infinite}
-  }
-  @media (max-width:760px){ .artigo.wrap--texto{padding-inline:20px} }
-</style>
+<meta name="robots" content="noindex">
+<!-- Endereço antigo dos artigos (artigo.html?post=...). Cada artigo agora tem a sua
+     própria página em artigos/<endereço>.html; este arquivo só leva os links já
+     compartilhados para o lugar novo. A regra do endereço é a mesma de
+     scripts/gerar-site.mjs (sem acentos nem símbolos). -->
+<script>
+  (function () {
+    var params = new URLSearchParams(location.search);
+    var slug = params.get('post') || params.get('a') || '';
+    var limpo = slug.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    location.replace(limpo ? 'artigos/' + limpo + '.html' : 'index.html#artigos');
+  })();
+</script>
 </head>
 <body>
-
-<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-
-<header class="nav">
-  <div class="wrap nav__inner">
-    <a href="index.html" class="logo" aria-label="Ygor Soares, início"><span class="logo__s" aria-hidden="true">§</span>Ygor Soares</a>
-    <nav class="nav__links" aria-label="Principal">
-      <a href="index.html#sobre">Sobre</a>
-      <a href="calculadora.html">Calculadora</a>
-      <a href="blog.html" aria-current="page">Blog</a>
-      <a href="duvidas.html">Dúvidas</a>
-    </nav>
-    <a class="nav__cta" href="https://www.instagram.com/ygorsoares_bjj/" target="_blank" rel="noopener">Seguir</a>
-    <button type="button" class="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="m-menu"><span></span><span></span></button>
-  </div>
-</header>
-
-<nav id="m-menu" class="m-menu" aria-label="Menu" inert>
-  <a href="index.html">Início</a>
-  <a href="calculadora.html">Calculadora</a>
-  <a href="blog.html" aria-current="page">Blog</a>
-  <a href="duvidas.html">Dúvidas</a>
-  <a class="btn" href="https://www.instagram.com/ygorsoares_bjj/" target="_blank" rel="noopener">Seguir no Instagram</a>
-</nav>
-
-<main id="conteudo">
-  <article class="wrap wrap--texto artigo">
-
-    <div class="artigo__topo surgir">
-      <a href="blog.html" class="mais mais--voltar">Blog <span class="chev" aria-hidden="true">‹</span></a>
-      <div class="artigo__meta"><span id="artigo-tag" class="card__tag">Direito do Trabalho</span><span id="artigo-meta"></span></div>
-      <h1 id="artigo-titulo" class="h1 artigo__titulo">Carregando…</h1>
-      <p id="artigo-intro" class="artigo__intro justificado"></p>
-    </div>
-
-    <div class="autor">
-      <span class="autor__selo" aria-hidden="true">§</span>
-      <div><strong>Ygor Soares</strong><span>Conteúdo sobre Direito do Trabalho</span></div>
-    </div>
-
-    <div id="artigo-corpo" class="prosa">
-      <div class="esqueleto" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-    </div>
-
-    <aside class="tile tile--escuro on-dark chamada reveal" aria-labelledby="chamada-titulo">
-      <h2 id="chamada-titulo" class="h3">Ficou com uma dúvida sobre o seu caso?</h2>
-      <p class="lead">Este conteúdo é educativo e não substitui a orientação individual. Se precisar, fale por um dos canais abaixo.</p>
-      <div class="acoes">
-        <a id="artigo-whatsapp" class="btn btn--claro" href="https://wa.me/5511991680688" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="btn btn--contorno" href="duvidas.html">Enviar dúvida</a>
-      </div>
-    </aside>
-
-    <section id="artigo-relacionados-wrap" class="relacionados" aria-labelledby="rel-titulo">
-      <h2 id="rel-titulo" class="h3">Continue lendo</h2>
-      <div class="cards cards--2" id="artigo-relacionados"></div>
-    </section>
-
-  </article>
-</main>
-
-<footer class="rodape">
-  <div class="wrap">
-    <p class="rodape__aviso">Conteúdo informativo e educacional. Os valores da calculadora são estimativas e não substituem a análise de um advogado sobre o seu caso.</p>
-    <div class="rodape__grade">
-      <div class="rodape__col">
-        <span class="logo"><span class="logo__s" aria-hidden="true">§</span>Ygor Soares</span>
-        <span>Direito do Trabalho, direto ao ponto: no site, no Instagram e no LinkedIn.</span>
-      </div>
-      <nav class="rodape__col" aria-label="Navegue">
-        <strong>Navegue</strong>
-        <a href="calculadora.html">Calculadora de rescisão</a>
-        <a href="blog.html">Blog</a>
-        <a href="duvidas.html">Dúvidas</a>
-        <a href="privacidade.html">Política de Privacidade</a>
-      </nav>
-      <nav class="rodape__col" aria-label="Canais">
-        <strong>Canais</strong>
-        <a href="https://www.instagram.com/ygorsoares_bjj/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.linkedin.com/in/ygor-pinheiro-soares-b109342ba/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://wa.me/5511991680688" target="_blank" rel="noopener">WhatsApp</a>
-      </nav>
-    </div>
-    <p class="rodape__base">© 2026 Ygor Soares. Todos os direitos reservados.</p>
-  </div>
-</footer>
-
-<script src="assets/js/md.js"></script>
-<script src="assets/js/site.js?v=20260926"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  var S = window.Site;
-  var params = new URLSearchParams(location.search);
-  // aceita ?post= (padrão) e ?a= (links antigos do design)
-  var slug = (params.get('post') || params.get('a') || '').replace(/[\/\\]/g, '').replace(/\.\./g, '');
-
-  var el = {
-    tag: document.getElementById('artigo-tag'),
-    meta: document.getElementById('artigo-meta'),
-    titulo: document.getElementById('artigo-titulo'),
-    intro: document.getElementById('artigo-intro'),
-    corpo: document.getElementById('artigo-corpo'),
-    relacionados: document.getElementById('artigo-relacionados'),
-    relacionadosWrap: document.getElementById('artigo-relacionados-wrap')
-  };
-
-  function falhar(msg) {
-    el.titulo.textContent = 'Artigo não encontrado';
-    el.intro.style.display = 'none';
-    el.corpo.innerHTML = '';
-    el.corpo.appendChild(S.el('p', null, msg));
-    var volta = S.el('p');
-    volta.innerHTML = '<a href="blog.html">Voltar para o blog</a>';
-    el.corpo.appendChild(volta);
-    el.relacionadosWrap.style.display = 'none';
-  }
-
-  if (!slug) { falhar('O endereço não indica qual artigo abrir.'); return; }
-
-  fetch('posts/' + slug + '.md')
-    .then(function (r) { if (!r.ok) throw new Error(); return r.text(); })
-    .then(function (texto) {
-      var lido = lerFrontmatter(texto);
-      var meta = lido.meta;
-      var md = lido.corpo;
-
-      var titulo = meta.titulo || slug;
-      document.title = titulo + ' · Ygor Soares';
-      el.titulo.textContent = titulo;
-      el.tag.textContent = S.tema(meta.tags);
-
-      var palavras = md.split(/\s+/).filter(Boolean).length;
-      var minutos = Math.max(1, Math.round(palavras / 200));
-      var partesMeta = [];
-      if (meta.data) partesMeta.push(S.dataBR(meta.data));
-      partesMeta.push(minutos + ' min de leitura');
-      el.meta.textContent = partesMeta.join(' · ');
-
-      if (meta.resumo) el.intro.textContent = meta.resumo;
-      else el.intro.style.display = 'none';
-
-      el.corpo.innerHTML = markdownParaHtml(md);
-      el.corpo.classList.add('entrar');
-    })
-    .catch(function () { falhar('Este artigo pode ter sido movido ou ainda não foi publicado.'); });
-
-  // ---- Continue lendo: outros artigos do índice ----
-  fetch('posts/posts.json')
-    .then(function (r) { if (!r.ok) throw new Error(); return r.json(); })
-    .then(function (posts) {
-      var outros = posts
-        .sort(function (a, b) { return a.data < b.data ? 1 : -1; })
-        .filter(function (p) { return p.slug !== slug; })
-        .slice(0, 2);
-      if (!outros.length) { el.relacionadosWrap.style.display = 'none'; return; }
-      outros.forEach(function (p, i) {
-        var card = S.cardPost(p, { compacto: true });
-        card.classList.add('reveal');
-        card.style.setProperty('--d', (i * 80) + 'ms');
-        el.relacionados.appendChild(card);
-        S.observar(card);
-      });
-    })
-    .catch(function () { el.relacionadosWrap.style.display = 'none'; });
-});
-</script>
-
+<p>Redirecionando… <a href="index.html#artigos">Ver todos os artigos</a></p>
 </body>
 </html>

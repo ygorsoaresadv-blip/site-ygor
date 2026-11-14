@@ -1,6 +1,7 @@
 ---
 titulo: Férias: o que você precisa saber antes de sair de uma empresa
 data: 2026-07-03
+tema: Jornada
 resumo: Férias vencidas, proporcionais e o famoso 1/3 constitucional: o que entra na conta quando o contrato termina.
 tags: Férias
 ---
