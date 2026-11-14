@@ -9,7 +9,7 @@
 import { readdir, readFile, writeFile, mkdir, rm } from "node:fs/promises";
 
 const SITE = "https://ygor.blog";
-const VERSAO = "20261114";
+const VERSAO = "20261115";
 const TEMAS = ["Rescisão", "Jornada", "Vínculo", "Salário", "Saúde e segurança", "Processo", "Categorias", "Além do trabalho"];
 const TEMA_PADRAO = "Direito do Trabalho";
 
@@ -32,6 +32,9 @@ const partesData = iso => String(iso).slice(0, 10).split("-").map(Number);
 const dataCurta = iso => { const [a, m, d] = partesData(iso); return `${d} de ${MESES[m - 1].slice(0, 3)}. de ${a}`; };
 const dataExtenso = iso => { const [a, m, d] = partesData(iso); return `${d} de ${MESES[m - 1]} de ${a}`; };
 const resumir = (t, max) => { t = String(t || "").trim(); return t.length <= max ? t : t.slice(0, max).replace(/\s+\S*$/, "") + "…"; };
+// Endereço de imagem: os do painel já começam com "/"; os relativos partem da raiz do site.
+const caminho = (img, prefixo) => (/^(https?:)?\/\//.test(img) || img.startsWith("/") ? img : prefixo + img);
+const absoluta = img => (/^https?:\/\//.test(img) ? img : SITE + (img.startsWith("/") ? img : "/" + img));
 const plural = (n, um, varios) => `${n} ${n === 1 ? um : varios}`;
 
 function trocar(html, marcador, conteudo) {
@@ -57,6 +60,7 @@ for (const arquivo of arquivos) {
     data,
     resumo: meta.resumo || "",
     tema: TEMAS.includes(meta.tema) ? meta.tema : TEMA_PADRAO,
+    imagem: String(meta.imagem || "").trim(),
     tags: String(meta.tags || "").split(",").map(t => t.trim()).filter(Boolean),
     minutos: Math.max(1, Math.round(md.split(/\s+/).filter(Boolean).length / 200)),
     md
@@ -78,7 +82,8 @@ const parte = (nome, prefixo) => partes[nome].replaceAll("{{raiz}}", prefixo).re
 function cardHtml(p, { prefixo = "", compacto = false, extra = "" } = {}) {
   const resumo = !compacto && p.resumo ? `\n  <p class="card__resumo">${esc(resumir(p.resumo, 150))}</p>` : "";
   const rodape = compacto ? "" : `\n  <span class="card__rodape"><span>${dataCurta(p.data)} · ${p.minutos} min</span><span>Ler <span class="chev" aria-hidden="true">›</span></span></span>`;
-  return `<a class="card${compacto ? " card--compacto" : ""}${extra}" href="${prefixo}${p.url}">
+  const foto = !compacto && p.imagem ? `\n  <span class="card__foto"><img src="${esc(caminho(p.imagem, prefixo))}" alt="" loading="lazy" decoding="async"></span>` : "";
+  return `<a class="card${compacto ? " card--compacto" : ""}${extra}" href="${prefixo}${p.url}">${foto}
   <span class="card__tag">${esc(p.tema)}</span>
   <h3 class="card__titulo">${esc(p.titulo)}</h3>${resumo}${rodape}
 </a>`;
@@ -91,7 +96,7 @@ await mkdir(new URL("artigos/", raiz), { recursive: true });
 
 for (const p of posts) {
   // Links relativos escritos no artigo (ex.: calculadora.html) partem da raiz do site.
-  const corpo = markdownParaHtml(p.md).replace(/href="(?!https?:|mailto:|tel:|#|\/|\.\.\/)([^"]+)"/g, 'href="../$1"');
+  const corpo = markdownParaHtml(p.md).replace(/(href|src)="(?!https?:|mailto:|tel:|#|\/|\.\.\/)([^"]+)"/g, '$1="../$2"');
   const outros = posts.filter(o => o !== p);
   const relacionados = [...outros.filter(o => o.tema === p.tema), ...outros.filter(o => o.tema !== p.tema)].slice(0, 2);
   const canonica = `${SITE}/${p.url}`;
@@ -112,7 +117,8 @@ for (const p of posts) {
     titulo: esc(p.titulo),
     descricao: esc(resumir(p.resumo || p.titulo, 160)),
     canonica,
-    site: SITE,
+    ogImagem: esc(absoluta(p.imagem || "assets/img/ygor-hero.jpg")),
+    capa: p.imagem ? `<figure class="artigo__capa"><img src="${esc(caminho(p.imagem, "../"))}" alt="" decoding="async"></figure>` : "",
     data: p.data,
     dataExtenso: dataExtenso(p.data),
     tema: esc(p.tema),
@@ -150,7 +156,7 @@ home = trocar(home, "gerado:destaque", `<a class="tile tile--branco destaque rev
     ${destaque.resumo ? `<p class="lead">${esc(resumir(destaque.resumo, 200))}</p>` : ""}
     <span class="destaque__rodape"><span>${dataCurta(destaque.data)} · ${destaque.minutos} min de leitura</span><span class="mais">Ler artigo <span class="chev" aria-hidden="true">›</span></span></span>
   </div>
-  <div class="destaque__arte" aria-hidden="true"><span>§</span></div>
+  <div class="destaque__arte" aria-hidden="true">${destaque.imagem ? `<img src="${esc(caminho(destaque.imagem, ""))}" alt="" decoding="async">` : "<span>§</span>"}</div>
 </a>`);
 home = trocar(home, "gerado:chips", [`<button type="button" class="chip" data-tema="" aria-pressed="true">Todos</button>`,
   ...temasUsados.map(t => `<button type="button" class="chip" data-tema="${esc(t)}" aria-pressed="false">${esc(t)}</button>`)].join("\n"));
