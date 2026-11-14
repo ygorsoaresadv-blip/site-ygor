@@ -374,6 +374,11 @@ main h2,main h3,main h4,.h2,.h3,.card__titulo{text-wrap:wrap;-webkit-hyphens:man
   .nav__lado{gap:8px}
   .rodape .redes{margin-top:4px}
 }
-/* Títulos de artigo vêm do painel, sem quebra escrita à mão: ficam à esquerda
-   para o justificado não abrir buracos entre as palavras. */
-.card__titulo{text-align:left}
+/* Imagens nos artigos: no meio do texto (figura com legenda) e capa nos cards */
+.prosa figure{margin:1.8em 0}
+.prosa figure img,.prosa p > img{width:auto;max-width:100%;height:auto;max-height:min(80vh,720px);margin-inline:auto}
+.prosa figcaption{margin-top:10px;font-size:14px;line-height:1.5;color:var(--muted);text-align:justify}
+.card__foto{display:block;margin:-36px -36px 24px;aspect-ratio:16/9;overflow:hidden;border-radius:24px 24px 0 0;background:var(--hair)}
+.card__foto img{width:100%;height:100%;object-fit:cover}
+.card--compacto .card__foto{display:none}
+@media (max-width:900px){ .card__foto{margin:-24px -24px 20px;border-radius:22px 22px 0 0} }

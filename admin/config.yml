@@ -23,6 +23,7 @@ collections:
       - { label: "Título", name: "titulo", widget: "string" }
       - { label: "Data", name: "data", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, picker_utc: true }
       - { label: "Resumo", name: "resumo", widget: "text", hint: "Aparece no card, no topo do artigo e no Google." }
+      - { label: "Imagem de capa", name: "imagem", widget: "image", required: false, hint: "Opcional. Aparece no card da home e no topo do artigo. Prefira foto deitada (16:9), com até 1600 px de largura." }
       - { label: "Tema", name: "tema", widget: "select", options: ["Rescisão", "Jornada", "Vínculo", "Salário", "Saúde e segurança", "Processo", "Categorias", "Além do trabalho"], hint: "Aparece no card e no filtro da home. Um tema por artigo." }
       - { label: "Palavras-chave", name: "tags", widget: "string", required: false, hint: "Opcional. Ajudam a busca do site a encontrar o artigo. Separe por vírgula." }
-      - { label: "Conteúdo", name: "body", widget: "markdown" }
+      - { label: "Conteúdo", name: "body", widget: "markdown", hint: "Para pôr uma imagem no meio do texto, use o botão + ou o ícone de imagem da barra. O campo de título da imagem vira a legenda." }

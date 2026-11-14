@@ -33,6 +33,7 @@ titulo: Título do artigo
 data: 2026-12-01
 tema: Rescisão
 resumo: Uma frase que aparece no card, no topo do artigo e no Google.
+imagem: /assets/img/uploads/capa.jpg
 tags: FGTS, multa de 40%
 ---
 
@@ -42,6 +43,14 @@ Texto do artigo em markdown...
 Temas aceitos: Rescisão, Jornada, Vínculo, Salário, Saúde e segurança, Processo, Categorias, Além do trabalho. Para criar outro, acrescente o nome em `TEMAS` (`scripts/gerar-site.mjs`) e nas opções do campo "Tema" (`admin/config.yml`).
 
 Ao dar push na branch `main`, o gerador roda automaticamente. Para rodar no seu computador: `node scripts/gerar-site.mjs`.
+
+## Como colocar imagens
+
+- **No meio do artigo (painel):** no campo "Conteúdo", use o botão de imagem da barra, envie a foto e, se quiser legenda, preencha o título da imagem.
+- **No meio do artigo (manual):** escreva, sozinho numa linha, `![descrição da imagem](/assets/img/uploads/foto.jpg "Legenda opcional")`.
+- **Capa do artigo:** campo "Imagem de capa" no painel (ou `imagem: /assets/img/uploads/foto.jpg` no cabeçalho). Aparece no card da home, no bloco do artigo mais recente e no topo do artigo. Prefira foto deitada (16:9).
+
+As imagens enviadas pelo painel ficam em `assets/img/uploads/`. Antes de enviar, reduza para até 1600 px de largura: o site publica o arquivo como ele chega.
 
 ## Como mudar a navegação, o rodapé ou as redes
 

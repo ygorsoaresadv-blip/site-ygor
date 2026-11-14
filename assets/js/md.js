@@ -1,15 +1,21 @@
 /* Conversor leve de Markdown para HTML — cobre o necessário para os posts:
-   títulos, parágrafos, listas, negrito/itálico, links, citações, código e linhas. */
+   títulos, parágrafos, listas, negrito/itálico, links, imagens, citações, código e linhas.
+   Imagem: ![descrição](endereço "legenda opcional"). Sozinha na linha, vira uma
+   figura com legenda; no meio de uma frase, entra junto do texto. */
 
 function markdownParaHtml(md) {
   const escapar = s =>
     s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+  const urlSegura = url => (/^(javascript|data|vbscript):/i.test(url) ? "#" : url);
 
   const inline = s =>
     escapar(s)
       .replace(/`([^`]+)`/g, "<code>$1</code>")
       .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
       .replace(/\*([^*]+)\*/g, "<em>$1</em>")
+      .replace(/!\[([^\]]*)\]\(([^)\s]+)(?:\s+&quot;[^)]*&quot;|\s+"[^"]*")?\)/g, (m, alt, url) =>
+        `<img src="${urlSegura(url)}" alt="${alt.replace(/"/g, "&quot;")}" loading="lazy" decoding="async">`)
       .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (m, texto, url) => {
         const seguro = /^(javascript|data|vbscript):/i.test(url) ? "#" : url;
         const externo = /^https?:\/\//i.test(seguro) ? ' target="_blank" rel="noopener"' : "";
@@ -68,6 +74,15 @@ function markdownParaHtml(md) {
       const tipo = itemNaoOrdenado ? "ul" : "ol";
       if (lista !== tipo) { fecharLista(); html.push(`<${tipo}>`); lista = tipo; }
       html.push(`<li>${inline((itemNaoOrdenado || itemOrdenado)[1])}</li>`);
+      continue;
+    }
+
+    const imagem = t.match(/^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)$/);
+    if (imagem) {
+      fecharParagrafo(); fecharLista();
+      const alt = escapar(imagem[1]).replace(/"/g, "&quot;");
+      const legenda = imagem[3] ? `<figcaption>${inline(imagem[3])}</figcaption>` : "";
+      html.push(`<figure><img src="${urlSegura(escapar(imagem[2]))}" alt="${alt}" loading="lazy" decoding="async">${legenda}</figure>`);
       continue;
     }
 
