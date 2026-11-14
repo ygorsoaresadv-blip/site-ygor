@@ -44,7 +44,7 @@
   .destaque h2{text-align:left}
   .destaque__rodape{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 24px;margin-top:8px;font-size:15px;color:var(--muted)}
   .destaque__arte{display:flex;align-items:center;justify-content:center;background:var(--tile);overflow:hidden}
-  .destaque__arte span{font-family:var(--serif);font-style:italic;font-size:clamp(160px,18vw,260px);line-height:1;color:var(--ouro);opacity:.5;transition:transform .6s var(--ease-out)}
+  .destaque__arte span{font-family:var(--serif);font-style:normal;font-size:clamp(160px,18vw,260px);line-height:1;color:var(--ouro);opacity:.5;transition:transform .6s var(--ease-out)}
   @media (hover:hover) and (pointer:fine){
     .destaque:hover{transform:translateY(-4px)}
     .destaque:hover .destaque__arte span{transform:scale(1.04) rotate(-3deg)}
@@ -105,7 +105,7 @@
     <section class="tile tile--escuro on-dark capa" aria-labelledby="capa-titulo">
       <div class="capa__texto surgir">
         <p class="eyebrow">Blog de Direito do Trabalho</p>
-        <h1 id="capa-titulo" class="h1">Seus direitos,<br> sem <span class="assinatura">juridiquês</span>.</h1>
+        <h1 id="capa-titulo" class="h1">Seus direitos,<br> sem juridiquês.</h1>
         <p class="lead">Artigos para quem trabalha entender o que a lei garante, o que os tribunais vêm decidindo e o que isso muda na prática.</p>
         <a class="btn btn--claro btn--lg" href="#artigos">Ler os artigos</a>
         <!-- gerado:meta -->
@@ -144,7 +144,7 @@
 
     <section class="lista" id="artigos" aria-labelledby="lista-titulo">
       <div class="lista__cab">
-        <h2 id="lista-titulo" class="h2">Todos os <span class="assinatura">artigos</span>.</h2>
+        <h2 id="lista-titulo" class="h2">Todos os artigos.</h2>
         <div class="busca">
           <label for="blog-busca" class="sr-only">Buscar artigos</label>
           <input class="entrada" id="blog-busca" type="search" placeholder="Buscar: FGTS, férias, justa causa" autocomplete="off">
