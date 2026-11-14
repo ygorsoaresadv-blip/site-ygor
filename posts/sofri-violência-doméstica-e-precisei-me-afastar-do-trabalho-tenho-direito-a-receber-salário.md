@@ -2,6 +2,7 @@
 titulo: "Sofri violência doméstica e precisei me afastar do trabalho: tenho
   direito a receber salário?"
 data: 2026-07-13
+tema: Saúde e segurança
 resumo: O STF decidiu que mulheres afastadas do trabalho por violência doméstica
   têm direito a receber salário ou auxílio. Entenda como funciona.
 tags: violência doméstica, direitos trabalhistas, Lei Maria da Penha,

@@ -1,6 +1,7 @@
 ---
 titulo: "Justa Causa: As 11 Hipóteses do Artigo 482 da CLT"
 data: 2026-08-29
+tema: Rescisão
 resumo: Conheça todas as hipóteses de justa causa previstas no artigo 482 da
   CLT, os requisitos exigidos pela jurisprudência e quando a demissão pode ser
   revertida.

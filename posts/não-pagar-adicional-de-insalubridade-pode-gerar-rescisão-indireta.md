@@ -1,6 +1,7 @@
 ---
 titulo: Não Pagar Adicional de Insalubridade Pode Gerar Rescisão Indireta
 data: 2026-07-28
+tema: Rescisão
 resumo: TST decide que a supressão do adicional de insalubridade configura falta
   grave e autoriza rescisão indireta. Entenda o caso e seus direitos.
 tags: rescisão indireta, adicional de insalubridade, artigo 483 CLT, TST, falta

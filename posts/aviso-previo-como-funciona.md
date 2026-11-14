@@ -1,6 +1,7 @@
 ---
 titulo: Aviso prévio: como funciona e quantos dias você tem direito
 data: 2026-07-10
+tema: Rescisão
 resumo: Indenizado ou trabalhado? 30 ou 90 dias? Entenda de uma vez como o aviso prévio funciona e como ele muda o valor da sua rescisão.
 tags: Rescisão
 ---

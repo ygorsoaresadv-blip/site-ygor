@@ -1,6 +1,7 @@
 ---
 titulo: "Consignado CLT: desconto na rescisão muda em 23/07"
 data: 2026-07-20
+tema: Rescisão
 resumo: Portaria MTE 1.115 muda o desconto do consignado CLT na rescisão a
   partir de 23/07. Entenda o novo fluxo, as garantias e os limites.
 tags: consignado CLT, crédito do trabalhador, portaria MTE 1115, desconto na

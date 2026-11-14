@@ -1,6 +1,7 @@
 ---
 titulo: Influenciador Digital Tem Vínculo de Emprego? Entenda a Subordinação
 data: 2026-07-17
+tema: Vínculo
 resumo: "Subordinação algorítmica, criativa e estrutural: entenda como o
   influenciador digital pode ter direito a vínculo empregatício."
 tags: direito do trabalho, influenciador digital, vínculo empregatício,

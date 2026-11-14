@@ -1,6 +1,7 @@
 ---
 titulo: "Estabilidade Após Acidente de Trabalho: Como Funciona na Prática"
 data: 2026-07-30
+tema: Saúde e segurança
 resumo: Entenda a estabilidade acidentária de 12 meses, os requisitos do artigo
   118 da Lei 8.213/91 e como o Tema 125 do TST ampliou esse direito.
 tags: estabilidade acidentária, artigo 118 lei 8213, Súmula 378 TST, Tema 125

@@ -1,6 +1,7 @@
 ---
 titulo: "Direito de Regresso da Seguradora: O Que É Sub-rogação"
 data: 2026-09-01
+tema: Além do trabalho
 resumo: Entenda como funciona o direito de regresso das seguradoras após
   acidente de carro, o que é sub-rogação e quando ela pode ser afastada.
 tags: direito de regresso, sub-rogação, artigo 786 Código Civil, seguro de dano,

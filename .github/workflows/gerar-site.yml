@@ -1,17 +1,27 @@
-name: Atualizar índice do blog
+name: Gerar páginas do blog
 
 on:
   push:
     branches: [main]
     paths:
       - "posts/**.md"
+      - "scripts/**"
+      - "assets/js/md.js"
+      - "index.html"
+      - "calculadora.html"
+      - "privacidade.html"
+      - "404.html"
   workflow_dispatch:
 
 permissions:
   contents: write
 
+concurrency:
+  group: gerar-site
+  cancel-in-progress: false
+
 jobs:
-  sync:
+  gerar:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,17 +30,17 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Gerar posts/posts.json a partir dos arquivos .md
-        run: node scripts/sync-posts-json.mjs
+      - name: Gerar índice, páginas dos artigos, home, sitemap e RSS
+        run: node scripts/gerar-site.mjs
 
-      - name: Publicar posts.json atualizado
+      - name: Publicar o que mudou
         run: |
-          if git diff --quiet -- posts/posts.json; then
+          git add -A
+          if git diff --cached --quiet; then
             echo "Nada para atualizar."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add posts/posts.json
-          git commit -m "chore: atualizar indice do blog"
+          git commit -m "chore: gerar páginas do blog"
           git push

@@ -1,6 +1,7 @@
 ---
 titulo: "Justiça Gratuita: STF Fixa R$ 5 Mil como Novo Parâmetro"
 data: 2026-09-03
+tema: Processo
 resumo: STF decide na ADC 80 que quem ganha até R$ 5 mil tem presunção de
   hipossuficiência. Entenda a nova regra, válida para todo o Judiciário.
 tags: justiça gratuita, ADC 80, STF, Gilmar Mendes, artigo 790 CLT,

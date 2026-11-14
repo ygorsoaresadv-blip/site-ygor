@@ -106,7 +106,7 @@ function preencherMetaDoFrontmatter(linhas, meta) {
     let valor = par[2].trim();
     i++;
 
-    const bloco = valor.match(/^([>|])[+-]?$/);
+    const bloco = valor.match(/^([>|])[0-9+-]{0,2}$/);
     if (bloco) {
       const dobrar = bloco[1] === ">";
       const linhasBloco = [];

@@ -1,6 +1,7 @@
 ---
 titulo: "MP das Bets: O Que Muda e Por Que Ainda Pode Cair"
 data: 2026-09-27
+tema: Além do trabalho
 resumo: Lula assina MP que proíbe as bets no Brasil. Entenda o que é uma medida
   provisória, o calendário de encerramento e por que o Congresso pode derrubá-la
   em 120 dias.

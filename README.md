@@ -1,79 +1,65 @@
-# Site — Ygor Soares
+# Blog — Ygor Soares
 
-Site estático (HTML + CSS + JavaScript puro, sem build) com conteúdo sobre Direito do Trabalho: home, calculadora de rescisão, blog em markdown, área de dúvidas via WhatsApp, guia das eleições 2026 e política de privacidade (LGPD).
+Blog estático (HTML + CSS + JavaScript puro) com artigos sobre Direito do Trabalho. O site tem uma única finalidade: publicar e ler artigos. Não há formulário, WhatsApp nem página de contato. A calculadora de rescisão continua disponível por um botão pequeno e fixo no canto da tela.
 
 ## Estrutura
 
 ```
-index.html            Home (hero, sobre, calculadora, dúvidas, últimos posts, linha do tempo)
-calculadora.html      Calculadora de rescisão trabalhista (tempo real)
-blog.html             Listagem de artigos (lê posts/posts.json)
-artigo.html           Página de artigo (carrega posts/<slug>.md via ?post=)
-post.html             Redireciona links antigos para artigo.html
-duvidas.html          Formulário de dúvidas → abre o WhatsApp com a mensagem pronta
-privacidade.html      Política de Privacidade (LGPD)
-posts/                Artigos em markdown + posts.json (índice)
-admin/                Painel Decap CMS (publicação de artigos)
-assets/css/fonts.css  Fontes locais (Geist + Fraunces itálico)
-assets/css/site.css   Estilos compartilhados: cores, navegação, botões, cards, formulários, acordeões, rodapé, animações
-assets/js/site.js     Menu do celular, animações de entrada, contagem numérica, acordeões e utilitários
-assets/fonts/         Arquivos .woff2 das fontes
-assets/js/config.js   ⚙️ Configuração: WhatsApp, redes, widget do Instagram
-assets/js/md.js       Conversor de markdown usado pela página de artigo
-assets/img/           Imagens (foto ygor.jpg)
-scripts/              Sync do índice do blog + worker OAuth do Decap
-serve.ps1             Servidor local para visualizar (opcional)
+index.html              Home: capa com a foto, artigo mais recente e todos os artigos (busca + filtro por tema)
+artigos/<endereço>.html Uma página por artigo (gerada, não edite à mão)
+calculadora.html        Calculadora de rescisão (roda só no navegador)
+privacidade.html        Política de Privacidade
+404.html                Página de endereço não encontrado
+artigo.html, post.html  Só redirecionam links antigos (artigo.html?post=...) para artigos/
+posts/                  Artigos em markdown + posts.json (índice gerado)
+admin/                  Painel Decap CMS (publicação de artigos)
+scripts/gerar-site.mjs  Gera artigos/, a lista da home, posts.json, sitemap.xml e feed.xml
+scripts/partes/         Navegação, rodapé, atalho da calculadora, botões de rede e modelo do artigo
+assets/css/site.css     Estilos compartilhados
+assets/js/site.js       Animações de entrada e utilitários
+assets/js/md.js         Conversor de markdown usado pelo gerador
+assets/img/             Imagens (ygor-hero.jpg/.webp é a foto da capa)
 ```
 
-## Como visualizar localmente
+## Como publicar um artigo
 
-O blog carrega arquivos via `fetch`, então é preciso um servidor local (abrir o arquivo direto não funciona para o blog):
+**Pelo painel (recomendado):** acesse `/admin/` no site publicado, entre com o GitHub e crie o artigo. Escolha um **Tema** (é ele que aparece no card e no filtro da home). Ao publicar, o GitHub Actions ("Gerar páginas do blog") cria a página do artigo e atualiza a home, o sitemap e o RSS sozinho.
+
+**Manual:** crie `posts/meu-novo-artigo.md` com o cabeçalho:
+
+```markdown
+---
+titulo: Título do artigo
+data: 2026-12-01
+tema: Rescisão
+resumo: Uma frase que aparece no card, no topo do artigo e no Google.
+tags: FGTS, multa de 40%
+---
+
+Texto do artigo em markdown...
+```
+
+Temas aceitos: Rescisão, Jornada, Vínculo, Salário, Saúde e segurança, Processo, Categorias, Além do trabalho. Para criar outro, acrescente o nome em `TEMAS` (`scripts/gerar-site.mjs`) e nas opções do campo "Tema" (`admin/config.yml`).
+
+Ao dar push na branch `main`, o gerador roda automaticamente. Para rodar no seu computador: `node scripts/gerar-site.mjs`.
+
+## Como mudar a navegação, o rodapé ou as redes
+
+Edite os arquivos em `scripts/partes/` e rode o gerador (ou dê push): ele reaplica as partes em todas as páginas, entre os comentários `<!-- parte:... -->`. Os links de Instagram e LinkedIn ficam em `nav.html`, `rodape.html` e `redes-hero.html`.
+
+## Como trocar a foto da capa
+
+Substitua `assets/img/ygor-hero.jpg` e `assets/img/ygor-hero.webp` mantendo os nomes (retrato, proporção próxima de 4:5, pelo menos 1000 px de largura).
+
+## Como visualizar localmente
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File serve.ps1
 # depois abra http://localhost:8321/
 ```
 
-## Como publicar (Netlify)
-
-O site é 100% estático — basta arrastar a pasta inteira em https://app.netlify.com/drop (ou conectar um repositório Git). Nenhum build é necessário.
-
-## Como adicionar um post no blog
-
-**Pelo painel (recomendado):** acesse `/admin/` no site publicado, faça login com o GitHub e crie o artigo. Ao publicar, o Decap CMS grava o `.md` em `posts/` e o GitHub Actions atualiza `posts/posts.json` sozinho (workflow "Atualizar índice do blog"). A home, a listagem e a página do artigo se atualizam automaticamente.
-
-**Manual:** crie um arquivo `posts/meu-novo-post.md` com o cabeçalho (frontmatter):
-
-   ```markdown
-   ---
-   titulo: Título do artigo
-   data: 2026-08-01
-   resumo: Uma frase que aparece no card da listagem.
-   tags: Rescisão
-   ---
-
-   Texto do artigo em markdown...
-   ```
-
-   Ao dar push na branch `main`, o índice `posts/posts.json` é regenerado automaticamente pelo GitHub Actions.
-
-## Como colocar a foto do "Sobre"
-
-A home usa `assets/img/ygor.jpg` (bloco "Sobre") e `assets/img/ygor-3.jpg` (bloco das redes). Para trocar, substitua os arquivos mantendo os nomes (retrato, de preferência 4:5).
-
-## Como ativar o embed do Instagram
-
-1. Crie um widget gratuito no [SnapWidget](https://snapwidget.com) (ou Elfsight) para o perfil `@ygorsoares_bjj`.
-2. Copie a URL do iframe gerado (ex.: `https://snapwidget.com/embed/123456`).
-3. Cole em `assets/js/config.js`, no campo `instagramWidgetSrc`.
-
-Enquanto o widget não estiver configurado, a home mostra um cartão com link direto para o perfil.
-
-## Como trocar o número do WhatsApp
-
-Edite `assets/js/config.js` → campo `whatsapp` (formato internacional, ex.: `5511991680688`).
-
 ## Observações
 
-- A calculadora roda inteiramente no navegador: nenhum dado é enviado a servidor.
-- O site não menciona qualificação profissional em nenhuma página, por decisão de escopo — é um canal de conteúdo e divulgação.
+- O site não coleta dados: não há formulário, cadastro nem envio de mensagens.
+- A calculadora roda inteiramente no navegador: nenhum valor é enviado a servidor.
+- O site não menciona qualificação profissional nem oferece atendimento, por decisão de escopo: é um blog.

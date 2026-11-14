@@ -1,6 +1,7 @@
 ---
 titulo: "Piso da Enfermagem: Diferenças Salariais e Divisor 220 na 12x36"
 data: 2026-07-23
+tema: Categorias
 resumo: Entenda como calcular diferenças salariais do piso da enfermagem, os
   reflexos devidos e por que o divisor 220 se aplica à escala 12x36.
 tags: piso salarial enfermagem, Lei 14434/2022, artigo 15-A Lei 7498, diferenças

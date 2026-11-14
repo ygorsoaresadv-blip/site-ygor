@@ -1,6 +1,7 @@
 ---
 titulo: "Devolução em Dobro: STJ Fixa Tese e Afasta Modulação"
 data: 2026-09-25
+tema: Além do trabalho
 resumo: STJ decide que a devolução em dobro de cobrança indevida não exige má-fé
   do fornecedor, e afasta a modulação dos efeitos da tese. Entenda o Tema 929.
 tags: devolução em dobro, cobrança indevida, Tema 929 STJ, artigo 42 CDC, boa-fé

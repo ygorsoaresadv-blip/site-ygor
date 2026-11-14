@@ -1,6 +1,7 @@
 ---
 titulo: "Tema 39 do TST: Nova Regra da Prescrição Intercorrente"
 data: 2026-09-23
+tema: Processo
 resumo: "TST fixa tese vinculante sobre prescrição intercorrente no Tema 39:
   intimação pessoal, específica e direito de defesa antes da extinção da
   execução."

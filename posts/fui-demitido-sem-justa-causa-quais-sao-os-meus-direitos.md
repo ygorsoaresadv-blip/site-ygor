@@ -1,6 +1,7 @@
 ---
 titulo: Fui demitido sem justa causa. Quais são os meus direitos?
 data: 2026-07-12
+tema: Rescisão
 resumo: Entenda quais verbas rescisórias você tem direito a receber, os prazos
   legais para pagamento e o que fazer se a empresa não cumprir com suas
   obrigações.

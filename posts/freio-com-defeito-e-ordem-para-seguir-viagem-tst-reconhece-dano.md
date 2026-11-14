@@ -1,10 +1,11 @@
 ---
 titulo: "Freio com Defeito e Ordem para Seguir Viagem: TST Reconhece Dano"
 data: 2026-09-07
+tema: Saúde e segurança
 resumo: TST condena transportadora após motorista avisar sobre freio com defeito
   e ser mandado seguir viagem. Entenda por que o dano moral existe mesmo sem
   acidente.
-tags: " **Tags:** dano moral, motorista de caminhão, defeito no freio, TST,
+tags: "dano moral, motorista de caminhão, defeito no freio, TST,
   exposição a risco, segurança do trabalho, artigo 157 CLT, transportadora,
   direito do trabalho, responsabilidade do empregador, Sexta Turma TST,
   indenização trabalhista"

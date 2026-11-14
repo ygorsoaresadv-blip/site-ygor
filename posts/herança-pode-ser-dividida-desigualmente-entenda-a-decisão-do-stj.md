@@ -1,6 +1,7 @@
 ---
 titulo: Herança Pode Ser Dividida Desigualmente? Entenda a Decisão do STJ
 data: 2026-07-31
+tema: Além do trabalho
 resumo: STJ decide que herdeiros maiores e capazes podem partilhar bens em
   partes desiguais, desde que haja acordo e cessão de direitos formalizada.
 tags: herança, partilha desigual, STJ, quinhões hereditários, cessão de direitos

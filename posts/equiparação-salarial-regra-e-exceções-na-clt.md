@@ -1,6 +1,7 @@
 ---
 titulo: "Equiparação Salarial: Regra e Exceções na CLT"
 data: 2026-08-03
+tema: Salário
 resumo: Entenda os requisitos da equiparação salarial na CLT e, principalmente,
   as exceções que podem afastar esse direito mesmo com funções idênticas.
 tags: equiparação salarial, artigo 461 CLT, Súmula 6 TST, exceções equiparação

@@ -1,6 +1,7 @@
 ---
 titulo: FGTS e a multa de 40%: quando você recebe (e quando não)
 data: 2026-06-25
+tema: Rescisão
 resumo: A multa de 40% do FGTS não vale para todo desligamento. Veja em quais situações ela é devida e como conferir o seu saldo.
 tags: FGTS
 ---

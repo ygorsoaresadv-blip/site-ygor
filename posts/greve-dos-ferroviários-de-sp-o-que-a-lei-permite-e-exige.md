@@ -1,6 +1,7 @@
 ---
 titulo: "Greve dos Ferroviários de SP: O Que a Lei Permite e Exige"
 data: 2026-08-04
+tema: Categorias
 resumo: Entenda os direitos e limites da greve dos ferroviários de SP contra a
   Trivia Trens, a Lei de Greve e as regras para serviços essenciais.
 tags: greve, direito de greve, Lei 7783/89, serviços essenciais, ferroviários
