@@ -5,7 +5,7 @@ resumo: >
   
 
   O TST decidiu que demitir 212 empregados por já serem aposentados é discriminação etária e manteve R$ 10 milhões de dano moral coletivo.
-imagem: /assets/img/uploads/capa-aposentado-casa-da-moeda.png
+imagem: /assets/img/uploads/capa-aposentado-casa-da-moeda2.png
 tema: Rescisão
 tags: " demissão de aposentado, dispensa discriminatória, etarismo,
   discriminação por idade, Casa da Moeda, TST, SDI-1, dano moral coletivo, Lei
